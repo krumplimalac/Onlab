@@ -11,13 +11,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
 import { LocalPizza } from '@mui/icons-material';
 
 const pages = ['Hirek', 'Etelek', 'Pizzak', 'Italok'];
-const settings = ['Profile','Logout'];
+const settings = ['Belepes','Regisztracio'];
 const name = 'TemporaryCompanyName'
-const img = "/static/images/avatar/2.jpg"
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -151,7 +151,9 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={name} src={img} />
+                <Avatar sx={{ m: 1, bgcolor: '#202020'}}>
+                  <LockOutlinedIcon />
+                </Avatar>
               </IconButton>
             </Tooltip>
             <Menu
@@ -171,9 +173,11 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <Link to={setting}>
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center" sx={{color: 'black'}}>{setting}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>

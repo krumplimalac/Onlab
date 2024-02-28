@@ -3,12 +3,10 @@ import { Box, Typography } from "@mui/material"
 export default function Footer(){
     const company = "Generic Company (Example INC) "
     return(
-       <footer>
-            <Box >
+        <Box component='footer' sx={{mt: 'auto'}}>
             <Typography>
                 ©{company}
             </Typography>
-            </Box>
-       </footer>
+        </Box>
     )
 }

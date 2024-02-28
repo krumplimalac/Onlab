@@ -6,6 +6,8 @@ import Hirek from './pages/Hirek'
 import Etelek from './pages/Etelek'
 import Pizzak from './pages/Pizzak'
 import Italok from './pages/Italok'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 
 
 
@@ -21,6 +23,8 @@ function App() {
           <Route path="Etelek" element={<Etelek />} />
           <Route path="Pizzak" element={<Pizzak />} />
           <Route path="Italok" element={<Italok />} />
+          <Route path="Belepes" element={<SignIn />} />
+          <Route path="Regisztracio" element={<SignUp />} />
         </Routes>
     </BrowserRouter>
   )
