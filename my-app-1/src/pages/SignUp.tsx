@@ -21,11 +21,11 @@ export default function SignUp() {
 
   return (
       <Container component="main" maxWidth="xs"
-      sx={{backgroundColor: '#40444A',
-      padding: '8rem'}}>
+      sx={{backgroundColor: '#30343A',
+      paddingTop: '4rem',
+      paddingBottom:'4rem'}}>
         <Box
           sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -48,6 +48,7 @@ export default function SignUp() {
                   id="firstName"
                   label="Keresztnév"
                   autoFocus
+                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -58,6 +59,7 @@ export default function SignUp() {
                   label="Vezetéknév"
                   name="lastName"
                   autoComplete="family-name"
+                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -68,6 +70,7 @@ export default function SignUp() {
                   label="Email Cím"
                   name="email"
                   autoComplete="email"
+                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -79,6 +82,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
                 />
               </Grid>
               
@@ -93,8 +97,8 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to='Belepes'>
-                  <Typography>Már regisztráltál?</Typography>
+                <Link to='/Belepes'>
+                  <Typography>Már regisztrált?</Typography>
                 </Link>
               </Grid>
             </Grid>

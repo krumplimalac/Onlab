@@ -25,11 +25,11 @@ export default function SignIn() {
   return (
       <Container component="main" maxWidth="xs" 
       sx={{ 
-      backgroundColor: '#40444A',
-      padding: '8rem'}}>
+      backgroundColor: '#30343A',
+      paddingTop: '4rem',
+      paddingBottom:'4rem'}}>
         <Box
           sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -39,7 +39,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Belépés
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -47,20 +47,22 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Email Cím"
               name="email"
               autoComplete="email"
               autoFocus
+              sx={{backgroundColor: 'white', borderRadius: '5px'}}
             />
             <TextField
               margin="normal"
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Jelszó"
               type="password"
               id="password"
               autoComplete="current-password"
+              sx={{backgroundColor: 'white', borderRadius: '5px'}}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -76,7 +78,7 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link to='Regisztracio'>
+                <Link to='/Regisztracio'>
                   <Typography>Még nem regisztrált?</Typography>
                 </Link>
               </Grid>
