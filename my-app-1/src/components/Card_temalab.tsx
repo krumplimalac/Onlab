@@ -1,40 +1,59 @@
-import {Box, Card, CardContent, Typography, CardActions, Button, CardMedia, Container} from '@mui/material'
+import {Card, CardContent, Typography, CardActions, Button, CardMedia, Container, Collapse} from '@mui/material'
+import { useState } from 'react'
 
 interface food {
-    img: string,
     name: string,
     description: string,
-    ingredients: string,
-    id: number
+    id: number,
+    price: number
 }
 
 export default function MyCard({items} : {items: food[]} ) {
-    
+    const [expandedId, setExpandedId] = useState(-1);
+    const handleExpandClick = (i:number) => {
+        setExpandedId(expandedId === i ? -1 : i);
+      };
+
+    const [expand,setExpand] = useState(false) 
     return(
             <Container>
-              {items.map(item  => (
-                <Container>
-                    <Box >
-                        <Card sx={{backgroundColor: '#30343A'}}>
-                            <CardMedia 
+              {items.map((item , i) => (
+                        
+                        <Card key={item.id} sx={{backgroundColor: '#30343A',maxWidth: '1400',borderRadius: "10px",marginTop: "2rem"}}>
+                            {/**<CardMedia 
                                 component = 'img'
                                 height='300'
                                 image={item.img}
-                                />
+                            />*/}
                             <CardContent>
-                                <Typography gutterBottom variant='h5' component='div' sx={{color: 'white'}}>
-                                    {item.name}   
-                                </Typography>
+                                <Container sx={{display: 'flex', justifyContent: "space-between"}}>
+                                    <Typography gutterBottom variant='h4' component='div' sx={{color: 'white'}}>
+                                        {item.name}   
+                                    </Typography>
+                                    <Typography gutterBottom variant='h5' component='div' sx={{color: 'white'}}>
+                                        Ár: {item.price}   
+                                    </Typography>
+                                </Container>
                                 <Typography variant='body2' color='inherit' sx={{color: 'white'}}>
-                                        {item.description}
+                                <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
+                                    <>
+                                    {item.description}    
+                                    </>
+                                </Collapse>       
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button size='small' sx={{borderRadius: '5px', color: 'white', backgroundColor: '#50545A'}}>MORE</Button>
+                                <Button 
+                                    size='small' 
+                                    onClick={() => handleExpandClick(i)}
+                                    aria-expanded={expandedId === i} 
+                                    sx={{borderRadius: '5px', color: 'white', backgroundColor: '#50545A'}}>
+                                        Leírás
+                                </Button>
                             </CardActions>
+                            
                         </Card>
-                    </Box>
-                </Container>  
+                        
               ))}  
             </Container>
        
