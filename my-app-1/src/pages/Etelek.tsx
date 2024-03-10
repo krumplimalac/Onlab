@@ -5,7 +5,7 @@ import { Container, Pagination, Typography } from "@mui/material";
 
 export default function Etelek(){
 
-    const [menu, setMenu] = useState([]);
+    /**const [menu, setMenu] = useState([]);
    
     const client = axios.create({
         baseURL: '/api' 
@@ -18,7 +18,7 @@ export default function Etelek(){
         };
         fetchMenu();
      }, []);
-    }
+    
 
     const [page, setPage] = useState(1);;
     let PageSize : number;
@@ -27,19 +27,19 @@ export default function Etelek(){
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
         setUrl(`/Meals?PageNumber=${page}`);
-    };
+    };**/
 
 
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [meals, setMeals] = useState([]);
 
-    const fetchMeals = async (page) => {
+    const fetchMeals = async (page:number) => {
         try {
-        const response = await axios.get(`/api/Meals?page=${page}&pageSize=10`);
-        const { meals, totalPages } = response.data;
-        setMeals(meals);
-        setTotalPages(totalPages);
+        const response = await axios.get(`/api/Meals?PageNumber=${page}&PageSize=3`);
+         let m = response.data;
+        setMeals(m);
+        setTotalPages(10);
         } catch (error) {
         console.log(error);
         }
@@ -68,8 +68,14 @@ export default function Etelek(){
                 Ételek
             </Typography>
             <Container sx={{maxWidth: "1600"}}>
-                <MyCard items={menu} />
-                <Pagination count={MaxPage} page={page} onChange={handleChange} />
+                <MyCard items={meals} />
+                <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                Previous Page
+                </button>
+                <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+                Next Page
+                </button>
+               {/** <Pagination count={MaxPage} page={page} onChange={handleChange} /> */} 
             </Container>
            
         </>
