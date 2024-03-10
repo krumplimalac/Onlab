@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using DataAccess;
+using DataAccess.Repository;
+using Domain.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,7 @@ builder.Services.AddDbContext<DatabaseContext>(opt =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IMealRepository, MealRepository>();
 
 var app = builder.Build();
 

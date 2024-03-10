@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Domain.Parameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Domain.Repository
 {
     public interface IMealRepository
     {
-        Task<IList<Meal>> GetAllMeals();
+        Task<PagedList<Meal>> GetAllMeals(MealParameters mealParameters);
     }
 }

@@ -1,0 +1,15 @@
+D:\BME\Onlab\OnlabAPI\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\BME\Onlab\OnlabAPI\Domain\bin\Debug\net8.0\Domain.runtimeconfig.json
+D:\BME\Onlab\OnlabAPI\Domain\bin\Debug\net8.0\Domain.dll
+D:\BME\Onlab\OnlabAPI\Domain\bin\Debug\net8.0\Domain.pdb
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.dll
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.pdb
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
+D:\BME\Onlab\OnlabAPI\Domain\obj\Debug\net8.0\ref\Domain.dll
