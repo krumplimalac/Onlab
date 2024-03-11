@@ -1,6 +1,6 @@
 import MyCard from "../components/Card_temalab";
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios, { AxiosHeaders } from 'axios';
 import { Container, Pagination, Typography } from "@mui/material";
 
 export default function Etelek(){
@@ -29,6 +29,14 @@ export default function Etelek(){
         setUrl(`/Meals?PageNumber=${page}`);
     };**/
 
+    interface paginationHeader {
+        TotalCount: number,
+        PageSize: number,
+        CurrentPage: number,
+        TotalPages: number,
+        HasNext: boolean,
+        HasPrevious: boolean
+    }
 
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -36,12 +44,16 @@ export default function Etelek(){
 
     const fetchMeals = async (page:number) => {
         try {
-        const response = await axios.get(`/api/Meals?PageNumber=${page}&PageSize=3`);
-         let m = response.data;
-        setMeals(m);
-        setTotalPages(10);
-        } catch (error) {
-        console.log(error);
+            const response = await axios.get(`/api/Meals?PageNumber=${page}&PageSize=3`);
+            let res = response.data;
+            const headers = response.headers;
+            if (headers instanceof AxiosHeaders && headers.has('x-pagination')) {
+                let header: paginationHeader = JSON.parse(headers['x-pagination']);
+                setTotalPages(header.TotalPages);
+            }
+            setMeals(res);
+            } catch (error) {
+            console.log(error);
         }
     };
 
@@ -49,17 +61,9 @@ export default function Etelek(){
         fetchMeals(currentPage);
     }, [currentPage]);
 
-    const handlePrevPage = () => {
-        if (currentPage > 1) {
-        setCurrentPage(currentPage- 1);
-        }
-    };
-
-    const handleNextPage = () => {
-        if (currentPage < totalPages) {
-        setCurrentPage(currentPage + 1);
-        }
-    };
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setCurrentPage(value);
+      };
 
 
     return(
@@ -69,13 +73,7 @@ export default function Etelek(){
             </Typography>
             <Container sx={{maxWidth: "1600"}}>
                 <MyCard items={meals} />
-                <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                Previous Page
-                </button>
-                <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-                Next Page
-                </button>
-               {/** <Pagination count={MaxPage} page={page} onChange={handleChange} /> */} 
+               <Pagination count={totalPages} page={currentPage} onChange={handleChange}/>
             </Container>
            
         </>
