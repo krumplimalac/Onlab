@@ -1,7 +1,8 @@
 import MyCard from "../components/Card_temalab";
 import { useState, useEffect } from 'react';
 import axios, { AxiosHeaders } from 'axios';
-import { Container, Pagination, Typography } from "@mui/material";
+import { Container, Pagination, Typography, makeStyles, styled } from "@mui/material";
+import { ThemeProvider } from '@mui/material/styles';
 
 export default function Etelek(){
 
@@ -41,6 +42,11 @@ export default function Etelek(){
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [meals, setMeals] = useState([]);
+    const StyledPagination = styled(Pagination)(({ theme }) => ({
+        "& .MuiPaginationItem-root": {
+            color: "#FFFFFF"
+          }
+      }));
 
     const fetchMeals = async (page:number) => {
         try {
@@ -73,9 +79,9 @@ export default function Etelek(){
             </Typography>
             <Container sx={{maxWidth: "1600"}}>
                 <MyCard items={meals} />
-               <Pagination count={totalPages} page={currentPage} onChange={handleChange}/>
             </Container>
-           
+                 
+            <StyledPagination sx={{display: "flex", justifyContent: "center", backgroundColor: "#343444", height: "80px", marginTop: "2rem"}}  size={"large"} count={totalPages} page={currentPage} onChange={handleChange}/>
         </>
     )
 }

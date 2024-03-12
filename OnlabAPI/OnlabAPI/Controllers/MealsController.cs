@@ -34,7 +34,7 @@ namespace OnlabAPI.Controllers
                 meals.HasPrevious
             };
 
-            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(metadata));
+            Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metadata));
 
             if ( meals == null)
             {
