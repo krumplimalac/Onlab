@@ -43,7 +43,7 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Restriction",
+                name: "Restrictions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -52,7 +52,7 @@ namespace DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Restriction", x => x.Id);
+                    table.PrimaryKey("PK_Restrictions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,25 +69,27 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MealRestriction",
+                name: "MealRestrictions",
                 columns: table => new
                 {
-                    MealsId = table.Column<int>(type: "int", nullable: false),
-                    RestrictionsId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MealId = table.Column<int>(type: "int", nullable: false),
+                    RestrictionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MealRestriction", x => new { x.MealsId, x.RestrictionsId });
+                    table.PrimaryKey("PK_MealRestrictions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MealRestriction_Meals_MealsId",
-                        column: x => x.MealsId,
+                        name: "FK_MealRestrictions_Meals_MealId",
+                        column: x => x.MealId,
                         principalTable: "Meals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MealRestriction_Restriction_RestrictionsId",
-                        column: x => x.RestrictionsId,
-                        principalTable: "Restriction",
+                        name: "FK_MealRestrictions_Restrictions_RestrictionId",
+                        column: x => x.RestrictionId,
+                        principalTable: "Restrictions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -127,9 +129,9 @@ namespace DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_RestrictionTopping", x => new { x.RestrictionsId, x.ToppingsId });
                     table.ForeignKey(
-                        name: "FK_RestrictionTopping_Restriction_RestrictionsId",
+                        name: "FK_RestrictionTopping_Restrictions_RestrictionsId",
                         column: x => x.RestrictionsId,
-                        principalTable: "Restriction",
+                        principalTable: "Restrictions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -156,10 +158,36 @@ namespace DataAccess.Migrations
                     { 9, "Frissen vágott zöldségekből, uborka, paaradicsom, saláta, és egy kis szeretet", "Saláta", 1000 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Restrictions",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Gluténmentes" },
+                    { 2, "Vegetáriánus" },
+                    { 3, "Laktózmentes" },
+                    { 4, "Vegán" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "MealRestrictions",
+                columns: new[] { "Id", "MealId", "RestrictionId" },
+                values: new object[,]
+                {
+                    { 1, 1, 2 },
+                    { 2, 1, 3 },
+                    { 3, 2, 2 }
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_MealRestriction_RestrictionsId",
-                table: "MealRestriction",
-                column: "RestrictionsId");
+                name: "IX_MealRestrictions_MealId",
+                table: "MealRestrictions",
+                column: "MealId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MealRestrictions_RestrictionId",
+                table: "MealRestrictions",
+                column: "RestrictionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PizzaTopping_ToppingsId",
@@ -176,7 +204,7 @@ namespace DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MealRestriction");
+                name: "MealRestrictions");
 
             migrationBuilder.DropTable(
                 name: "PizzaTopping");
@@ -191,7 +219,7 @@ namespace DataAccess.Migrations
                 name: "Pizza");
 
             migrationBuilder.DropTable(
-                name: "Restriction");
+                name: "Restrictions");
 
             migrationBuilder.DropTable(
                 name: "Topping");

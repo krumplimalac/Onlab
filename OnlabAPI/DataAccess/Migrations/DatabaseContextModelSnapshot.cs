@@ -110,6 +110,49 @@ namespace DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.Models.MealRestriction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MealId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RestrictionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MealId");
+
+                    b.HasIndex("RestrictionId");
+
+                    b.ToTable("MealRestrictions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            MealId = 1,
+                            RestrictionId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            MealId = 1,
+                            RestrictionId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            MealId = 2,
+                            RestrictionId = 2
+                        });
+                });
+
             modelBuilder.Entity("Domain.Models.Pizza", b =>
                 {
                     b.Property<int>("Id")
@@ -148,7 +191,29 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restriction");
+                    b.ToTable("Restrictions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Gluténmentes"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Vegetáriánus"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Laktózmentes"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Vegán"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Topping", b =>
@@ -166,21 +231,6 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Topping");
-                });
-
-            modelBuilder.Entity("MealRestriction", b =>
-                {
-                    b.Property<int>("MealsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RestrictionsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MealsId", "RestrictionsId");
-
-                    b.HasIndex("RestrictionsId");
-
-                    b.ToTable("MealRestriction");
                 });
 
             modelBuilder.Entity("PizzaTopping", b =>
@@ -213,19 +263,23 @@ namespace DataAccess.Migrations
                     b.ToTable("RestrictionTopping");
                 });
 
-            modelBuilder.Entity("MealRestriction", b =>
+            modelBuilder.Entity("Domain.Models.MealRestriction", b =>
                 {
-                    b.HasOne("Domain.Models.Meal", null)
+                    b.HasOne("Domain.Models.Meal", "Meal")
                         .WithMany()
-                        .HasForeignKey("MealsId")
+                        .HasForeignKey("MealId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.Restriction", null)
+                    b.HasOne("Domain.Models.Restriction", "Restriction")
                         .WithMany()
-                        .HasForeignKey("RestrictionsId")
+                        .HasForeignKey("RestrictionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Meal");
+
+                    b.Navigation("Restriction");
                 });
 
             modelBuilder.Entity("PizzaTopping", b =>

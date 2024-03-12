@@ -12,11 +12,16 @@ namespace DataAccess
     public class DatabaseContext: DbContext
     {
         public DbSet<Meal> Meals { get; set; }
+        public DbSet<Restriction> Restrictions { get; set; }
+        public DbSet<MealRestriction> MealRestrictions { get; set; }
         public DatabaseContext(DbContextOptions<DatabaseContext> options) :base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+            modelBuilder.Entity<Meal>().HasMany(e => e.Restrictions).WithMany(e => e.Meals).UsingEntity<MealRestriction>();
             modelBuilder.Seed();
+
         }
     }
 }

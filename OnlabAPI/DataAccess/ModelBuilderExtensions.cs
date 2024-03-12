@@ -23,7 +23,17 @@ namespace DataAccess
                 new Meal { Name = "Bolognai Spagetti", Description = "Olasz módra készült, legfinomabb tésztaétel", Price = 2900, Id = 8},
                 new Meal { Name = "Saláta", Description = "Frissen vágott zöldségekből, uborka, paaradicsom, saláta, és egy kis szeretet", Price = 1000, Id = 9}
                 );
-
+            modelBuilder.Entity<Restriction>().HasData(
+                new Restriction { Name = "Gluténmentes" , Id = 1},
+                new Restriction { Name = "Vegetáriánus", Id = 2},
+                new Restriction { Name = "Laktózmentes", Id = 3},
+                new Restriction { Name = "Vegán", Id = 4}
+                );
+            modelBuilder.Entity<MealRestriction>().HasData(
+                new MealRestriction { MealId = 1, RestrictionId = 2 , Id = 1},
+                new MealRestriction { MealId = 1, RestrictionId = 3 , Id = 2},
+                new MealRestriction { MealId = 2, RestrictionId = 2 , Id = 3 }
+                );
         }
     }
 }

@@ -1,44 +1,18 @@
 import MyCard from "../components/Card_temalab";
 import { useState, useEffect } from 'react';
 import axios, { AxiosHeaders } from 'axios';
-import { Container, Pagination, Typography, makeStyles, styled } from "@mui/material";
-import { ThemeProvider } from '@mui/material/styles';
+import { Container, Pagination, Typography, styled } from "@mui/material";
+
+interface paginationHeader {
+    TotalCount: number,
+    PageSize: number,
+    CurrentPage: number,
+    TotalPages: number,
+    HasNext: boolean,
+    HasPrevious: boolean
+}
 
 export default function Etelek(){
-
-    /**const [menu, setMenu] = useState([]);
-   
-    const client = axios.create({
-        baseURL: '/api' 
-    });
-
-    useEffect(() => {
-        const fetchMenu = async () => {
-            let response = await client.get(url);
-            setMenu(response.data)
-        };
-        fetchMenu();
-     }, []);
-    
-
-    const [page, setPage] = useState(1);;
-    let PageSize : number;
-    let MaxPage = 10;
-    const [url, setUrl] = useState(`/Meals`)
-    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        setPage(value);
-        setUrl(`/Meals?PageNumber=${page}`);
-    };**/
-
-    interface paginationHeader {
-        TotalCount: number,
-        PageSize: number,
-        CurrentPage: number,
-        TotalPages: number,
-        HasNext: boolean,
-        HasPrevious: boolean
-    }
-
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [meals, setMeals] = useState([]);

@@ -1,11 +1,17 @@
 import {Card, CardContent, Typography, CardActions, Button, CardMedia, Container, Collapse, Grid} from '@mui/material'
 import { useState } from 'react'
 
+interface restriction {
+    id: number,
+    name: string
+}
+
 interface food {
     name: string,
     description: string,
     id: number,
-    price: number
+    price: number,
+    restrictions: restriction[]
 }
 
 export default function MyCard({items} : {items: food[]} ) {
@@ -33,6 +39,7 @@ export default function MyCard({items} : {items: food[]} ) {
                                         Ár: {item.price}   
                                     </Typography>
                                 </Container>
+                                <Typography>{item.restrictions[0] == undefined ? "üres" : item.restrictions[0].name}</Typography>
                                 <Typography variant='body2' color='inherit' sx={{color: 'white'}}>
                                     <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                                         <>

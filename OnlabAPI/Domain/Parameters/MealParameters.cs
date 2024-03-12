@@ -6,21 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Parameters
 {
-     public class MealParameters
+     public class MealParameters: QueryStringParameters
      {
-            const int maxPageSize = 10;
-            public int PageNumber { get; set; } = 1;
-            private int _pageSize = 4;
-            public int PageSize
-            {
-                get
-                {
-                    return _pageSize;
-                }
-                set
-                {
-                    _pageSize = (value > maxPageSize) ? maxPageSize : value;
-                }
-            }
+        public int? Restrictions {  get; set; }
     }
 }
