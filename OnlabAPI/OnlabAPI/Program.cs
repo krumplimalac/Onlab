@@ -18,6 +18,7 @@ builder.Services.AddDbContext<DatabaseContext>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMealRepository, MealRepository>();
+builder.Services.AddScoped<IRestrictionRepository, RestrictionRepository>();
 
 var app = builder.Build();
 

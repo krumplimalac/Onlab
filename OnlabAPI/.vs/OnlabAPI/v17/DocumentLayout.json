@@ -3,44 +3,64 @@
   "WorkspaceRootPath": "D:\\BME\\Onlab\\OnlabAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\mealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\mealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\parameters\\mealparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\parameters\\mealparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\restrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\restrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\mealscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\mealscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\parameters\\querystringparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\parameters\\querystringparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\restrictionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\restrictionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\models\\meal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\models\\meal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\modelbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\modelbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\mealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\mealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\models\\mealrestriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\models\\mealrestriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\models\\restriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\models\\restriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\modelbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\modelbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\onlabapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\onlabapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\repository\\imealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\repository\\imealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\repository\\irestrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\repository\\irestrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\models\\meal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\models\\meal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\parameters\\mealparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\parameters\\mealparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\migrations\\20240312161155_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,23 +74,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Domain.csproj",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Domain.csproj",
-              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Domain.csproj",
-              "RelativeToolTip": "Domain\\Domain.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-12T12:28:59.487Z"
+              "DocumentIndex": 1,
+              "Title": "MealsController.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\MealsController.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\MealsController.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\MealsController.cs",
+              "RelativeToolTip": "OnlabAPI\\Controllers\\MealsController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:55:12.718Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
+              "Title": "RestrictionsController.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\RestrictionsController.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\RestrictionsController.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\RestrictionsController.cs",
+              "RelativeToolTip": "OnlabAPI\\Controllers\\RestrictionsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:55:07.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IMealRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IMealRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repository\\IMealRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IMealRepository.cs",
+              "RelativeToolTip": "Domain\\Repository\\IMealRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:50:02.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IRestrictionRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IRestrictionRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repository\\IRestrictionRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IRestrictionRepository.cs",
+              "RelativeToolTip": "Domain\\Repository\\IRestrictionRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:49:59.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RestrictionRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\RestrictionRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repository\\RestrictionRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\RestrictionRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repository\\RestrictionRepository.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:49:24.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Restriction.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Restriction.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Restriction.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Restriction.cs",
+              "RelativeToolTip": "Domain\\Models\\Restriction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:44:41.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MealRestriction.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\MealRestriction.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\MealRestriction.cs",
@@ -78,11 +164,51 @@
               "RelativeToolTip": "Domain\\Models\\MealRestriction.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T12:26:34.846Z"
+              "WhenOpened": "2024-03-12T12:26:34.846Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Program.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
+              "RelativeToolTip": "OnlabAPI\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T18:32:55.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MealRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\MealRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repository\\MealRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\MealRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repository\\MealRepository.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowCkAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T19:43:36.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OnlabAPI",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj",
+              "RelativeDocumentMoniker": "OnlabAPI\\OnlabAPI.csproj",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj",
+              "RelativeToolTip": "OnlabAPI\\OnlabAPI.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-13T10:59:00.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ModelBuilderExtensions.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\ModelBuilderExtensions.cs",
               "RelativeDocumentMoniker": "DataAccess\\ModelBuilderExtensions.cs",
@@ -90,11 +216,12 @@
               "RelativeToolTip": "DataAccess\\ModelBuilderExtensions.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:17:55.771Z"
+              "WhenOpened": "2024-03-12T10:17:55.771Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "DatabaseContext.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\DatabaseContext.cs",
               "RelativeDocumentMoniker": "DataAccess\\DatabaseContext.cs",
@@ -102,11 +229,12 @@
               "RelativeToolTip": "DataAccess\\DatabaseContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:17:30.829Z"
+              "WhenOpened": "2024-03-12T10:17:30.829Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "Meal.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Meal.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Meal.cs",
@@ -114,36 +242,25 @@
               "RelativeToolTip": "Domain\\Models\\Meal.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T09:17:51.273Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "QueryStringParameters.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Parameters\\QueryStringParameters.cs",
-              "RelativeDocumentMoniker": "Domain\\Parameters\\QueryStringParameters.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Parameters\\QueryStringParameters.cs",
-              "RelativeToolTip": "Domain\\Parameters\\QueryStringParameters.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T09:07:50.356Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MealsController.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\MealsController.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\MealsController.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\MealsController.cs",
-              "RelativeToolTip": "OnlabAPI\\Controllers\\MealsController.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAvwBoAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-10T16:07:42.715Z",
+              "WhenOpened": "2024-03-12T09:17:51.273Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
+              "Title": "Domain.csproj",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Domain.csproj",
+              "RelativeToolTip": "Domain\\Domain.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-12T12:28:59.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "MealParameters.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Parameters\\MealParameters.cs",
               "RelativeDocumentMoniker": "Domain\\Parameters\\MealParameters.cs",
@@ -151,25 +268,11 @@
               "RelativeToolTip": "Domain\\Parameters\\MealParameters.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-10T15:43:40.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-10T15:43:40.309Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MealRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\MealRepository.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Repository\\MealRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\MealRepository.cs",
-              "RelativeToolTip": "DataAccess\\Repository\\MealRepository.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABUAAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T19:43:36.874Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "20240312161155_Initial.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Migrations\\20240312161155_Initial.cs",
               "RelativeDocumentMoniker": "DataAccess\\Migrations\\20240312161155_Initial.cs",
@@ -178,18 +281,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-12T16:11:55.557Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Program.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
-              "RelativeToolTip": "OnlabAPI\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T18:32:55.427Z"
             }
           ]
         }

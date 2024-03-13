@@ -14,11 +14,20 @@ interface food {
     restrictions: restriction[]
 }
 
+
 export default function MyCard({items} : {items: food[]} ) {
     const [expandedId, setExpandedId] = useState(-1);
     const handleExpandClick = (i:number) => {
         setExpandedId(expandedId === i ? -1 : i);
-      };
+    };
+    const Restrictions = ({item}:{item:food}) => {
+        return(
+                item.restrictions.map((r:restriction)=>(
+                 r.name == undefined ? "" : r.name+" "
+                ))
+        ) 
+    }
+      
 
     return(
             <Grid container spacing={{xs: 4}}>
@@ -39,7 +48,7 @@ export default function MyCard({items} : {items: food[]} ) {
                                         Ár: {item.price}   
                                     </Typography>
                                 </Container>
-                                <Typography>{item.restrictions[0] == undefined ? "üres" : item.restrictions[0].name}</Typography>
+                                <Typography sx={{color: 'white'}}><Restrictions item={item}/></Typography>
                                 <Typography variant='body2' color='inherit' sx={{color: 'white'}}>
                                     <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                                         <>

@@ -1,7 +1,8 @@
-import MyCard from "../components/Card_temalab";
+import MyCard from "../components/MealCards";
 import { useState, useEffect } from 'react';
 import axios, { AxiosHeaders } from 'axios';
 import { Container, Pagination, Typography, styled } from "@mui/material";
+import MealFilterButtons from "../components/MealFilterButtons";
 
 interface paginationHeader {
     TotalCount: number,
@@ -16,15 +17,16 @@ export default function Etelek(){
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [meals, setMeals] = useState([]);
+    const [url, setUrl] = useState(`/api/Meals?`)
     const StyledPagination = styled(Pagination)(({ theme }) => ({
         "& .MuiPaginationItem-root": {
             color: "#FFFFFF"
-          }
-      }));
+        }
+    }));
 
     const fetchMeals = async (page:number) => {
         try {
-            const response = await axios.get(`/api/Meals?PageNumber=${page}&PageSize=3`);
+            const response = await axios.get(url+`&PageNumber=${page}&PageSize=3`);
             let res = response.data;
             const headers = response.headers;
             if (headers instanceof AxiosHeaders && headers.has('x-pagination')) {
@@ -40,10 +42,14 @@ export default function Etelek(){
     useEffect(() => {
         fetchMeals(currentPage);
     }, [currentPage]);
+    
+    useEffect(() => {
+        fetchMeals(currentPage);
+    }, [url]);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
-      };
+    };
 
 
     return(
@@ -52,6 +58,7 @@ export default function Etelek(){
                 Ételek
             </Typography>
             <Container sx={{maxWidth: "1600"}}>
+                <MealFilterButtons setUrl={setUrl}></MealFilterButtons>
                 <MyCard items={meals} />
             </Container>
                  

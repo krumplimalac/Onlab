@@ -24,5 +24,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.RestrictionsController",
+    "Method": "GetRestrictions",
+    "RelativePath": "api/Restrictions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
