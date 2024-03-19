@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ZFYgvQjVMX6UGV6lGuBJm3qmbgkPud1lazIMKOaF6USbrhQs0LSvhrEi7j00PGtFHQxUL1osNzDad6UGO+WcVA==",
+  "dgSpecHash": "bF6DT5hB5g9Fb6niV9gyCUs1WSHqQ/bHW4fs18173RBePhuBDwhqpuxyP+MqykNrj0huAEe1bURbHmpVJ6+cgQ==",
   "success": true,
   "projectFilePath": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\microsoft.codeanalysis.common\\4.5.0\\microsoft.codeanalysis.common.4.5.0.nupkg.sha512",

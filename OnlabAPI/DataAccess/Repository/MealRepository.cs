@@ -29,7 +29,8 @@ namespace DataAccess.Repository
                     Id = m.Id,
                     Description = m.Description,
                     Price = m.Price,
-                    Restrictions = m.Restrictions.ToList()
+                    Restrictions = m.Restrictions.ToList(),
+                    Image = m.Image
                 }).ToListAsync(),
                         mealParameters.PageNumber,
                         mealParameters.PageSize);
@@ -48,7 +49,8 @@ namespace DataAccess.Repository
                         Id = m.Id,
                         Description = m.Description,
                         Price = m.Price,
-                        Restrictions = m.Restrictions.Where(r => r.Id == mealParameters.Restrictions).ToList()
+                        Restrictions = m.Restrictions.ToList(),
+                        Image = m.Image
                     }).Where(m => m.Restrictions.Contains(restriction)).ToListAsync();
                     return PagedList<Meal>.ToPagedList(meals,
                     mealParameters.PageNumber,
@@ -57,6 +59,40 @@ namespace DataAccess.Repository
             }
 
             return null;
+        }
+
+        public async void PostMeal(Meal meal)
+        {
+
+            var newmeal = new Meal
+            {
+                Name = meal.Name,
+                Description = meal.Description,
+                Price = meal.Price,
+            };
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await meal.File.CopyToAsync(memoryStream);
+                if (memoryStream.Length < 2097152)
+                {
+                    var newimage = new Image
+                    {
+                        Bytes = memoryStream.ToArray(),
+                        Description = meal.File.FileName,
+                        FileExtension = Path.GetExtension(meal.File.FileName),
+                        Size = meal.File.Length
+                    };
+                    newmeal.Image = newimage;
+                } else
+                {
+                    return;
+                }
+            }
+
+            _context.Meals.Add(newmeal);
+            _context.SaveChanges();
+
         }
     }
 }

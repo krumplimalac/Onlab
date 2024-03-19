@@ -21,6 +21,86 @@ namespace DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Models.Drink", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Drinks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Legfinomabb kávéból, igazi olaszos preszzó.",
+                            Name = "Espresso",
+                            Price = 700,
+                            Type = "coffee"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Minőségi Ginből, minőségű Tonicból",
+                            Name = "Gin Tonic",
+                            Price = 1300,
+                            Type = "alchoholic"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("Bytes")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MealId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Size")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MealId")
+                        .IsUnique();
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("Domain.Models.Meal", b =>
                 {
                     b.Property<int>("Id")
@@ -150,6 +230,108 @@ namespace DataAccess.Migrations
                             Id = 3,
                             MealId = 2,
                             RestrictionId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            MealId = 3,
+                            RestrictionId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            MealId = 3,
+                            RestrictionId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            MealId = 4,
+                            RestrictionId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            MealId = 4,
+                            RestrictionId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            MealId = 5,
+                            RestrictionId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            MealId = 6,
+                            RestrictionId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            MealId = 6,
+                            RestrictionId = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            MealId = 6,
+                            RestrictionId = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            MealId = 6,
+                            RestrictionId = 4
+                        },
+                        new
+                        {
+                            Id = 13,
+                            MealId = 7,
+                            RestrictionId = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            MealId = 7,
+                            RestrictionId = 2
+                        },
+                        new
+                        {
+                            Id = 15,
+                            MealId = 7,
+                            RestrictionId = 3
+                        },
+                        new
+                        {
+                            Id = 16,
+                            MealId = 7,
+                            RestrictionId = 4
+                        },
+                        new
+                        {
+                            Id = 17,
+                            MealId = 9,
+                            RestrictionId = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            MealId = 9,
+                            RestrictionId = 2
+                        },
+                        new
+                        {
+                            Id = 19,
+                            MealId = 9,
+                            RestrictionId = 3
+                        },
+                        new
+                        {
+                            Id = 20,
+                            MealId = 9,
+                            RestrictionId = 4
                         });
                 });
 
@@ -174,7 +356,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pizza");
+                    b.ToTable("Pizzas");
                 });
 
             modelBuilder.Entity("Domain.Models.Restriction", b =>
@@ -263,6 +445,17 @@ namespace DataAccess.Migrations
                     b.ToTable("RestrictionTopping");
                 });
 
+            modelBuilder.Entity("Domain.Models.Image", b =>
+                {
+                    b.HasOne("Domain.Models.Meal", "Meal")
+                        .WithOne("Image")
+                        .HasForeignKey("Domain.Models.Image", "MealId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Meal");
+                });
+
             modelBuilder.Entity("Domain.Models.MealRestriction", b =>
                 {
                     b.HasOne("Domain.Models.Meal", "Meal")
@@ -309,6 +502,12 @@ namespace DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("ToppingsId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Meal", b =>
+                {
+                    b.Navigation("Image")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

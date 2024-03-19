@@ -1,4 +1,4 @@
-import MyCard from "../components/MealCards";
+import MyCards from "../components/MealCards";
 import { useState, useEffect } from 'react';
 import axios, { AxiosHeaders } from 'axios';
 import { Container, Pagination, Typography, styled } from "@mui/material";
@@ -26,7 +26,7 @@ export default function Etelek(){
 
     const fetchMeals = async (page:number) => {
         try {
-            const response = await axios.get(url+`&PageNumber=${page}&PageSize=3`);
+            const response = await axios.get(url+`&PageNumber=${page}&PageSize=6`);
             let res = response.data;
             const headers = response.headers;
             if (headers instanceof AxiosHeaders && headers.has('x-pagination')) {
@@ -59,9 +59,8 @@ export default function Etelek(){
             </Typography>
             <Container sx={{maxWidth: "1600"}}>
                 <MealFilterButtons setUrl={setUrl}></MealFilterButtons>
-                <MyCard items={meals} />
-            </Container>
-                 
+                <MyCards items={meals} />
+            </Container>     
             <StyledPagination sx={{display: "flex", justifyContent: "center", backgroundColor: "#343444", height: "80px", marginTop: "2rem"}}  size={"large"} count={totalPages} page={currentPage} onChange={handleChange}/>
         </>
     )

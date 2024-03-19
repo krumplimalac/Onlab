@@ -11,5 +11,6 @@ namespace Domain.Repository
     public interface IMealRepository
     {
         Task<PagedList<Meal>> GetAllMeals(MealParameters mealParameters);
+        void PostMeal(Meal meal);
     }
 }

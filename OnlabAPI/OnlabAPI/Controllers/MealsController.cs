@@ -1,9 +1,11 @@
-﻿using Domain.Parameters;
+﻿using Domain.Models;
+using Domain.Parameters;
 using Domain.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using Microsoft.Extensions.Primitives;
+using OnlabAPI.DataTransferObjects;
 using System.Runtime.Serialization.Json;
 using System.Text.Json;
 
@@ -41,6 +43,21 @@ namespace OnlabAPI.Controllers
                 return NotFound();
             }
             return Ok(meals);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<MealDTO>> PostMeal(MealDTO meal)
+        {
+            var newmeal = new Meal
+            {
+                Id = meal.Id,
+                Name = meal.Name,
+                Description = meal.Description,
+                Price = meal.Price,
+                File = meal.FormFile
+            };
+             _mealRepository.PostMeal(newmeal);
+            return CreatedAtAction(nameof(GetMeals), meal);
         }
     }
 }
