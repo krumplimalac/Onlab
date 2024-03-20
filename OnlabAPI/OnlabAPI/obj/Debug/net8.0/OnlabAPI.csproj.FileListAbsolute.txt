@@ -139,3 +139,7 @@ D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\OnlabAPI.dll
 D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\OnlabAPI.pdb
 D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.genruntimeconfig.cache
 D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\ref\OnlabAPI.dll
+D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

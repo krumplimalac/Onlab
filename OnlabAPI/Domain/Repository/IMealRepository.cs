@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Domain.Parameters;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace Domain.Repository
     public interface IMealRepository
     {
         Task<PagedList<Meal>> GetAllMeals(MealParameters mealParameters);
+        Task<Meal> GetMealById(int id);
         void PostMeal(Meal meal);
+        void PutMeal(Meal meal, int id);
+        void Update(Meal meal);
+        Task<int> Delete(int id);
     }
 }

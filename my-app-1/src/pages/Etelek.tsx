@@ -57,7 +57,7 @@ export default function Etelek(){
             <Typography variant="h2" sx={{marginLeft:"10%", marginTop:"2rem", typography: {xs: "h3", md: "h2", lg: "h1"}}}>
                 Ételek
             </Typography>
-            <Container sx={{maxWidth: "1600"}}>
+            <Container maxWidth={false} sx={{maxWidth: "1400px"}}>
                 <MealFilterButtons setUrl={setUrl}></MealFilterButtons>
                 <MyCards items={meals} />
             </Container>     

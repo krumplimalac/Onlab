@@ -8,6 +8,8 @@ import Pizzak from './pages/Pizzak'
 import Italok from './pages/Italok'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import MealForm from './pages/Form'
+import DetailedMeal from './components/DetailedMeal'
 
 
 
@@ -21,10 +23,12 @@ function App() {
           <Route path="Home" element={<Home />} />
           <Route path="Hirek" element={<Hirek />} />
           <Route path="Etelek" element={<Etelek />} />
+          <Route path="Etelek/:id" element={<DetailedMeal /> } />
           <Route path="Pizzak" element={<Pizzak />} />
           <Route path="Italok" element={<Italok />} />
           <Route path="Belepes" element={<SignIn />} />
           <Route path="Regisztracio" element={<SignUp />} />
+          <Route path="Ujetel" element={<MealForm />} />
         </Routes>
     </BrowserRouter>
   )

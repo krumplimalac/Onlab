@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import { LocalPizza } from '@mui/icons-material';
 
 const pages = ['Hirek', 'Etelek', 'Pizzak', 'Italok'];
-const settings = ['Belepes','Regisztracio'];
+const settings = ['Belepes','Regisztracio', 'Ujetel'];
 const name = 'TemporaryCompanyName'
 
 function ResponsiveAppBar() {
