@@ -12,6 +12,7 @@ namespace Domain.Models
         public string Name { get; set; }
         public List<Meal> Meals { get; set; }
         public List<Topping> Toppings { get; set; }
+        public List<Pizza> Pizzas { get; set; }
 
     }
 }

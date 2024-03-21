@@ -20,7 +20,7 @@ namespace DataAccess.Repository
             _context = context;
         }
 
-        public Meal ChangeImage(Meal meal, Meal newmeal)
+        public Meal ChangeImage(Meal meal)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -30,12 +30,10 @@ namespace DataAccess.Repository
                     var newimage = new Image
                     {
                         Bytes = memoryStream.ToArray(),
-                        Description = meal.File.FileName,
-                        FileExtension = Path.GetExtension(meal.File.FileName),
-                        Size = meal.File.Length
+                        Description = meal.File.FileName
                     };
-                    newmeal.Image = newimage;
-                    return newmeal;
+                    meal.Image = newimage;
+                    return meal;
                 }
                 else
                 {
@@ -116,33 +114,40 @@ namespace DataAccess.Repository
             return null;
         }
 
-        public async void PostMeal(Meal meal)
+        public async Task PostMeal(Meal meal, string[]? names)
         {
-
-            var newmeal = new Meal
+            var restrictions = _context.Restrictions.ToList();
+            meal.Restrictions = new List<Restriction>();
+            if (restrictions.Any() && names != null)
             {
-                Name = meal.Name,
-                Description = meal.Description,
-                Price = meal.Price,
-            };
-
-            newmeal = ChangeImage(meal, newmeal);
-          
-            _context.Meals.Add(newmeal);
-            _context.SaveChanges();
+                foreach (var restriction in restrictions)
+                {
+                    foreach (var name in names)
+                    {
+                        if (restriction.Name == name)
+                        {
+                            meal.Restrictions.Add(restriction);
+                        }
+                    }
+                }
+            }
+           
+            meal = ChangeImage(meal);
+            await _context.Meals.AddAsync(meal);
+            await _context.SaveChangesAsync();
 
         }
 
-        public void PutMeal(Meal meal, int id)
+        public async void PutMeal(Meal meal, int id)
         {
            
-            meal = ChangeImage(meal, meal);
+            meal = ChangeImage(meal);
 
             _context.Entry(meal).State = EntityState.Modified;
 
             try
             {
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {

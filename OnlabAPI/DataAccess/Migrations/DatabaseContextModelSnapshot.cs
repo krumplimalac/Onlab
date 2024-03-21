@@ -33,6 +33,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -46,25 +49,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Drinks");
+                    b.HasIndex("ImageId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Legfinomabb kávéból, igazi olaszos preszzó.",
-                            Name = "Espresso",
-                            Price = 700,
-                            Type = "coffee"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Minőségi Ginből, minőségű Tonicból",
-                            Name = "Gin Tonic",
-                            Price = 1300,
-                            Type = "alchoholic"
-                        });
+                    b.ToTable("Drinks");
                 });
 
             modelBuilder.Entity("Domain.Models.Image", b =>
@@ -83,20 +70,7 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FileExtension")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MealId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Size")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("MealId")
-                        .IsUnique();
 
                     b.ToTable("Images");
                 });
@@ -113,6 +87,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -122,72 +99,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Meals");
+                    b.HasIndex("ImageId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Bundás Kenyér bundából és kenyérből van",
-                            Name = "Bundás Kenyér",
-                            Price = 2000
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Omlett 3 tojásból készül és nagyon fincsa",
-                            Name = "Omlett",
-                            Price = 1800
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Tükörtojás 3 tojásból készül és nagyon fincsa",
-                            Name = "Tükörtojás",
-                            Price = 1800
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Ez az étel, jó, de nem mindenki szereti",
-                            Name = "Sült Oldalas",
-                            Price = 2800
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Sima szendvics... semmi extra, kenyér, vaj, cuccok",
-                            Name = "Szendvics",
-                            Price = 1200
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "Legjobb házi krumpliból, friss olajban sülve",
-                            Name = "Sültkrumpli",
-                            Price = 1000
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Description = "Frissen készült humusz, zöldségekkel",
-                            Name = "Humusz tál",
-                            Price = 1200
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Description = "Olasz módra készült, legfinomabb tésztaétel",
-                            Name = "Bolognai Spagetti",
-                            Price = 2900
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Description = "Frissen vágott zöldségekből, uborka, paaradicsom, saláta, és egy kis szeretet",
-                            Name = "Saláta",
-                            Price = 1000
-                        });
+                    b.ToTable("Meals");
                 });
 
             modelBuilder.Entity("Domain.Models.MealRestriction", b =>
@@ -211,128 +125,36 @@ namespace DataAccess.Migrations
                     b.HasIndex("RestrictionId");
 
                     b.ToTable("MealRestrictions");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            MealId = 1,
-                            RestrictionId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            MealId = 1,
-                            RestrictionId = 3
-                        },
-                        new
-                        {
-                            Id = 3,
-                            MealId = 2,
-                            RestrictionId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            MealId = 3,
-                            RestrictionId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            MealId = 3,
-                            RestrictionId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            MealId = 4,
-                            RestrictionId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            MealId = 4,
-                            RestrictionId = 3
-                        },
-                        new
-                        {
-                            Id = 8,
-                            MealId = 5,
-                            RestrictionId = 2
-                        },
-                        new
-                        {
-                            Id = 9,
-                            MealId = 6,
-                            RestrictionId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            MealId = 6,
-                            RestrictionId = 2
-                        },
-                        new
-                        {
-                            Id = 11,
-                            MealId = 6,
-                            RestrictionId = 3
-                        },
-                        new
-                        {
-                            Id = 12,
-                            MealId = 6,
-                            RestrictionId = 4
-                        },
-                        new
-                        {
-                            Id = 13,
-                            MealId = 7,
-                            RestrictionId = 1
-                        },
-                        new
-                        {
-                            Id = 14,
-                            MealId = 7,
-                            RestrictionId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
-                            MealId = 7,
-                            RestrictionId = 3
-                        },
-                        new
-                        {
-                            Id = 16,
-                            MealId = 7,
-                            RestrictionId = 4
-                        },
-                        new
-                        {
-                            Id = 17,
-                            MealId = 9,
-                            RestrictionId = 1
-                        },
-                        new
-                        {
-                            Id = 18,
-                            MealId = 9,
-                            RestrictionId = 2
-                        },
-                        new
-                        {
-                            Id = 19,
-                            MealId = 9,
-                            RestrictionId = 3
-                        },
-                        new
-                        {
-                            Id = 20,
-                            MealId = 9,
-                            RestrictionId = 4
-                        });
+            modelBuilder.Entity("Domain.Models.News", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
+
+                    b.ToTable("News");
                 });
 
             modelBuilder.Entity("Domain.Models.Pizza", b =>
@@ -347,6 +169,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -355,6 +180,8 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
 
                     b.ToTable("Pizzas");
                 });
@@ -412,7 +239,22 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Topping");
+                    b.ToTable("Toppings");
+                });
+
+            modelBuilder.Entity("PizzaRestriction", b =>
+                {
+                    b.Property<int>("PizzasId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RestrictionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PizzasId", "RestrictionsId");
+
+                    b.HasIndex("RestrictionsId");
+
+                    b.ToTable("PizzaRestriction");
                 });
 
             modelBuilder.Entity("PizzaTopping", b =>
@@ -445,15 +287,26 @@ namespace DataAccess.Migrations
                     b.ToTable("RestrictionTopping");
                 });
 
-            modelBuilder.Entity("Domain.Models.Image", b =>
+            modelBuilder.Entity("Domain.Models.Drink", b =>
                 {
-                    b.HasOne("Domain.Models.Meal", "Meal")
-                        .WithOne("Image")
-                        .HasForeignKey("Domain.Models.Image", "MealId")
+                    b.HasOne("Domain.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Meal");
+                    b.Navigation("Image");
+                });
+
+            modelBuilder.Entity("Domain.Models.Meal", b =>
+                {
+                    b.HasOne("Domain.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("Domain.Models.MealRestriction", b =>
@@ -473,6 +326,43 @@ namespace DataAccess.Migrations
                     b.Navigation("Meal");
 
                     b.Navigation("Restriction");
+                });
+
+            modelBuilder.Entity("Domain.Models.News", b =>
+                {
+                    b.HasOne("Domain.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Image");
+                });
+
+            modelBuilder.Entity("Domain.Models.Pizza", b =>
+                {
+                    b.HasOne("Domain.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Image");
+                });
+
+            modelBuilder.Entity("PizzaRestriction", b =>
+                {
+                    b.HasOne("Domain.Models.Pizza", null)
+                        .WithMany()
+                        .HasForeignKey("PizzasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Restriction", null)
+                        .WithMany()
+                        .HasForeignKey("RestrictionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PizzaTopping", b =>
@@ -502,12 +392,6 @@ namespace DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("ToppingsId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.Models.Meal", b =>
-                {
-                    b.Navigation("Image")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

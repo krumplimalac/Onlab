@@ -13,6 +13,8 @@ namespace Domain.Models
         public string Description { get; set; }
         public string Type { get; set; }
         public int Price { get; set; }
+        public Image Image { get; set; }
+        public int ImageId { get; set; }
 
     }
 }

@@ -13,6 +13,9 @@ namespace Domain.Models
         public string Description { get; set; }
         public int Price { get; set; }
         public List<Topping> Toppings { get; set; }
+        public List<Restriction> Restrictions { get; set; }
+        public Image Image { get; set; }
+        public int ImageId { get; set; }
 
     }
 }

@@ -33,7 +33,7 @@ export const Restrictions = ({item}:{item:myProp}) => {
 
 export default function MyCard({item}:{item:myProp | undefined}){
     if ( item != undefined){
-        let img = item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image.bytes}`; 
+        const img = item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image.bytes}`; 
 
         return( 
             <Grid item xs={12} md={6} lg={4} key={item.id}>

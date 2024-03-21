@@ -1,4 +1,5 @@
-import { Box, Button, Container, TextField } from "@mui/material";
+import { CheckBox } from "@mui/icons-material";
+import { Box, Button, Container, FormControlLabel, FormGroup, Checkbox, TextField, FormLabel, Typography } from "@mui/material";
 import axios from "axios";
 import { useRef, useState } from "react";
 
@@ -12,11 +13,30 @@ interface MyProp{
 };
 
 export default function MealForm() {
-    
+    const [state, setState] = useState({
+      glutenfree: false,
+      vegan: false,
+      vegetarian: false,
+      lactosefree: false,
+    });
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setState({
+        ...state,
+        [event.target.name]: event.target.checked,
+      });
+    };
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        data.append("restrictions","nincs");
+        let restrictionNames = [] as string[]
+        if (state.glutenfree) restrictionNames.push("Gluténmentes")
+        if (state.vegan) restrictionNames.push("Vegán")
+        if (state.vegetarian) restrictionNames.push("Vegetáriánus")
+        if (state.lactosefree) restrictionNames.push("Laktózmentes")
+        const restrictions = JSON.stringify(restrictionNames);
+        data.append("restrictions",restrictions);
         
         axios.post(`/api/Meals`, data)
           .then(res => {
@@ -32,13 +52,40 @@ export default function MealForm() {
 
     return (
         <Container
-        maxWidth={false}
-        sx={{backgroundColor: "#30343A",
-            paddingTop: '4rem',
-            paddingBottom:'4rem',
-            maxWidth: "800px"}}>
-
-            <form onSubmit={handleSubmit}>
+          maxWidth={false}
+          sx={{backgroundColor: "#30343A",
+              paddingTop: '4rem',
+              paddingBottom:'4rem',
+              maxWidth: "800px"}}>
+            <Typography variant="h3" align="center" margin="normal">Új étel</Typography>
+            
+              <FormGroup row sx={{display: "flex", justifyContent: "space-around"}}>
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={state.glutenfree} onChange={handleChange} name="glutenfree" />
+                  }
+                  label="Gluténmentes"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={state.vegetarian} onChange={handleChange} name="vegetarian" />
+                  }
+                  label="Vegetáriánus"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={state.vegan} onChange={handleChange} name="vegan" />
+                  }
+                  label="Vegán"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={state.lactosefree} onChange={handleChange} name="lactosefree" />
+                  }
+                  label="Laktózmentes"
+                />
+              </FormGroup>
+              <form onSubmit={handleSubmit}>
                 <TextField
                 margin="normal"
                 required

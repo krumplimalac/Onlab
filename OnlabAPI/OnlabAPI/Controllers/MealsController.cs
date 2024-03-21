@@ -4,8 +4,10 @@ using Domain.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 using OnlabAPI.DataTransferObjects;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.Serialization.Json;
@@ -13,10 +15,12 @@ using System.Text.Json;
 
 namespace OnlabAPI.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class MealsController : ControllerBase
     {
+
         private readonly IMealRepository _mealRepository;
         public MealsController(IMealRepository repo)
         {
@@ -38,7 +42,7 @@ namespace OnlabAPI.Controllers
                 meals.HasPrevious
             };
 
-            Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metadata));
+            Response.Headers.Append("X-Pagination", System.Text.Json.JsonSerializer.Serialize(metadata));
 
             if (meals == null)
             {
@@ -64,14 +68,15 @@ namespace OnlabAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<MealDTO>> PostMeal(MealDTO meal)
         {
+            var names = JsonConvert.DeserializeObject<string[]>(meal.Restrictions);
             var newmeal = new Meal
             {
                 Name = meal.Name,
                 Description = meal.Description,
                 Price = meal.Price,
-                File = meal.FormFile
+                File = meal.FormFile,
             };
-            _mealRepository.PostMeal(newmeal);
+            await _mealRepository.PostMeal(newmeal,names);
             return CreatedAtAction(nameof(GetMeals), meal);
         }
 

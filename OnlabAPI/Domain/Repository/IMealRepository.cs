@@ -13,7 +13,7 @@ namespace Domain.Repository
     {
         Task<PagedList<Meal>> GetAllMeals(MealParameters mealParameters);
         Task<Meal> GetMealById(int id);
-        void PostMeal(Meal meal);
+        Task PostMeal(Meal meal, string[]? names);
         void PutMeal(Meal meal, int id);
         void Update(Meal meal);
         Task<int> Delete(int id);

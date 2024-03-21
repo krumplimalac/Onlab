@@ -22,6 +22,7 @@ namespace Domain.Models
         public string Description { get; set; }
         public List<Restriction> Restrictions { get; set; }
         public Image Image { get; set; }
+        public int ImageId { get; set; }
         [NotMapped]
         public IFormFile File { get; set; }
     }

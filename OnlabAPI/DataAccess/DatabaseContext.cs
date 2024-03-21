@@ -15,6 +15,8 @@ namespace DataAccess
         public DbSet<Pizza> Pizzas { get; set; }
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<Topping> Toppings { get; set; }
         public DbSet<Restriction> Restrictions { get; set; }
         public DbSet<MealRestriction> MealRestrictions { get; set; }
         public DatabaseContext(DbContextOptions<DatabaseContext> options) :base(options) { }
