@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material"
+import { Card, CardContent, CardMedia, Container, Grid, Paper, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 
 interface restriction {
@@ -38,7 +38,7 @@ export default function MyCard({item}:{item:myProp | undefined}){
         return( 
             <Grid item xs={12} md={6} lg={4} key={item.id}>
                     <Link to={`${item.id}`}>
-                        <Card key={item.id} sx={{backgroundColor: '#30343A',maxWidth: '1600',borderRadius: "10px",marginTop: "2rem", height: "420px"}}>
+                        <Card component={Paper} elevation={20} key={item.id} sx={{transition: "0.5s", backgroundColor: '#30343A',maxWidth: '1600',borderRadius: "10px",marginTop: "2rem", height: "440px",":hover":{borderRadius: "30px", boxShadow:"5px 5px 50px",backgroundColor: '#40444A'}}}>
                             <CardMedia 
                                 component = 'img'
                                 height='300'
@@ -46,11 +46,11 @@ export default function MyCard({item}:{item:myProp | undefined}){
                             ></CardMedia>
                             <CardContent>
                                 <Container disableGutters sx={{display: 'flex', justifyContent: "space-between"}}>
-                                    <Typography variant='h4' component='div' sx={{color: 'white'}}>
+                                    <Typography variant='h5' component='div' sx={{color: 'white'}}>
                                         {item.name}   
                                     </Typography>
-                                    <Typography variant='h5' component='div' sx={{color: 'white',backgroundColor:'#20242A',borderRadius: "15px", padding: "4px"}}>
-                                        Ár: {item.price}   
+                                    <Typography variant='h6' component='div' sx={{color: 'white',backgroundColor:'#20242A',borderRadius: "15px", padding: "4px"}}>
+                                        {item.price} Ft   
                                     </Typography>
                                 </Container>
                                 <Typography sx={{color: 'white'}}><Restrictions item={item}/></Typography>

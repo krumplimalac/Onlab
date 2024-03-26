@@ -1,5 +1,7 @@
 ﻿using DataAccess.Repository;
 using Domain.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class DatabaseContext: DbContext
+    public class DatabaseContext: IdentityDbContext<IdentityUser>
     {
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Pizza> Pizzas { get; set; }
@@ -23,6 +25,7 @@ namespace DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Meal>().HasMany(e => e.Restrictions).WithMany(e => e.Meals).UsingEntity<MealRestriction>();
             modelBuilder.Seed();
 

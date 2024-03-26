@@ -105,7 +105,8 @@ namespace DataAccess.Repository
                 Description = m.Description,
                 Price = m.Price,
                 Restrictions = m.Restrictions.ToList(),
-                Image = m.Image
+                Image = m.Image,
+                File = m.File
             }).Where(m => m.Id == id).ToListAsync();
             if (meals.Any())
             {
@@ -114,15 +115,15 @@ namespace DataAccess.Repository
             return null;
         }
 
-        public async Task PostMeal(Meal meal, string[]? names)
+        public async Task PostMeal(Meal meal, string[]? restrictionNames)
         {
             var restrictions = _context.Restrictions.ToList();
             meal.Restrictions = new List<Restriction>();
-            if (restrictions.Any() && names != null)
+            if (restrictions.Any() && restrictionNames != null)
             {
                 foreach (var restriction in restrictions)
                 {
-                    foreach (var name in names)
+                    foreach (var name in restrictionNames)
                     {
                         if (restriction.Name == name)
                         {

@@ -7,14 +7,39 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import axios, { AxiosError, AxiosHeaders } from 'axios';
+import { useState } from 'react';
+import { Paper, Slide, Snackbar } from '@mui/material';
+import ErrorIcon from '@mui/icons-material/Error';
 
 export default function SignUp() {
+  const [openErr, setOpenErr] = useState(false);
+  const navigate = useNavigate();
+  
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      setOpenErr(false);
+      return;
+    }
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      data
+    let jsonData = {
+      email: data.get('email'),
+      password: data.get('password')
+    }
+      axios.post('/tmp/register',jsonData)
+      .catch((e: AxiosError) => {setOpenErr(true)}).
+      then(res => {
+        if ( res !== undefined ){
+          if(res.status == 200){
+            console.log("OK");
+            navigate("/Home");
+          }
+        }
     });
   };
 
@@ -23,6 +48,18 @@ export default function SignUp() {
       sx={{backgroundColor: '#30343A',
       paddingTop: '4rem',
       paddingBottom:'4rem'}}>
+        <Snackbar
+              open={openErr}
+              onClose={handleClose}
+              autoHideDuration={5000}
+              TransitionComponent={Slide}
+              anchorOrigin={{vertical: 'top',horizontal: 'center'}}
+            >
+              <Paper elevation={10} sx={{backgroundColor: "#BB1010",margin:'10px',padding:'15px',width: "300px", display: "flex", justifyContent:"space-between"}}>
+              <Typography sx={{color:"white"}}>Sikertelen bejelentkezés!</Typography>
+              <ErrorIcon/>
+              </Paper>
+          </Snackbar>
         <Box
           sx={{
             display: 'flex',
@@ -38,29 +75,6 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="Keresztnév"
-                  autoFocus
-                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Vezetéknév"
-                  name="lastName"
-                  autoComplete="family-name"
-                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -84,7 +98,17 @@ export default function SignUp() {
                   sx={{backgroundColor: 'white', borderRadius: '5px'}}
                 />
               </Grid>
-              
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password-again"
+                  label="Jelszó ismét"
+                  type="password"
+                  id="password-again"
+                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
+                />
+              </Grid>
             </Grid>
             <Button
               type="submit"

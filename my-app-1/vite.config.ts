@@ -7,7 +7,13 @@ export default defineConfig({
     proxy: {
       '/api' : {target: 'https://localhost:7061', // The API is running locally via IIS on this port
       changeOrigin: true,
-      secure: false}}
+      secure: false,
+      },
+      '/tmp' : {target: 'https://localhost:7061', // The API is running locally via IIS on this port
+      changeOrigin: true,
+      secure: false,
+      rewrite: (path) => path.replace(/^\/tmp/, '')
+      }}
   },
   plugins: [react()],
 })

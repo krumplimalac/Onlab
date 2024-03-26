@@ -1,7 +1,7 @@
-import { CheckBox } from "@mui/icons-material";
-import { Box, Button, Container, FormControlLabel, FormGroup, Checkbox, TextField, FormLabel, Typography } from "@mui/material";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Box, Button, Container, FormControlLabel, FormGroup, Checkbox, TextField, FormLabel, Typography, Fade, Paper, Snackbar, Slide } from "@mui/material";
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 interface MyProp{
     id: number,
@@ -12,6 +12,7 @@ interface MyProp{
     file: FormData
 };
 
+
 export default function MealForm() {
     const [state, setState] = useState({
       glutenfree: false,
@@ -19,6 +20,14 @@ export default function MealForm() {
       vegetarian: false,
       lactosefree: false,
     });
+    const [open, setOpen] = useState(false);
+
+    const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpen(false);
+    };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setState({
@@ -37,15 +46,19 @@ export default function MealForm() {
         if (state.lactosefree) restrictionNames.push("Laktózmentes")
         const restrictions = JSON.stringify(restrictionNames);
         data.append("restrictions",restrictions);
-        
         axios.post(`/api/Meals`, data)
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-          })
-        console.log({
-          data
-        });
+              .then(res => {
+                if(res.status = 201){
+                  setOpen(true);
+                  onreset?.call;  
+                }
+                console.log(res);
+                console.log(res.data);
+              })
+            console.log({
+              data
+          });
+       
       };
 
         
@@ -57,9 +70,21 @@ export default function MealForm() {
               paddingTop: '4rem',
               paddingBottom:'4rem',
               maxWidth: "800px"}}>
+            <Snackbar
+              open={open}
+              onClose={handleClose}
+              autoHideDuration={5000}
+              TransitionComponent={Slide}
+              anchorOrigin={{vertical: 'top',horizontal: 'center'}}
+            >
+              <Paper elevation={10} sx={{backgroundColor: "#10BB44",margin:'10px',padding:'15px',width: "300px", display: "flex", justifyContent:"space-between"}}>
+              <Typography>Sikeres küldés!</Typography>
+              <CheckCircleIcon/>
+              </Paper>
+            </Snackbar>
             <Typography variant="h3" align="center" margin="normal">Új étel</Typography>
             
-              <FormGroup row sx={{display: "flex", justifyContent: "space-around"}}>
+              <FormGroup id="rest_checks" row sx={{display: "flex", justifyContent: "space-around"}}>
                 <FormControlLabel
                   control={
                     <Checkbox checked={state.glutenfree} onChange={handleChange} name="glutenfree" />
@@ -85,7 +110,7 @@ export default function MealForm() {
                   label="Laktózmentes"
                 />
               </FormGroup>
-              <form onSubmit={handleSubmit}>
+              <form id="new_meal_form" onSubmit={handleSubmit}>
                 <TextField
                 margin="normal"
                 required

@@ -1,6 +1,7 @@
 ﻿using Domain.Models;
 using Domain.Parameters;
 using Domain.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +51,7 @@ namespace OnlabAPI.Controllers
             }
             return Ok(meals);
         }
-
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Meal>> GetMeal(int id)
         {
@@ -65,6 +66,7 @@ namespace OnlabAPI.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<MealDTO>> PostMeal(MealDTO meal)
         {
@@ -77,9 +79,10 @@ namespace OnlabAPI.Controllers
                 File = meal.FormFile,
             };
             await _mealRepository.PostMeal(newmeal,names);
-            return CreatedAtAction(nameof(GetMeals), meal);
+            return CreatedAtAction(nameof(newmeal), meal);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMeal(MealDTO meal,int id)
         {
@@ -95,12 +98,14 @@ namespace OnlabAPI.Controllers
             return Ok(newmeal);
         }
 
+        [Authorize]
         [HttpPatch("{id}")]
         public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<Meal> patch)
         {
             var fromDb = await _mealRepository.GetMealById(id);
 
-            var original = fromDb;
+            var original = new Meal();
+            original = fromDb;
             patch.ApplyTo(fromDb);
 
             _mealRepository.Update(fromDb); 
@@ -112,6 +117,7 @@ namespace OnlabAPI.Controllers
             return Ok(model);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -120,7 +126,7 @@ namespace OnlabAPI.Controllers
             {
                 return NotFound();
             }
-            return NoContent();
+            return Ok();
         }
 
     }
