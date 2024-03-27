@@ -48,15 +48,14 @@ namespace OnlabAPI.Controllers
         public async Task<ActionResult<NewsDTO>> PostNews(NewsDTO news)
         {
             var newNews = new News
-            {
-                Id = news.Id,
+            { 
                 Title = news.Title,
                 Date = news.Date,
                 Description = news.Description,
                 File = news.File
             };
             await _newsRepository.PostNews(newNews);
-            return CreatedAtAction(nameof(newNews), news); ;
+            return CreatedAtAction(nameof(GetNews), newNews); ;
         }
     }
 }

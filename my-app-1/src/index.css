@@ -25,7 +25,7 @@ a:hover {
   color: #ffffff80;
 }
 
-body {
+html, body {
   min-width: 320px;
   min-height: 100vh;
   height: 100%;

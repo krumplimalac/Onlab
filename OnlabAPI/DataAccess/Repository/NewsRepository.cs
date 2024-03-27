@@ -43,7 +43,14 @@ namespace DataAccess.Repository
 
         public async Task<PagedList<News>> GetAllNews(Parameter parameters)
         {
-            var news = await _context.News.ToListAsync();
+            var news = await _context.News.Select(n => new News
+            {
+                Title = n.Title,
+                Description = n.Description,
+                Date = n.Date,
+                Id = n.Id,
+                Image = n.Image
+            }).ToListAsync();
             return PagedList<News>.ToPagedList(news,
                     parameters.PageNumber,
                     parameters.PageSize);

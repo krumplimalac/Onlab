@@ -1,5 +1,5 @@
 import { useContext, createContext, ReactNode, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 type IAuthContext = {
     authenticated: boolean;
@@ -16,8 +16,14 @@ const AuthContext = createContext<IAuthContext>(initialValue);
 const AuthProvider = ({ children }:{ children? : ReactNode}) => {
     const [authenticated,setAuthenticated] = useState(initialValue.authenticated)
     const navigate = useNavigate();
-
-  return(
+    
+    if(!authenticated){
+      navigate("/Belepes");
+      return(
+        <Navigate to="/Belepes" replace/>
+      )
+    }
+    return(
     <AuthContext.Provider value={{authenticated, setAuthenticated}}>
         {children}
     </AuthContext.Provider>

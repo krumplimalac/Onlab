@@ -7,10 +7,12 @@ import Pizzak from './pages/Pizzak'
 import Italok from './pages/Italok'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-import MealForm from './pages/Form'
+import MealForm from './components/MealForm'
 import DetailedMeal from './components/DetailedMeal'
 import { useContext } from 'react'
-import {AuthContext} from './components/AuthProvider'
+import {AuthContext, AuthProvider} from './components/AuthProvider'
+import NewsForm from './components/NewsForm'
+import DrinkForm from './components/DrinkForm'
 
 
 const PrivateRoutes = () => {
@@ -42,9 +44,11 @@ function App() {
             <Route path="Pizzak" element={<Pizzak />} />
             <Route path="Italok" element={<Italok />} /> 
             <Route path="Ujetel" element={<MealForm />} /> 
-            <Route element={<PrivateRoutes />}>
-              
-            </Route>
+            <Route path="Ujhir" element={<NewsForm />} />
+            <Route element={<PrivateRoutes />}></Route>
+            <Route path="Ujetel" element={<MealForm />} /> 
+            <Route path="Ujhir" element={<NewsForm />} /> 
+            <Route path="Ujital" element={<DrinkForm />} />
           </Routes>
       </BrowserRouter>
   )
