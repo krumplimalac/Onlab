@@ -79,7 +79,7 @@ namespace OnlabAPI.Controllers
                 File = meal.FormFile,
             };
             await _mealRepository.PostMeal(newmeal,names);
-            return CreatedAtAction(nameof(newmeal), meal);
+            return CreatedAtAction(nameof(PostMeal), meal);
         }
 
         [Authorize]

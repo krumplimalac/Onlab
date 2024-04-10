@@ -70,29 +70,26 @@ namespace DataAccess.Repository
                         mealParameters.PageNumber,
                         mealParameters.PageSize);
             }
-
-            var restrictions = await _context.Restrictions.Where(r => r.Id == mealParameters.Restrictions).ToListAsync();
-
-            if (restrictions.Any() )
+            var mealrestrictions = await _context.MealRestrictions.Where(mr => mealParameters.Restrictions.Contains(mr.RestrictionId)).ToListAsync();
+            List<int> ids = new List<int>();
+            if (mealrestrictions != null)
             {
-                var restriction = restrictions[0];
-                if (restriction != null)
+                foreach (var mr in mealrestrictions)
                 {
-                    var meals = await _context.Meals.Select(m => new Meal
-                    {
-                        Name = m.Name,
-                        Id = m.Id,
-                        Description = m.Description,
-                        Price = m.Price,
-                        Restrictions = m.Restrictions.ToList(),
-                        Image = m.Image
-                    }).Where(m => m.Restrictions.Contains(restriction)).ToListAsync();
-                    return PagedList<Meal>.ToPagedList(meals,
-                    mealParameters.PageNumber,
-                    mealParameters.PageSize);
+                    ids.Add(mr.MealId);
                 }
+                return PagedList<Meal>.ToPagedList(await _context.Meals.Select(m => new Meal
+                {
+                    Name = m.Name,
+                    Id = m.Id,
+                    Description = m.Description,
+                    Price = m.Price,
+                    Restrictions = m.Restrictions.ToList(),
+                    Image = m.Image
+                }).Where(m => ids.Contains(m.Id)).ToListAsync(),
+                            mealParameters.PageNumber,
+                            mealParameters.PageSize);
             }
-
             return null;
         }
 

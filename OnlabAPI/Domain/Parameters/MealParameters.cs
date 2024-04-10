@@ -8,6 +8,6 @@ namespace Domain.Parameters
 {
      public class MealParameters: QueryStringParameters
      {
-        public int? Restrictions {  get; set; }
+        public  int[]? Restrictions {  get; set; }
     }
 }

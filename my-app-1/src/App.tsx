@@ -13,6 +13,7 @@ import { useContext } from 'react'
 import {AuthContext, AuthProvider} from './components/AuthProvider'
 import NewsForm from './components/NewsForm'
 import DrinkForm from './components/DrinkForm'
+import DetailedDrink from './components/DetailedDrink'
 
 
 const PrivateRoutes = () => {
@@ -41,6 +42,7 @@ function App() {
             <Route path="Hirek" element={<Hirek />} />
             <Route path="Etelek" element={<Etelek />} />
             <Route path="Etelek/:id" element={<DetailedMeal /> } />
+            <Route path="Italok/:id" element={<DetailedDrink />} />
             <Route path="Pizzak" element={<Pizzak />} />
             <Route path="Italok" element={<Italok />} /> 
             <Route path="Ujetel" element={<MealForm />} /> 
