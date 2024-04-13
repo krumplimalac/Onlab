@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using DataAccess.Repository;
+using Domain.Models;
 using Domain.Parameters;
 using Domain.Repository;
 using Microsoft.AspNetCore.Authorization;
@@ -40,6 +41,20 @@ namespace OnlabAPI.Controllers
                 return NotFound();
             }
             return Ok(drinks);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Drink>> GetDrink(int id)
+        {
+            var drink = await _drinkrepository.GetDrinkById(id);
+            if (drink == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(drink);
+            }
         }
 
         [Authorize]

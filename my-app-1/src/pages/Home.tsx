@@ -1,6 +1,8 @@
 import { Container, CardMedia } from "@mui/material"
 import '../CSS/main.css'
 import HomeNav from "../components/HomeNav"
+import { useContext } from "react"
+import { UserContext } from "../App"
 
 let etel = {
     img : '/src/img/foods.jpg',
@@ -21,7 +23,8 @@ let ital = {
 }
 
 export default function Home(){   
-    
+    const user = useContext(UserContext);
+
     return (
         <Container disableGutters maxWidth={false}  >
             <CardMedia 
@@ -31,7 +34,7 @@ export default function Home(){
             alt="Kép"
             sx={{'&:hover': {height: '550px'},transition: '0.5s'}}/> 
             <Container maxWidth={false} className='myclass' sx={{display: 'grid'}}>
-                <h1>Üdvözlünk!</h1>
+                <h1>Üdvözlünk {user.email}! {user.role !== "" ? `role:${user.role}` : ""}</h1>
                 
             </Container>
             

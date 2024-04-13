@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import Footer from './components/Footer.tsx'
+import { AuthProvider } from './components/AuthProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+      <App />
     <Footer/>
   </React.StrictMode>,
 )

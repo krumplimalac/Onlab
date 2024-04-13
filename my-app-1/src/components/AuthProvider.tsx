@@ -1,33 +1,23 @@
-import { useContext, createContext, ReactNode, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useContext, ReactNode, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../App";
 
-type IAuthContext = {
-    authenticated: boolean;
-    setAuthenticated: (newState: boolean) => void
-}
+export const AuthProvider = ({ children }:{ children? : ReactNode}) => {
+  const {authenticated} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(()=>{
+    console.log(location);
+  })
 
-const initialValue = {
-    authenticated: false,
-    setAuthenticated: () => {}
-}
-
-const AuthContext = createContext<IAuthContext>(initialValue);
-
-const AuthProvider = ({ children }:{ children? : ReactNode}) => {
-    const [authenticated,setAuthenticated] = useState(initialValue.authenticated)
-    const navigate = useNavigate();
-    
-    if(!authenticated){
-      navigate("/Belepes");
-      return(
-        <Navigate to="/Belepes" replace/>
-      )
-    }
-    return(
-    <AuthContext.Provider value={{authenticated, setAuthenticated}}>
-        {children}
-    </AuthContext.Provider>
-  ) 
+    useEffect(() => {
+      if(!authenticated && (location.pathname !== "/Belepes")){
+        navigate('/Belepes');
+      }
+    });
+  return(
+    <>
+      {children}
+    </>
+) 
 };
-
-export {AuthProvider, AuthContext};

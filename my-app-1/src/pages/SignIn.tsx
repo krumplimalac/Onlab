@@ -7,12 +7,12 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { Paper, Slide, Snackbar } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
-import { AuthContext } from '../components/AuthProvider';
+import { AuthContext, UserContext } from '../App';
 
 
 export default function SignIn() {
@@ -20,7 +20,8 @@ export default function SignIn() {
   const [errorPass, setErrorPass] = useState(false);
   const [openErr, setOpenErr] = useState(false);
   const navigate = useNavigate();
-  const {authenticated, setAuthenticated} = useContext(AuthContext)
+  const {authenticated, setAuthenticated } = useContext(AuthContext);
+  let user = useContext(UserContext);
 
   const handleChangeEmail = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     if (event.currentTarget.validity.valid) {
@@ -49,20 +50,31 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     let jsonData = {
-      email: data.get('email'),
+      username: data.get('email'),
       password: data.get('password')
     }
-      axios.post('/tmp/login?useCookies=true',jsonData)
+      axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}`,jsonData)
       .catch((e: AxiosError) => {setOpenErr(true)}).
       then(res => {
+        console.log();
         if ( res !== undefined ){
           if(res.status == 200){
             setAuthenticated(true);
+            user.email = res.data[0].value;
+            if(res.data.length > 1){
+              user.role = res.data[1].value;
+            }else {
+              user.role = "";
+            }
             navigate("/Home");
           }
         }
     });
   };
+
+  React.useEffect(() => {
+    console.log(authenticated);
+  });
 
   return (
       <Container component="main" maxWidth="xs" 

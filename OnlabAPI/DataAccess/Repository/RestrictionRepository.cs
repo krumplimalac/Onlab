@@ -20,5 +20,10 @@ namespace DataAccess.Repository
         {
             return await _dbContext.Restrictions.ToListAsync();
         }
+
+        public Task PostTopping(Topping topping)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

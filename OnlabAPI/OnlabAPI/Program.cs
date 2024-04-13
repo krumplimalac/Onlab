@@ -3,6 +3,8 @@ using DataAccess;
 using DataAccess.Repository;
 using Domain.Repository;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,11 +26,37 @@ builder.Services.AddScoped<INewsRepository, NewsRepository>();
 builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
 builder.Services.AddScoped<IToppingRepository, ToppingRepository>();
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+//builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<DatabaseContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<DatabaseContext>();
+builder.Services.ConfigureApplicationCookie(config =>
+{
+    config.Cookie.Name = "MyCookie";
+    config.LoginPath = "/Auth/Login";
+});
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles = new[] { "Admin", "User" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    var user = await userManager.FindByEmailAsync("hunyadyzsombor@gmail.com");
+    if (user != null)
+    {
+        var result = await userManager.AddToRoleAsync(user, "Admin");
+    }
+}
 
 
 // Configure the HTTP request pipeline.
@@ -46,6 +74,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapIdentityApi<IdentityUser>();
+//app.MapIdentityApi<IdentityUser>();
 
 app.Run();

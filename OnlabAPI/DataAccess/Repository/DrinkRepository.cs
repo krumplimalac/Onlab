@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    public class DrinkRepository: IDrinkRepository
+    public class DrinkRepository : IDrinkRepository
     {
         public DatabaseContext _context;
 
@@ -56,6 +56,20 @@ namespace DataAccess.Repository
             return PagedList<Drink>.ToPagedList(drinks,
                     parameters.PageNumber,
                     parameters.PageSize);
+        }
+
+        public async Task<Drink> GetDrinkById(int id)
+        {
+            var drinks = await _context.Drinks.Select(d => new Drink
+            {
+                Id = d.Id,
+                Name = d.Name,
+                Description = d.Description,
+                Price = d.Price,
+                Type = d.Type,
+                Image = d.Image
+            }).ToListAsync();
+            return drinks != null ? drinks[0] : null;
         }
 
         public async Task PostDrink(Drink newDrink)
