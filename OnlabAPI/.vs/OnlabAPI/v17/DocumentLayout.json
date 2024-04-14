@@ -140,7 +140,7 @@
               "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\AuthController.cs",
               "RelativeToolTip": "OnlabAPI\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAwwCgAAAASAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAwwDcAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-13T10:10:38.312Z",
               "EditorCaption": ""
@@ -155,8 +155,7 @@
               "RelativeToolTip": "OnlabAPI\\Program.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAAADgAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T09:17:55.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T09:17:55.266Z"
             },
             {
               "$type": "Document",
@@ -168,8 +167,7 @@
               "RelativeToolTip": "Domain\\Repository\\IDrinkRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T15:27:35.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-20T15:27:35.68Z"
             },
             {
               "$type": "Document",
@@ -181,8 +179,7 @@
               "RelativeToolTip": "DataAccess\\Repository\\ToppingRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T10:30:40.43Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T10:30:40.43Z"
             },
             {
               "$type": "Document",
@@ -194,8 +191,7 @@
               "RelativeToolTip": "DataAccess\\Repository\\RestrictionRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T10:49:24.656Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-13T10:49:24.656Z"
             },
             {
               "$type": "Document",
@@ -207,8 +203,7 @@
               "RelativeToolTip": "Domain\\Repository\\IToppingRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T11:03:34.073Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T11:03:34.073Z"
             },
             {
               "$type": "Document",
@@ -220,8 +215,7 @@
               "RelativeToolTip": "DataAccess\\Repository\\MealRepository.cs",
               "ViewState": "AQIAAFYAAAAAAAAAAIBJwFsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-28T15:22:45.668Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-28T15:22:45.668Z"
             },
             {
               "$type": "Document",
@@ -233,8 +227,7 @@
               "RelativeToolTip": "OnlabAPI\\Controllers\\DrinkController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T09:15:23.657Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T09:15:23.657Z"
             },
             {
               "$type": "Document",
@@ -246,8 +239,7 @@
               "RelativeToolTip": "OnlabAPI\\Controllers\\MealsController.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAAADIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T10:55:12.718Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-13T10:55:12.718Z"
             },
             {
               "$type": "Document",
@@ -259,8 +251,7 @@
               "RelativeToolTip": "Domain\\Repository\\IMealRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T10:25:05.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T10:25:05.338Z"
             },
             {
               "$type": "Document",
@@ -272,8 +263,7 @@
               "RelativeToolTip": "DataAccess\\Repository\\DrinkRepository.cs",
               "ViewState": "AQIAACcAAAAAAAAAAAAowEcAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T09:32:40.163Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T09:32:40.163Z"
             },
             {
               "$type": "Document",
@@ -285,8 +275,7 @@
               "RelativeToolTip": "Domain\\Models\\Topping.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T15:16:45.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-20T15:16:45.313Z"
             },
             {
               "$type": "Document",
@@ -298,8 +287,7 @@
               "RelativeToolTip": "OnlabAPI\\Controllers\\ToppingsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T10:22:11.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T10:22:11.333Z"
             },
             {
               "$type": "Document",
@@ -311,8 +299,7 @@
               "RelativeToolTip": "Domain\\Repository\\IRestrictionRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T10:25:46.835Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T10:25:46.835Z"
             },
             {
               "$type": "Document",
@@ -324,8 +311,7 @@
               "RelativeToolTip": "Domain\\Models\\Restriction.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T10:36:39.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T10:36:39.004Z"
             },
             {
               "$type": "Document",
@@ -337,8 +323,7 @@
               "RelativeToolTip": "DataAccess\\ModelBuilderExtensions.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T10:22:46.468Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T10:22:46.468Z"
             },
             {
               "$type": "Document",
@@ -350,8 +335,7 @@
               "RelativeToolTip": "Domain\\Parameters\\MealParameters.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-10T15:43:40.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-10T15:43:40.309Z"
             },
             {
               "$type": "Document",
@@ -363,8 +347,7 @@
               "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T09:47:00.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T09:47:00.645Z"
             },
             {
               "$type": "Document",
@@ -376,8 +359,7 @@
               "RelativeToolTip": "Domain\\Models\\Meal.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T09:17:51.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T09:17:51.273Z"
             },
             {
               "$type": "Document",
@@ -389,8 +371,7 @@
               "RelativeToolTip": "DataAccess\\DatabaseContext.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAIBJwBsAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:17:30.829Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T10:17:30.829Z"
             },
             {
               "$type": "Document",
@@ -402,8 +383,7 @@
               "RelativeToolTip": "Domain\\Parameters\\Parameter.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T18:18:56.659Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-26T18:18:56.659Z"
             },
             {
               "$type": "Document",
@@ -415,8 +395,7 @@
               "RelativeToolTip": "DataAccess\\Migrations\\20240325214758_Initial.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-25T21:48:05.27Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-25T21:48:05.27Z"
             },
             {
               "$type": "Document",
@@ -428,8 +407,7 @@
               "RelativeToolTip": "Domain\\Models\\Pizza.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T15:14:39.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-20T15:14:39.97Z"
             },
             {
               "$type": "Document",
@@ -485,8 +463,7 @@
               "RelativeToolTip": "OnlabAPI\\OnlabAPI.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-13T10:59:00.708Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-13T10:59:00.708Z"
             },
             {
               "$type": "Document",
@@ -509,8 +486,7 @@
               "RelativeToolTip": "Domain\\Domain.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-12T12:28:59.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T12:28:59.487Z"
             }
           ]
         }

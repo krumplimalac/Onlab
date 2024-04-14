@@ -9,16 +9,19 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
-import axios, { AxiosError } from 'axios';
-import { Paper, Slide, Snackbar } from '@mui/material';
-import ErrorIcon from '@mui/icons-material/Error';
+import axios from 'axios';
 import { AuthContext, UserContext } from '../App';
+import SnackBar from '../components/SnackBar';
+import Loading from '../components/Loading';
 
 
 export default function SignIn() {
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
   const [openErr, setOpenErr] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("Sikertelen Bejelentkezés!");
+  const [error, setError] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const {authenticated, setAuthenticated } = useContext(AuthContext);
   let user = useContext(UserContext);
@@ -39,13 +42,6 @@ export default function SignIn() {
     }
   };
 
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
-      setOpenErr(false);
-      return;
-    }
-  };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -53,24 +49,44 @@ export default function SignIn() {
       username: data.get('email'),
       password: data.get('password')
     }
-      axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}`,jsonData)
-      .catch((e: AxiosError) => {setOpenErr(true)}).
-      then(res => {
-        console.log();
-        if ( res !== undefined ){
-          if(res.status == 200){
-            setAuthenticated(true);
-            user.email = res.data[0].value;
-            if(res.data.length > 1){
-              user.role = res.data[1].value;
-            }else {
-              user.role = "";
-            }
-            navigate("/Home");
+      const login = async () => {
+        setLoading(true);
+        await axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}`,jsonData)
+        .catch(function (error) {
+          if (error.response) {
+            setErrorMessage("Rossz felhasználónév, vagy jelszó!");
+            setError(true);
+            setOpenErr(true);
+          }else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('Error', error.message);
           }
-        }
-    });
+        }).
+        then(res => {
+          console.log();
+          if ( res !== undefined ){
+            if(res.status == 200){
+              setAuthenticated(true);
+              user.email = res.data[0].value;
+              if(res.data.length > 1){
+                user.role = res.data[1].value;
+              }else {
+                user.role = "";
+              }
+              setErrorMessage("Sikeres bejelentkezés!");
+              setError(false);
+              setOpenErr(true);
+              setTimeout(() => {},5000);
+              navigate("/Home");
+            }
+          }
+      });
+    }
+    login();
+    setLoading(false);
   };
+
 
   React.useEffect(() => {
     console.log(authenticated);
@@ -82,18 +98,8 @@ export default function SignIn() {
       backgroundColor: '#30343A',
       paddingTop: '4rem',
       paddingBottom:'4rem'}}>
-        <Snackbar
-              open={openErr}
-              onClose={handleClose}
-              autoHideDuration={5000}
-              TransitionComponent={Slide}
-              anchorOrigin={{vertical: 'top',horizontal: 'center'}}
-            >
-              <Paper elevation={10} sx={{backgroundColor: "#BB1010",margin:'10px',padding:'15px',width: "300px", display: "flex", justifyContent:"space-between"}}>
-              <Typography sx={{color:"white"}}>Sikertelen Bejelentkezés!</Typography>
-              <ErrorIcon/>
-              </Paper>
-          </Snackbar>
+        <Loading loading={loading} />
+        <SnackBar text={errorMessage} error={error} isOpen={openErr} />
         <Box
           sx={{
             display: 'flex',

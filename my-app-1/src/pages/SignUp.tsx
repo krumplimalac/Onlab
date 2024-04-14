@@ -12,9 +12,12 @@ import axios, { AxiosError, AxiosHeaders } from 'axios';
 import { useState } from 'react';
 import { Paper, Slide, Snackbar } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
+import SnackBar from '../components/SnackBar';
 
 export default function SignUp() {
   const [openErr, setOpenErr] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("Sikertelen Bejelentkezés!");
+  const [error, setError] = useState(true);
   const navigate = useNavigate();
   
   const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
@@ -48,18 +51,7 @@ export default function SignUp() {
       sx={{backgroundColor: '#30343A',
       paddingTop: '4rem',
       paddingBottom:'4rem'}}>
-        <Snackbar
-              open={openErr}
-              onClose={handleClose}
-              autoHideDuration={5000}
-              TransitionComponent={Slide}
-              anchorOrigin={{vertical: 'top',horizontal: 'center'}}
-            >
-              <Paper elevation={10} sx={{backgroundColor: "#BB1010",margin:'10px',padding:'15px',width: "300px", display: "flex", justifyContent:"space-between"}}>
-              <Typography sx={{color:"white"}}>Sikertelen bejelentkezés!</Typography>
-              <ErrorIcon/>
-              </Paper>
-          </Snackbar>
+        <SnackBar text={errorMessage} error={error} isOpen={openErr} />
         <Box
           sx={{
             display: 'flex',

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios, { AxiosHeaders } from 'axios';
 import { Container, Pagination, Typography, styled } from "@mui/material";
 import MealFilterButtons from "../components/MealFilterButtons";
+import Loading from "../components/Loading";
 
 interface paginationHeader {
     TotalCount: number,
@@ -17,6 +18,7 @@ export default function Etelek(){
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [meals, setMeals] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [url, setUrl] = useState(`/api/Meals?`)
     const StyledPagination = styled(Pagination)(({ theme }) => ({
         "& .MuiPaginationItem-root": {
@@ -37,6 +39,7 @@ export default function Etelek(){
             } catch (error) {
             console.log(error);
         }
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -54,6 +57,7 @@ export default function Etelek(){
 
     return(
         <>
+            <Loading loading={loading} />
             <Typography variant="h2" sx={{marginLeft:"10%", marginTop:"2rem", typography: {xs: "h3", md: "h2", lg: "h1"}}}>
                 Ételek
             </Typography>
@@ -61,7 +65,17 @@ export default function Etelek(){
                 <MealFilterButtons setUrl={setUrl}></MealFilterButtons>
                 <MyCards items={meals} />
             </Container>     
-            <StyledPagination sx={{display: "flex", justifyContent: "center", backgroundColor: "#343444", height: "80px", marginTop: "2rem"}}  size={"large"} count={totalPages} page={currentPage} onChange={handleChange}/>
+            <StyledPagination
+             sx={{
+                display: "flex",
+                justifyContent: "center", 
+                backgroundColor: "#343444", 
+                height: "80px", 
+                marginTop: "2rem"}}  
+            size={"large"} 
+            count={totalPages} 
+            page={currentPage} 
+            onChange={handleChange}/>
         </>
     )
 }

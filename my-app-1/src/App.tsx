@@ -14,6 +14,8 @@ import NewsForm from './components/NewsForm'
 import DrinkForm from './components/DrinkForm'
 import DetailedDrink from './components/DetailedDrink'
 import { AuthProvider } from './components/AuthProvider'
+import LogOut from './components/LogOut'
+import Loading from './components/Loading'
 
 type IAuthContext = {
   authenticated: boolean;
@@ -43,26 +45,27 @@ function App() {
   return (
       <BrowserRouter>
         <AuthContext.Provider value={{authenticated,setAuthenticated}}>
-        <UserContext.Provider value={user}>
-        <ResponsiveAppBar /> 
-        <Routes>
-              <Route path="Belepes" element={<SignIn />} />
-              <Route index element={<Home />} />
-              <Route path="Regisztracio" element={<SignUp />} />
-              <Route path="Home" element={<Home />} />
-              <Route path="Hirek" element={<Hirek />} />
-              <Route path="Etelek" element={<Etelek />} />
-              <Route path="Etelek/:id" element={<DetailedMeal /> } />
-              <Route path="Italok/:id" element={<DetailedDrink />} />
-              <Route path="Pizzak" element={<Pizzak />} />
-              <Route path="Italok" element={<Italok />} /> 
-              <Route path="Ujetel" element={<AuthProvider><MealForm /></AuthProvider>} /> 
-              <Route path="Ujhir" element={<NewsForm />} />
-              <Route path="Ujetel" element={<MealForm />} /> 
-              <Route path="Ujhir" element={<NewsForm />} /> 
-              <Route path="Ujital" element={<DrinkForm />} />      
-        </Routes>
-        </UserContext.Provider>
+          <UserContext.Provider value={user}>
+            <ResponsiveAppBar /> 
+              <Routes>
+                <Route path="Belepes" element={<SignIn />} />
+                <Route path="Kilepes" element={<LogOut/>} />
+                <Route index element={<Home />} />
+                <Route path="Regisztracio" element={<SignUp />} />
+                <Route path="Home" element={<Home />} />
+                <Route path="Hirek" element={<Hirek />} />
+                <Route path="Etelek" element={<Etelek />} />
+                <Route path="Etelek/:id" element={<DetailedMeal /> } />
+                <Route path="Italok/:id" element={<DetailedDrink />} />
+                <Route path="Pizzak" element={<Pizzak />} />
+                <Route path="Italok" element={<Italok />} /> 
+                <Route path="Ujetel" element={<AuthProvider><MealForm /></AuthProvider>} /> 
+                <Route path="Ujhir" element={<NewsForm />} />
+                <Route path="Ujetel" element={<MealForm />} /> 
+                <Route path="Ujhir" element={<NewsForm />} /> 
+                <Route path="Ujital" element={<DrinkForm />} />      
+              </Routes>
+          </UserContext.Provider>
         </AuthContext.Provider>
       </BrowserRouter>
   )

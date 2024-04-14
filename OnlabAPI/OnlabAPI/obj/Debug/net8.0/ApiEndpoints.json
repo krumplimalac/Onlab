@@ -22,6 +22,16 @@
   },
   {
     "ContainingType": "OnlabAPI.Controllers.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/Auth/Logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.AuthController",
     "Method": "Register",
     "RelativePath": "api/Auth/Register",
     "HttpMethod": "POST",

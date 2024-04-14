@@ -31,7 +31,7 @@ namespace OnlabAPI.Controllers
             if (user == null)
             {
                 await HttpContext.SignOutAsync();
-                return Ok();
+                return NotFound();
             }
             var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
 
@@ -53,7 +53,7 @@ namespace OnlabAPI.Controllers
             else
             {
                 await HttpContext.SignOutAsync();
-                return Ok(result);
+                return NotFound(result);
             }
         }
 
@@ -70,11 +70,20 @@ namespace OnlabAPI.Controllers
 
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, role);
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return Ok();
             }
 
             return NoContent();
+        }
+
+        [HttpPost("Logout")]
+        [Produces("application/json")]
+        public async Task<IActionResult> Logout()
+        {
+             await HttpContext.SignOutAsync();
+             return Ok();
         }
 
     }

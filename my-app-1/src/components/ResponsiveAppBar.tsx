@@ -13,19 +13,19 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
-import { LocalPizza, Refresh } from '@mui/icons-material';
+import { LocalPizza } from '@mui/icons-material';
 import { UserContext } from '../App';
 import { useContext, useState } from 'react';
-import { render } from 'react-dom';
 
 const pages = ['Hirek', 'Etelek', 'Pizzak', 'Italok'];
-const settings = ['Belepes','Regisztracio', 'Ujetel', 'Ujhir', 'Ujital'];
 const name = 'TemporaryCompanyName';
 
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const user = useContext(UserContext);
+  const settings = user.role == "Admin" ? ['Kilepes','Regisztracio', 'Ujetel', 'Ujhir', 'Ujital'] : ['Belepes','Regisztracio'];
 
   const handleOpenNavMenu = (event:React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
