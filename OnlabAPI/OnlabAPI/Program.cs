@@ -33,6 +33,7 @@ builder.Services.ConfigureApplicationCookie(config =>
 {
     config.Cookie.Name = "MyCookie";
     config.LoginPath = "/Auth/Login";
+    config.Cookie.HttpOnly = false;
 });
 
 

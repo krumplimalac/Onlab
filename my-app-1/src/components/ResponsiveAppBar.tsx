@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
 import { LocalPizza } from '@mui/icons-material';
-import { UserContext } from '../App';
+import { AuthContext, UserContext } from '../App';
 import { useContext, useState } from 'react';
 
 const pages = ['Hirek', 'Etelek', 'Pizzak', 'Italok'];
@@ -25,7 +25,8 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const user = useContext(UserContext);
-  const settings = user.role == "Admin" ? ['Kilepes','Regisztracio', 'Ujetel', 'Ujhir', 'Ujital'] : ['Belepes','Regisztracio'];
+  const auth = useContext(AuthContext);
+  const settings = user.role == "Admin" ? ['Kilepes','Regisztracio', 'Ujetel', 'Ujhir', 'Ujital'] : auth.authenticated ? ['Kilepes','Regisztracio'] : ['Belepes','Regisztracio'];
 
   const handleOpenNavMenu = (event:React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -98,7 +99,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <Link to={page} >
+                <Link to={page} key={page} >
                   <MenuItem key={page} onClick={handleCloseNavMenu} >
                     <Typography textAlign="center" sx={{color: 'black'}}>
                     {page}
@@ -132,7 +133,7 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 3, display: { xs: 'none', md: 'flex' }, justifyContent: 'space-around' }}>
             {pages.map((page) => (
-              <Link to={page}>
+              <Link to={page} key={page}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -177,7 +178,7 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <Link to={setting}>
+                <Link to={setting} key={setting}>
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center" sx={{color: 'black'}}>{setting}</Typography>
                   </MenuItem>

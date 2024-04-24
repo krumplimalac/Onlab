@@ -22,8 +22,23 @@ namespace DataAccess.Repository
             return await _context.Toppings.ToListAsync();   
         }
 
-        public async Task PostTopping(Topping topping)
+        public async Task PostTopping(Topping topping, string[] restrictionNames)
         {
+            var restrictions = _context.Restrictions.ToList();
+            topping.Restrictions = new List<Restriction>();
+            if (restrictions.Any() && restrictionNames != null)
+            {
+                foreach (var restriction in restrictions)
+                {
+                    foreach (var name in restrictionNames)
+                    {
+                        if (restriction.Name == name)
+                        {
+                            topping.Restrictions.Add(restriction);
+                        }
+                    }
+                }
+            }
             await _context.Toppings.AddAsync(topping);
             await _context.SaveChangesAsync();
         }

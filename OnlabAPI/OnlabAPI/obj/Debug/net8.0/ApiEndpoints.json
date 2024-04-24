@@ -145,9 +145,9 @@
     ]
   },
   {
-    "ContainingType": "OnlabAPI.Controllers.MealsController",
+    "ContainingType": "OnlabAPI.Controllers.MealController",
     "Method": "GetMeals",
-    "RelativePath": "api/Meals",
+    "RelativePath": "api/Meal",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -171,9 +171,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "OnlabAPI.Controllers.MealsController",
+    "ContainingType": "OnlabAPI.Controllers.MealController",
     "Method": "PostMeal",
-    "RelativePath": "api/Meals",
+    "RelativePath": "api/Meal",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -186,11 +186,6 @@
       {
         "Name": "Description",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
         "IsRequired": false
       },
       {
@@ -222,9 +217,9 @@
     ]
   },
   {
-    "ContainingType": "OnlabAPI.Controllers.MealsController",
+    "ContainingType": "OnlabAPI.Controllers.MealController",
     "Method": "GetMeal",
-    "RelativePath": "api/Meals/{id}",
+    "RelativePath": "api/Meal/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -248,9 +243,9 @@
     ]
   },
   {
-    "ContainingType": "OnlabAPI.Controllers.MealsController",
+    "ContainingType": "OnlabAPI.Controllers.MealController",
     "Method": "PutMeal",
-    "RelativePath": "api/Meals/{id}",
+    "RelativePath": "api/Meal/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -263,11 +258,6 @@
       {
         "Name": "Description",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
         "IsRequired": false
       },
       {
@@ -294,30 +284,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "OnlabAPI.Controllers.MealsController",
-    "Method": "Patch",
-    "RelativePath": "api/Meals/{id}",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "patch",
-        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OnlabAPI.Controllers.MealsController",
+    "ContainingType": "OnlabAPI.Controllers.MealController",
     "Method": "Delete",
-    "RelativePath": "api/Meals/{id}",
+    "RelativePath": "api/Meal/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -398,9 +367,9 @@
     ]
   },
   {
-    "ContainingType": "OnlabAPI.Controllers.RestrictionsController",
+    "ContainingType": "OnlabAPI.Controllers.RestrictionController",
     "Method": "GetRestrictions",
-    "RelativePath": "api/Restrictions",
+    "RelativePath": "api/Restriction",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -408,13 +377,39 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "OnlabAPI.Controllers.ToppingsController",
+    "ContainingType": "OnlabAPI.Controllers.ToppingController",
     "Method": "GetToppings",
-    "RelativePath": "api/Toppings",
+    "RelativePath": "api/Topping",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.ToppingController",
+    "Method": "PostTopping",
+    "RelativePath": "api/Topping",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "topping",
+        "Type": "OnlabAPI.DataTransferObjects.ToppingDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnlabAPI.DataTransferObjects.ToppingDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

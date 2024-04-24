@@ -8,6 +8,7 @@ interface Props {
 export default function HomeNav(props: Props){
     return (
         <Box sx={{position: 'relative'}}> 
+                <Link to={props.link}>
                 <Card sx={{'&:hover': {'&:hover > img': {height: '550px'}}}}>
                 <CardMedia 
                     component='img'
@@ -16,7 +17,6 @@ export default function HomeNav(props: Props){
                     alt="Kép"
                     sx={{transition: '0.5s'}}
                 />
-                <Link to={props.link}>
                     <Box
                         sx={{
                             position: 'absolute',
@@ -33,8 +33,8 @@ export default function HomeNav(props: Props){
                             {props.text}
                         </Typography>
                     </Box>
-                </Link>
                 </Card>
+                </Link>
             </Box>
     )
 }

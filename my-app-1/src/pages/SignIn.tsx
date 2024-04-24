@@ -50,17 +50,14 @@ export default function SignIn() {
       password: data.get('password')
     }
       const login = async () => {
-        setLoading(true);
         await axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}`,jsonData)
         .catch(function (error) {
           if (error.response) {
             setErrorMessage("Rossz felhasználónév, vagy jelszó!");
             setError(true);
             setOpenErr(true);
-          }else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log('Error', error.message);
+          }else {
+            console.log(error);
           }
         }).
         then(res => {
@@ -74,15 +71,20 @@ export default function SignIn() {
               }else {
                 user.role = "";
               }
+              localStorage.setItem('isAuth','true');
+              localStorage.setItem('email',user.email);
+              localStorage.setItem('role',user.role);
               setErrorMessage("Sikeres bejelentkezés!");
               setError(false);
               setOpenErr(true);
               setTimeout(() => {},5000);
+              console.log(document.cookie);
               navigate("/Home");
             }
           }
       });
     }
+    setLoading(true);
     login();
     setLoading(false);
   };

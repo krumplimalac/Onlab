@@ -70,7 +70,7 @@ namespace DataAccess.Repository
                         mealParameters.PageNumber,
                         mealParameters.PageSize);
             }
-            var mealrestrictions = await _context.MealRestrictions.Where(mr => mealParameters.Restrictions.Contains(mr.RestrictionId)).ToListAsync();
+            /*var mealrestrictions = await _context.MealRestrictions.Where(mr => mealParameters.Restrictions.Contains(mr.RestrictionId)).ToListAsync();
             List<int> ids = new List<int>();
             if (mealrestrictions != null)
             {
@@ -87,6 +87,21 @@ namespace DataAccess.Repository
                     Restrictions = m.Restrictions.ToList(),
                     Image = m.Image
                 }).Where(m => ids.Contains(m.Id)).ToListAsync(),
+                            mealParameters.PageNumber,
+                            mealParameters.PageSize);
+            }*/
+            var meals = await _context.Meals.Select(meal => new Meal
+            {
+                Name = meal.Name,
+                Id = meal.Id,
+                Description = meal.Description,
+                Price = meal.Price,
+                Restrictions = meal.Restrictions.ToList(),
+                Image = meal.Image
+            }).Where(m => m.Restrictions.Any(r => mealParameters.Restrictions.Contains(r.Id))).ToListAsync();
+            if (meals.Any())
+            {
+                return PagedList<Meal>.ToPagedList(meals,
                             mealParameters.PageNumber,
                             mealParameters.PageSize);
             }
@@ -133,7 +148,6 @@ namespace DataAccess.Repository
             meal = ChangeImage(meal);
             await _context.Meals.AddAsync(meal);
             await _context.SaveChangesAsync();
-
         }
 
         public async void PutMeal(Meal meal, int id)
@@ -157,10 +171,5 @@ namespace DataAccess.Repository
             return;
         }
 
-        public void Update(Meal meal)
-        {
-            _context.Update(meal);
-            _context.SaveChanges();
-        }
     }
 }

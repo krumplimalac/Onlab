@@ -1,6 +1,6 @@
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Box, Button, Container, FormControlLabel, FormGroup, Checkbox, TextField, Typography, Paper, Snackbar, Slide } from "@mui/material";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useState } from "react";
 
 export default function MealForm() {
@@ -37,9 +37,14 @@ export default function MealForm() {
         const restrictions = JSON.stringify(restrictionNames);
         data.append("restrictions",restrictions);
         axios.post(`/api/Meals`, data)
+              .catch((e: AxiosError) => {
+                console.log(e);
+              })
               .then(res => {
-                if(res.status = 201){
-                  setOpen(true);
+                if(res != undefined){
+                  if(res.status = 201){
+                    setOpen(true);
+                  }
                 }
               })
             console.log({

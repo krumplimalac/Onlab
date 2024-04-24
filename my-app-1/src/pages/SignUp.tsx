@@ -16,27 +16,21 @@ import SnackBar from '../components/SnackBar';
 
 export default function SignUp() {
   const [openErr, setOpenErr] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("Sikertelen Bejelentkezés!");
+  const [errorMessage, setErrorMessage] = useState("Hibás Email-cím, vagy jelszó!");
   const [error, setError] = useState(true);
+  const [chosenRole, setChosenRole] = useState("User");
   const navigate = useNavigate();
-  
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
-      setOpenErr(false);
-      return;
-    }
-  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     let jsonData = {
-      email: data.get('email'),
+      username: data.get('email'),
       password: data.get('password')
     }
-      axios.post('/tmp/register',jsonData)
-      .catch((e: AxiosError) => {setOpenErr(true)}).
-      then(res => {
+      axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}&role=${chosenRole}`,jsonData)
+      .catch((e: AxiosError) => {setOpenErr(true)})
+      .then(res => {
         if ( res !== undefined ){
           if(res.status == 200){
             console.log("OK");

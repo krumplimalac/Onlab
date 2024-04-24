@@ -7,11 +7,12 @@ interface image {
     bytes: string
   }
 
-interface DrinkProp {
-    id: number,
+  interface myProp {
     name: string,
     description: string,
-    price:number,
+    id: number,
+    price: number,
+    type: string,
     image: image
 }
 
@@ -27,7 +28,7 @@ interface paginationHeader {
 export default function Italok(){
 const [currentPage, setCurrentPage] = useState(1);
 const [totalPages, setTotalPages] = useState(0);
-const [drinks, setDrinks] = useState<DrinkProp[]>([]);
+const [drinks, setDrinks] = useState<myProp[]>([]);
 const [url, setUrl] = useState(`/api/Drink?`);
 const StyledPagination = styled(Pagination)(({ theme }) => ({
     "& .MuiPaginationItem-root": {
@@ -69,7 +70,7 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
             <Container>
                 <Grid container spacing={{xs: 1, sm: 2, md: 4}} >
                     {drinks.map((item) => {
-                        return <MyCard item={item}/>
+                        return <MyCard item={item} key={item.id}/>
                     })}
                 </Grid>
             </Container>

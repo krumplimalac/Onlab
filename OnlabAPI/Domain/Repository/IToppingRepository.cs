@@ -10,6 +10,6 @@ namespace Domain.Repository
     public interface IToppingRepository
     {
         Task<List<Topping>> GetAllToppings();
-        Task PostTopping(Topping topping); 
+        Task PostTopping(Topping topping, string[] names); 
     }
 }

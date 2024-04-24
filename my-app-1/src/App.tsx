@@ -8,14 +8,12 @@ import Italok from './pages/Italok'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import MealForm from './components/MealForm'
-import DetailedMeal from './components/DetailedMeal'
-import { Dispatch, SetStateAction, createContext, useState } from 'react'
+import DetailedView from './components/DetailedView'
+import { Dispatch, SetStateAction, createContext, useEffect, useState } from 'react'
 import NewsForm from './components/NewsForm'
 import DrinkForm from './components/DrinkForm'
-import DetailedDrink from './components/DetailedDrink'
 import { AuthProvider } from './components/AuthProvider'
 import LogOut from './components/LogOut'
-import Loading from './components/Loading'
 
 type IAuthContext = {
   authenticated: boolean;
@@ -30,10 +28,13 @@ const initialAuthValue = {
     authenticated: false,
     setAuthenticated: () => {}
 }
+
 const initialUserValue = {
   email: "",
   role: ""
 }
+
+
 
 const AuthContext = createContext<IAuthContext>(initialAuthValue);
 const UserContext = createContext<IUserContext>(initialUserValue);
@@ -41,6 +42,20 @@ const UserContext = createContext<IUserContext>(initialUserValue);
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const user = initialUserValue;
+
+  useEffect(() => {
+    const email = localStorage.getItem('email');
+    const role = localStorage.getItem('role');
+    if(localStorage.getItem('isAuth') != null){
+      setAuthenticated(true);
+    }
+    if(email != null){
+      user.email = email;
+    }
+    if(role != null){
+      user.role = role;
+    }
+  })
 
   return (
       <BrowserRouter>
@@ -55,8 +70,8 @@ function App() {
                 <Route path="Home" element={<Home />} />
                 <Route path="Hirek" element={<Hirek />} />
                 <Route path="Etelek" element={<Etelek />} />
-                <Route path="Etelek/:id" element={<DetailedMeal /> } />
-                <Route path="Italok/:id" element={<DetailedDrink />} />
+                <Route path="Etelek/:id" element={<DetailedView path='Meal' /> } />
+                <Route path="Italok/:id" element={<DetailedView path='Drink' />} />
                 <Route path="Pizzak" element={<Pizzak />} />
                 <Route path="Italok" element={<Italok />} /> 
                 <Route path="Ujetel" element={<AuthProvider><MealForm /></AuthProvider>} /> 

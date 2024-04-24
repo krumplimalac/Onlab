@@ -14,7 +14,7 @@ export default function MealFilterButtons({setUrl}: {setUrl:Dispatch<SetStateAct
     const fetch = async () => {
         try 
         {
-            const response = await axios.get("/api/Restrictions");
+            const response = await axios.get("/api/Restriction");
             setRestrictions(response.data);
         }
         catch(error)
@@ -42,7 +42,7 @@ export default function MealFilterButtons({setUrl}: {setUrl:Dispatch<SetStateAct
             return params.append("Restrictions",i.toString());
         })
         console.log(params.toString());
-        setUrl(`/api/Meals?${params.toString()}`);
+        setUrl(`/api/Meal?${params.toString()}`);
     },[JSON.stringify(ids)]);
 
     return(
@@ -50,7 +50,7 @@ export default function MealFilterButtons({setUrl}: {setUrl:Dispatch<SetStateAct
             {restrictions.map((item:restriction)=>(
                 <Button  variant={ids.includes(item.id) ? "contained" : "text"} key={item.id}  onClick={() => handleFilterButtonClick(item.id)} sx={{backgroundColor: ids.includes(item.id) ? "#343474" : "#343444", borderRadius: "25px",margin: "1rem", padding: "10px 20px 10px 20px"}}>{item.name}</Button>
             ))}
-            <Button key={-1} onClick={() => (setUrl(`/api/Meals?`), setIds([]))} sx={{backgroundColor: "#343444", borderRadius: "25px",margin: "1rem", padding: "10px 20px 10px 20px"}} >Mindegyik</Button>
+            <Button key={-1} onClick={() => (setUrl(`/api/Meal?`), setIds([]))} sx={{backgroundColor: "#343444", borderRadius: "25px",margin: "1rem", padding: "10px 20px 10px 20px"}} >Mindegyik</Button>
         </Container> 
     )
 }

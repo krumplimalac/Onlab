@@ -19,7 +19,7 @@ export default function Etelek(){
     const [totalPages, setTotalPages] = useState(0);
     const [meals, setMeals] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [url, setUrl] = useState(`/api/Meals?`)
+    const [url, setUrl] = useState(`/api/Meal?`)
     const StyledPagination = styled(Pagination)(({ theme }) => ({
         "& .MuiPaginationItem-root": {
             color: "#FFFFFF"

@@ -1,11 +1,5 @@
 import { Card, CardContent, CardMedia, Container, Grid, Paper, Typography } from "@mui/material"
-import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-
-interface restriction {
-    id: number,
-    name: string
-}
 
 interface image {
     bytes: string
@@ -16,39 +10,11 @@ interface myProp {
     description: string,
     id: number,
     price: number,
-    restrictions: restriction[],
+    type: string,
     image: image
 }
 
-interface DrinkProp {
-    id: number,
-    name: string,
-    description: string,
-    price:number,
-    image: image
-}
-
-function returnDetails(obj: any): obj is myProp {
-    if ( obj.restrictions == undefined ) {
-        if ( obj.type == undefined ) {
-            return true;
-        } else {
-            return obj.type;
-        };
-    } else {
-        return(
-            obj.restrictions.map((r:restriction)=>(
-            r.name == undefined ? "" : r.name+" "
-            ))
-        )
-    }
-  }
-
-export const Restrictions = ({item}:{item:myProp | DrinkProp}) => {
-        return(returnDetails(item))
-}
-
-export default function MyCard({item}:{item:myProp | DrinkProp | undefined}){
+export default function MyCard({item}:{item:myProp | undefined}){
     if ( item != undefined){
         const img = item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image.bytes}`; 
         
@@ -70,7 +36,7 @@ export default function MyCard({item}:{item:myProp | DrinkProp | undefined}){
                                         {item.price} Ft   
                                     </Typography>
                                 </Container>
-                                <Typography sx={{color: 'white'}}>{<Restrictions item={item}/>}</Typography>
+                                <Typography sx={{color: 'white'}}>{item.type}</Typography>
                             </CardContent>
                     </Card>
                 </Link>              
