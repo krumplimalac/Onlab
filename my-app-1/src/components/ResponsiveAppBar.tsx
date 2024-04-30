@@ -26,7 +26,7 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const user = useContext(UserContext);
   const auth = useContext(AuthContext);
-  const settings = user.role == "Admin" ? ['Kilepes','Regisztracio', 'Ujetel', 'Ujhir', 'Ujital'] : auth.authenticated ? ['Kilepes','Regisztracio'] : ['Belepes','Regisztracio'];
+  const settings = user.role == "Admin" ? ['Kilepes','Regisztracio', 'Ujetel', 'Ujhir', 'Ujital', 'Ujfeltet'] : auth.authenticated ? ['Kilepes','Regisztracio'] : ['Belepes','Regisztracio'];
 
   const handleOpenNavMenu = (event:React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);

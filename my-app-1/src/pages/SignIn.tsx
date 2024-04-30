@@ -53,7 +53,7 @@ export default function SignIn() {
         await axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}`,jsonData)
         .catch(function (error) {
           if (error.response) {
-            setErrorMessage("Rossz felhasználónév, vagy jelszó!");
+            setErrorMessage("Hibás Email-cím, vagy jelszó!");
             setError(true);
             setOpenErr(true);
           }else {
@@ -101,7 +101,7 @@ export default function SignIn() {
       paddingTop: '4rem',
       paddingBottom:'4rem'}}>
         <Loading loading={loading} />
-        <SnackBar text={errorMessage} error={error} isOpen={openErr} />
+        <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
         <Box
           sx={{
             display: 'flex',

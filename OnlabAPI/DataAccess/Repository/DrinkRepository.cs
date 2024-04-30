@@ -68,7 +68,7 @@ namespace DataAccess.Repository
                 Price = d.Price,
                 Type = d.Type,
                 Image = d.Image
-            }).ToListAsync();
+            }).Where(d => d.Id == id).ToListAsync();
             return drinks != null ? drinks[0] : null;
         }
 

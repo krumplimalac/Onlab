@@ -356,7 +356,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "OnlabAPI.DataTransferObjects.NewsDTO",
+        "Type": "OnlabAPI.DataTransferObjects.NewsFormDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -365,6 +365,37 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.PizzaController",
+    "Method": "GetAll",
+    "RelativePath": "api/Pizza",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Toppings",
+        "Type": "System.Int32[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Restrictions",
+        "Type": "System.Int32[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "OnlabAPI.Controllers.RestrictionController",
@@ -395,9 +426,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "topping",
-        "Type": "OnlabAPI.DataTransferObjects.ToppingDTO",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Restrictions",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [

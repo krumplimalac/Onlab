@@ -1,9 +1,7 @@
-export default function Pizzak(){
+import ItemsList from "../components/ItemsList";
+
+export default function Pizzak() {
     return(
-        <>
-            <h1>
-                Pizzak
-            </h1>
-        </>
+        <ItemsList urlProp="/api/Pizza?" title="Pizzák"/>      
     )
 }

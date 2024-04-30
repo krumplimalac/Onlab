@@ -7,13 +7,15 @@ import Pizzak from './pages/Pizzak'
 import Italok from './pages/Italok'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-import MealForm from './components/MealForm'
+import MealForm from './components/Forms/MealForm'
 import DetailedView from './components/DetailedView'
 import { Dispatch, SetStateAction, createContext, useEffect, useState } from 'react'
-import NewsForm from './components/NewsForm'
-import DrinkForm from './components/DrinkForm'
+import NewsForm from './components/Forms/NewsForm'
+import DrinkForm from './components/Forms/DrinkForm'
 import { AuthProvider } from './components/AuthProvider'
 import LogOut from './components/LogOut'
+import DetailedNews from './components/DetailedNews'
+import ToppingForm from './components/Forms/ToppingForm'
 
 type IAuthContext = {
   authenticated: boolean;
@@ -72,13 +74,15 @@ function App() {
                 <Route path="Etelek" element={<Etelek />} />
                 <Route path="Etelek/:id" element={<DetailedView path='Meal' /> } />
                 <Route path="Italok/:id" element={<DetailedView path='Drink' />} />
+                <Route path="Hirek/:id" element={<DetailedNews />} />
                 <Route path="Pizzak" element={<Pizzak />} />
                 <Route path="Italok" element={<Italok />} /> 
                 <Route path="Ujetel" element={<AuthProvider><MealForm /></AuthProvider>} /> 
                 <Route path="Ujhir" element={<NewsForm />} />
                 <Route path="Ujetel" element={<MealForm />} /> 
                 <Route path="Ujhir" element={<NewsForm />} /> 
-                <Route path="Ujital" element={<DrinkForm />} />      
+                <Route path="Ujital" element={<DrinkForm />} />  
+                <Route path="Ujfeltet" element={<ToppingForm /> } />  
               </Routes>
           </UserContext.Provider>
         </AuthContext.Provider>

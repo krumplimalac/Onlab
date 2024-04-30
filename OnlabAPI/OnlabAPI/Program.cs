@@ -25,8 +25,8 @@ builder.Services.AddScoped<IRestrictionRepository, RestrictionRepository>();
 builder.Services.AddScoped<INewsRepository, NewsRepository>();
 builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
 builder.Services.AddScoped<IToppingRepository, ToppingRepository>();
+builder.Services.AddScoped<IPizzaRepository, PizzaRepository>();
 builder.Services.AddAuthorization();
-//builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<DatabaseContext>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<DatabaseContext>();
 builder.Services.ConfigureApplicationCookie(config =>

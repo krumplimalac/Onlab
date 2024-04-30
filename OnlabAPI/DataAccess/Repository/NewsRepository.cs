@@ -5,6 +5,7 @@ using Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,8 @@ namespace DataAccess.Repository
                 Date = n.Date,
                 Id = n.Id,
                 Image = n.Image
-            }).ToListAsync();
+            }).OrderByDescending(news => news.Id).ToListAsync();
+            
             return PagedList<News>.ToPagedList(news,
                     parameters.PageNumber,
                     parameters.PageSize);

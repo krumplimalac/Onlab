@@ -1,20 +1,21 @@
-import { Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Container, Typography } from "@mui/material";
 
 interface image {
     bytes: string
   }
 
-interface NewsProp {
+interface newsProp {
     title: string,
     description: string,
     date:string,
     image: image
 }
 
-export default function NewsCards({item}:{item:NewsProp}){
+export default function NewsCard({item}:{item:newsProp}){
     const img = item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image.bytes}`; 
     return(
-        <Card key={item.title} sx={{backgroundColor: '#30343A'}}>
+        <Container maxWidth={false} sx={{maxWidth: '1500px'}}>
+            <Card key={item.title} sx={{backgroundColor: '#30343A'}}>
             <CardMedia
             component="img"
             height="400px"
@@ -32,5 +33,6 @@ export default function NewsCards({item}:{item:NewsProp}){
             </CardContent>
             <CardActions></CardActions>
         </Card>
-    )
+        </Container>
+        )
 }

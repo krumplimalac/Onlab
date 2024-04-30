@@ -10,13 +10,11 @@ import Container from '@mui/material/Container';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios, { AxiosError, AxiosHeaders } from 'axios';
 import { useState } from 'react';
-import { Paper, Slide, Snackbar } from '@mui/material';
-import ErrorIcon from '@mui/icons-material/Error';
 import SnackBar from '../components/SnackBar';
 
 export default function SignUp() {
   const [openErr, setOpenErr] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("Hibás Email-cím, vagy jelszó!");
+  const [errorMessage, setErrorMessage] = useState("Hibás regisztráció");
   const [error, setError] = useState(true);
   const [chosenRole, setChosenRole] = useState("User");
   const navigate = useNavigate();
@@ -29,12 +27,18 @@ export default function SignUp() {
       password: data.get('password')
     }
       axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}&role=${chosenRole}`,jsonData)
-      .catch((e: AxiosError) => {setOpenErr(true)})
+      .catch((e: AxiosError) => {
+        setOpenErr(true);
+        setError(true);
+      })
       .then(res => {
         if ( res !== undefined ){
           if(res.status == 200){
             console.log("OK");
             navigate("/Home");
+          }else{
+            setOpenErr(true);
+            setError(true);
           }
         }
     });
@@ -45,7 +49,7 @@ export default function SignUp() {
       sx={{backgroundColor: '#30343A',
       paddingTop: '4rem',
       paddingBottom:'4rem'}}>
-        <SnackBar text={errorMessage} error={error} isOpen={openErr} />
+        <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
         <Box
           sx={{
             display: 'flex',

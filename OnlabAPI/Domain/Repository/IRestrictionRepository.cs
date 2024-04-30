@@ -10,6 +10,5 @@ namespace Domain.Repository
     public interface IRestrictionRepository
     {
         Task<List<Restriction>> GetRestrictions();
-        Task PostTopping(Topping topping);
     }
 }

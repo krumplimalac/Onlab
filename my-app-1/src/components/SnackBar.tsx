@@ -1,28 +1,26 @@
 import { Paper, Slide, Snackbar, Typography } from "@mui/material";
 import ErrorIcon from '@mui/icons-material/Error';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-export default function SnackBar({text,error,isOpen}:{text:string, error:boolean, isOpen:boolean}){
-    const [open, setOpen] = useState(isOpen);
+export default function SnackBar({text,error,isOpen,setIsOpen}:{text:string, error:boolean, isOpen:boolean, setIsOpen:Dispatch<SetStateAction<boolean>>}){
     const [message, setMessage] = useState(text);
     let color = error ? "#BB1010" : "#10BB44";
 
     useEffect(()=>{
         setMessage(text);
-        setOpen(isOpen);
     },[text,error,isOpen]);
 
     const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
-          setOpen(false);
+          setIsOpen(false);
           return;
         }
       };
 
     return (
         <Snackbar
-              open={open}
+              open={isOpen}
               onClose={handleClose}
               autoHideDuration={5000}
               TransitionComponent={Slide}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Params, useParams, useNavigate } from "react-router-dom"
-import { Button, Card, CardMedia, Container, IconButton, Typography } from "@mui/material";
+import { Card, CardMedia, Container, IconButton, Typography } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { UserContext } from "../App";
 
@@ -19,7 +19,7 @@ interface myProp {
 }
 
 export default function DetailedView({path}:{path:string}){
-    const [item, setMeal] = useState<myProp>();
+    const [item, setItem] = useState<myProp>();
     const params = useParams();
     const navigate = useNavigate();
     const user = useContext(UserContext);
@@ -47,10 +47,8 @@ export default function DetailedView({path}:{path:string}){
     const fetch = async (params:Params<string>) => {
         const response = await axios.get(`/api/${path+'/'+params.id}`);
         let res = response.data;
-        setMeal(res);
+        setItem(res);
     }
-
-    
 
     useEffect(()=>{
         fetch(params);

@@ -41,7 +41,7 @@ namespace DataAccess.Repository
         }
         public async Task<PagedList<Pizza>> GetAllPizzas(PizzaParameters pizzaParameters)
         {
-            if (pizzaParameters.Restrictions == null)
+            if (pizzaParameters.Restrictions == null && pizzaParameters.Toppings == null)
             {
                 return PagedList<Pizza>.ToPagedList(await _context.Pizzas.Select(p => new Pizza
                 {

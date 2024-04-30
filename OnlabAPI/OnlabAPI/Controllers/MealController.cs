@@ -2,18 +2,11 @@
 using Domain.Parameters;
 using Domain.Repository;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using OnlabAPI.DataTransferObjects;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.Serialization.Json;
-using System.Text.Json;
-using System.Xml.Linq;
+
 
 namespace OnlabAPI.Controllers
 {

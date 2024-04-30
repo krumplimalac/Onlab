@@ -1,7 +1,7 @@
 import axios, { AxiosHeaders } from "axios";
 import { useEffect, useState } from "react";
-import NewsCards from "../components/NewsCard";
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
+import NewsCard from "../components/NewsCard";
 
 interface paginationHeader {
     TotalCount: number,
@@ -56,15 +56,13 @@ export default function Hirek(){
     };
 
     return(
-        <>
-            <h1>
-                HIREK
-            </h1>
+        <Container maxWidth={false}>
+            <Typography variant='h1'> Hírek </Typography>
             <Container>
             {news.map((item) => {
-                return <NewsCards item={item}/>
+                return <NewsCard item={item}/>
             })}
             </Container>
-        </>
+        </Container>
     )
 }

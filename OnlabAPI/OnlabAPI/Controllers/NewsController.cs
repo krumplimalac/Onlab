@@ -45,7 +45,7 @@ namespace OnlabAPI.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult<NewsDTO>> PostNews(NewsDTO news)
+        public async Task<ActionResult<NewsFormDTO>> PostNews(NewsFormDTO news)
         {
             var newNews = new News
             { 
