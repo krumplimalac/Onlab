@@ -6,14 +6,16 @@ namespace OnlabAPI.DataTransferObjects
     {
         public ItemDTO MealToDTO(Meal meal)
         {
-            ItemDTO itemDTO = new ItemDTO();
-            itemDTO.Name = meal.Name;
-            itemDTO.Description = meal.Description;
-            itemDTO.Id = meal.Id;
-            itemDTO.Image = Convert.ToBase64String(meal.Image.Bytes);
-            itemDTO.Price = meal.Price;
-            itemDTO.Type = "";
-            if(meal.Restrictions != null)
+            ItemDTO itemDTO = new()
+            {
+                Name = meal.Name,
+                Description = meal.Description,
+                Id = meal.Id,
+                Image = meal.Image != null ? Convert.ToBase64String(meal.Image.Bytes) : null,
+                Price = meal.Price,
+                Type = ""
+            };
+            if (meal.Restrictions != null)
             {
                 foreach (Restriction restriction in meal.Restrictions)
                 {
@@ -26,13 +28,15 @@ namespace OnlabAPI.DataTransferObjects
 
         public ItemDTO PizzaToDTO(Pizza pizza)
         {
-            ItemDTO itemDTO = new ItemDTO();
-            itemDTO.Name = pizza.Name;
-            itemDTO.Description = pizza.Description;
-            itemDTO.Id = pizza.Id;
-            itemDTO.Image = Convert.ToBase64String(pizza.Image.Bytes);
-            itemDTO.Price = pizza.Price;
-            itemDTO.Type = "";
+            ItemDTO itemDTO = new()
+            {
+                Name = pizza.Name,
+                Description = pizza.Description,
+                Id = pizza.Id,
+                Image = pizza.Image != null ? Convert.ToBase64String(pizza.Image.Bytes) : null,
+                Price = pizza.Price,
+                Type = ""
+            };
             if (pizza.Toppings != null)
             {
                 foreach (var restriction in pizza.Restrictions)
@@ -46,6 +50,32 @@ namespace OnlabAPI.DataTransferObjects
                 itemDTO.Type.TrimEnd();
             }
             return itemDTO;
+        }
+
+        public ItemDTO DrinkToDTO(Drink drink)
+        {
+            ItemDTO itemDTO = new()
+            {
+                Name = drink.Name,
+                Description = drink.Description,
+                Id = drink.Id,
+                Image = drink.Image != null ? Convert.ToBase64String(drink.Image.Bytes) : null,
+                Price = drink.Price,
+                Type = drink.Type
+            };
+            return itemDTO;
+        }
+
+        public NewsDTO NewsToDTO(News news)
+        {
+            NewsDTO newsDTO = new()
+            {
+                Title = news.Title,
+                Description = news.Description,
+                Date = news.Date,
+                Image = news.Image != null ? Convert.ToBase64String(news.Image.Bytes) : null
+            };
+            return newsDTO;
         }
     }
 }

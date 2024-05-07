@@ -1,14 +1,10 @@
 import { Container, Grid, Pagination, Typography, styled } from "@mui/material";
-import axios, { AxiosHeaders } from "axios";
+import axios, { AxiosError, AxiosHeaders } from "axios";
 import { useEffect, useState } from "react";
 import MyCard from "../components/MyCard";
 import FilterButtons from "./FilterButtons";
 import Loading from "./Loading";
 import PizzaFilterButtons from "./PizzaFilterButtons";
-
-interface image {
-    bytes: string
-  }
 
   interface myProp {
     name: string,
@@ -16,7 +12,7 @@ interface image {
     id: number,
     price: number,
     type: string,
-    image: image
+    image: string
 }
 
 interface paginationHeader {
@@ -50,6 +46,7 @@ const fetchItems = async (page:number) => {
         }
         setItems(response.data);
     } catch (error) {
+        setItems([]);
         console.log(error);
     }
 };
@@ -69,18 +66,20 @@ const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     return(
         <Container disableGutters maxWidth={false} sx={{marginTop: '2rem'}}>
             <Loading loading={loading} />
-            <Typography variant='h1'>
-                {title}
-            </Typography>
             <Container maxWidth={false}>
-                {title !== 'Italok' ? title !== 'Pizzák' ? <FilterButtons setUrl={setUrl} url={urlProp} filter="Restriction"/> : 
-                <PizzaFilterButtons setUrl={setUrl} url={urlProp} />  :
-                     null}
-                <Grid container spacing={{xs: 1, sm: 2, md: 4}} >
-                    {items.map((item) => {
-                        return <MyCard item={item} key={item.id}/>
-                    })}
-                </Grid>
+                <Typography variant='h1'>
+                    {title}
+                </Typography>
+                <Container maxWidth={false}>
+                    {title !== 'Italok' ? title !== 'Pizzák' ? <FilterButtons setUrl={setUrl} url={urlProp} filter="Restriction"/> : 
+                    <PizzaFilterButtons setUrl={setUrl} url={urlProp} />  :
+                        null}
+                    <Grid container spacing={{xs: 1, sm: 2, md: 4}} >
+                        {items.map((item) => {
+                            return <MyCard item={item} key={item.id}/>
+                        })}
+                    </Grid>
+                </Container>
             </Container>
             <StyledPagination
             sx={{

@@ -1,19 +1,14 @@
 import { Card, CardActions, CardContent, CardMedia, Container, Typography } from "@mui/material";
 
-interface image {
-    bytes: string
-  }
-
 interface newsProp {
     title: string,
     description: string,
     date:string,
-    image: image
+    image: string
 }
 
 export default function NewsCard({item}:{item:newsProp}){
-    const img = item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image.bytes}`; 
-    console.log(item.image.bytes);
+    const img = item.image.length == 0 || item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image}`;
     return(
         <Container maxWidth={false} sx={{maxWidth: '1500px'}}>
             <Card key={item.title} sx={{backgroundColor: '#30343A'}}>

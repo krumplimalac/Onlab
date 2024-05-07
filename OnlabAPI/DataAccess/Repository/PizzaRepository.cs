@@ -55,29 +55,17 @@ namespace DataAccess.Repository
         {
             if (pizzaParameters.Restrictions == null && pizzaParameters.Toppings == null)
             {
-                return PagedList<Pizza>.ToPagedList(await _context.Pizzas.Select(p => new Pizza
-                {
-                    Name = p.Name,
-                    Id = p.Id,
-                    Description = p.Description,
-                    Price = p.Price,
-                    Image = p.Image,
-                    Restrictions = p.Restrictions.ToList(),
-                    Toppings = p.Toppings.ToList()
-                }).ToListAsync(),
+                return PagedList<Pizza>
+                    .ToPagedList(
+                    await _context.Pizzas
+                    .Include(p => p.Restrictions)
+                    .Include(p => p.Toppings)
+                    .Include(p => p.Image)
+                    .ToListAsync(),
                         pizzaParameters.PageNumber,
                         pizzaParameters.PageSize);
             }
-            var pizzas = await _context.Pizzas.Select(pizza => new Pizza
-            {
-                Name = pizza.Name,
-                Id = pizza.Id,
-                Description = pizza.Description,
-                Price = pizza.Price,
-                Image = pizza.Image,
-                Restrictions = pizza.Restrictions.ToList(),
-                Toppings = pizza.Toppings.ToList()
-            }).ToListAsync();
+            var pizzas = await _context.Pizzas.Include(p => p.Restrictions).Include(p => p.Toppings).Include(p => p.Image).ToListAsync();
             if (pizzaParameters.Restrictions != null)
             {
                 pizzas = pizzas.Where(p => p.Restrictions.Any(r => pizzaParameters.Restrictions.Contains(r.Id))).ToList();

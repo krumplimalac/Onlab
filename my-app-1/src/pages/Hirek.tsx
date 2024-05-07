@@ -12,15 +12,11 @@ interface paginationHeader {
     HasPrevious: boolean
 }
 
-interface image {
-    bytes: string
-  }
-
 interface NewsProp {
     title: string,
     description: string,
     date:string,
-    image: image
+    image: string
 }
 
 export default function Hirek(){

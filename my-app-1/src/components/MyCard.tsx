@@ -1,23 +1,18 @@
 import { Card, CardContent, CardMedia, Container, Grid, Paper, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 
-interface image {
-    bytes: string
-}
-
 interface myProp {
     name: string,
     description: string,
     id: number,
     price: number,
     type: string,
-    image: image
+    image: string
 }
 
 export default function MyCard({item}:{item:myProp | undefined}){
     if ( item != undefined){
-        const img = item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image}`; 
-        
+        const img = item.image.length == 0 || item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image}`; 
         return( 
             <Grid item xs={12} md={6} lg={4} key={item.id}>
                     <Link to={`${item.id}`}>

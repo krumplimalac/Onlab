@@ -134,7 +134,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Models.Drink",
+        "Type": "OnlabAPI.DataTransferObjects.ItemDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",

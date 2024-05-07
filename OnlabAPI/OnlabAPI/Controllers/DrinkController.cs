@@ -14,6 +14,7 @@ namespace OnlabAPI.Controllers
     public class DrinkController : ControllerBase
     {
         private readonly IDrinkRepository _drinkRepository;
+        private DTOMappers mapper = new DTOMappers();
 
         public DrinkController(IDrinkRepository repo)
         {
@@ -28,6 +29,11 @@ namespace OnlabAPI.Controllers
             {
                 return NotFound();
             }
+            List<ItemDTO> items = [];
+            foreach (var drink in drinks)
+            {
+                items.Add(mapper.DrinkToDTO(drink));
+            }
             var metadata = new
             {
                 drinks.TotalCount,
@@ -37,13 +43,12 @@ namespace OnlabAPI.Controllers
                 drinks.HasNext,
                 drinks.HasPrevious
             };
-
             Response.Headers.Append("X-Pagination", System.Text.Json.JsonSerializer.Serialize(metadata));
-            return Ok(drinks);
+            return Ok(items);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Drink>> GetDrink(int id)
+        public async Task<ActionResult<ItemDTO>> GetDrink(int id)
         {
             var drink = await _drinkRepository.GetDrinkById(id);
             if (drink == null)
@@ -52,7 +57,7 @@ namespace OnlabAPI.Controllers
             }
             else
             {
-                return Ok(drink);
+                return Ok(mapper.DrinkToDTO(drink));
             }
         }
 

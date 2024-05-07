@@ -5,17 +5,13 @@ import { Card, CardMedia, Container, IconButton, Typography } from "@mui/materia
 import DeleteIcon from '@mui/icons-material/Delete';
 import { UserContext } from "../App";
 
-interface image {
-  bytes: string
-}
-
 interface myProp {
     name: string,
     description: string,
     id: number,
     price: number,
     type: string,
-    image: image
+    image: string
 }
 
 export default function DetailedView({path}:{path:string}){
@@ -55,7 +51,7 @@ export default function DetailedView({path}:{path:string}){
     },[])
     
     if (item != undefined){
-        let img = item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image.bytes}`; 
+        const img = item.image.length == 0 || item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image}`;
         return(
             <Container disableGutters maxWidth={false} sx={{ maxWidth: "1400px", backgroundColor: "#30343A"}}>
                 <Card>

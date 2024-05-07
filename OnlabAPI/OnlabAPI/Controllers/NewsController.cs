@@ -14,6 +14,7 @@ namespace OnlabAPI.Controllers
     public class NewsController : ControllerBase
     {
         private readonly INewsRepository _newsRepository;
+        private DTOMappers mapper = new();
         public NewsController(INewsRepository repo)
         {
             _newsRepository = repo;
@@ -27,6 +28,11 @@ namespace OnlabAPI.Controllers
             {
                 return NotFound();
             }
+            List<NewsDTO> newsDTOs = [];
+            foreach (var item in news)
+            {
+                newsDTOs.Add(mapper.NewsToDTO(item));
+            }
             var metadata = new
             {
                 news.TotalCount,
@@ -37,7 +43,7 @@ namespace OnlabAPI.Controllers
                 news.HasPrevious
             };
             Response.Headers.Append("X-Pagination", System.Text.Json.JsonSerializer.Serialize(metadata));
-            return Ok(news);
+            return Ok(newsDTOs);
         }
 
         [HttpGet("{id}")]
@@ -48,7 +54,7 @@ namespace OnlabAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(news);
+            return Ok(mapper.NewsToDTO(news));
         }
 
         [Authorize]
