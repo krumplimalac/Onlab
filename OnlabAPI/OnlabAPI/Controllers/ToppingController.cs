@@ -20,7 +20,12 @@ namespace OnlabAPI.Controllers
         [HttpGet]
         public async Task<ActionResult> GetToppings() 
         {
-            return Ok( await _repo.GetAllToppings() );
+            var toppings = await _repo.GetAllToppings();
+            if (toppings == null)
+            {
+                return NotFound();
+            }
+            return Ok(toppings);
         }
 
         [Authorize]
@@ -33,6 +38,18 @@ namespace OnlabAPI.Controllers
                 Name = topping.Name,
             };
             await _repo.PostTopping(newtopping,names);
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteTopping(int id)
+        {
+            var result = await _repo.DeleteTopping(id);
+            if (!result)
+            {
+                return NotFound();
+            }
             return Ok();
         }
     }

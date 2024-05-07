@@ -3,6 +3,7 @@ import '../CSS/main.css'
 import HomeNav from "../components/HomeNav"
 import { useContext } from "react"
 import { UserContext } from "../App"
+import { ThemeContext } from "@emotion/react"
 
 let etel = {
     img : '/src/img/foods.jpg',
@@ -26,7 +27,7 @@ export default function Home(){
     const user = useContext(UserContext);
 
     return (
-        <Container disableGutters maxWidth={false}  >
+        <Container disableGutters maxWidth={false} >
             <CardMedia 
             component='img'
             height='400'

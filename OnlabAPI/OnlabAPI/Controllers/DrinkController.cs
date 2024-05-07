@@ -13,17 +13,21 @@ namespace OnlabAPI.Controllers
     [ApiController]
     public class DrinkController : ControllerBase
     {
-        private readonly IDrinkRepository _drinkrepository;
+        private readonly IDrinkRepository _drinkRepository;
 
         public DrinkController(IDrinkRepository repo)
         {
-            _drinkrepository = repo;
+            _drinkRepository = repo;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetDrinks([FromQuery] Parameter parameters) 
         {
-            var drinks = await _drinkrepository.GetAll(parameters);
+            var drinks = await _drinkRepository.GetAll(parameters);
+            if (drinks == null)
+            {
+                return NotFound();
+            }
             var metadata = new
             {
                 drinks.TotalCount,
@@ -35,18 +39,13 @@ namespace OnlabAPI.Controllers
             };
 
             Response.Headers.Append("X-Pagination", System.Text.Json.JsonSerializer.Serialize(metadata));
-
-            if (drinks == null)
-            {
-                return NotFound();
-            }
             return Ok(drinks);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Drink>> GetDrink(int id)
         {
-            var drink = await _drinkrepository.GetDrinkById(id);
+            var drink = await _drinkRepository.GetDrinkById(id);
             if (drink == null)
             {
                 return NotFound();
@@ -69,8 +68,24 @@ namespace OnlabAPI.Controllers
                 Type = drink.Type,
                 File = drink.File
             };
-            await _drinkrepository.PostDrink(newDrink);
+            var result = await _drinkRepository.PostDrink(newDrink);
+            if (!result)
+            {
+                return BadRequest();
+            }
             return CreatedAtAction(nameof(GetDrinks), newDrink);
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteDrink(int id)
+        {
+            var deleted = await _drinkRepository.DeleteDrink(id);
+            if (!deleted)
+            {
+                return NotFound();
+            }
+            return Ok();
         }
 
     }

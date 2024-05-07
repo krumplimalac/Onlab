@@ -20,7 +20,7 @@ namespace DataAccess.Repository
             _context = databaseContext;
         }
 
-        public News ChangeImage(News news)
+        public News? ChangeImage(News news)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -42,27 +42,62 @@ namespace DataAccess.Repository
             }
         }
 
-        public async Task<PagedList<News>> GetAllNews(Parameter parameters)
+        public async Task<bool> DeleteNews(int id)
+        {
+            var news = await _context.News.FindAsync(id);
+            if (news == null)
+            {
+                return false;
+            }
+            _context.News.Remove(news);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<PagedList<News>?> GetAllNews(Parameter parameters)
+        {
+            var news = await _context.News.Include(n => n.Image).OrderByDescending(news => news.Id).ToListAsync();
+            if(news != null)
+            {
+                return PagedList<News>.ToPagedList(news,
+                    parameters.PageNumber,
+                    parameters.PageSize);
+            }
+            return null;
+        }
+
+        public async Task<News?> GetNewsById(int id)
         {
             var news = await _context.News.Select(n => new News
             {
-                Title = n.Title,
-                Description = n.Description,
+                Title= n.Title,
                 Date = n.Date,
+                Description = n.Description,
                 Id = n.Id,
-                Image = n.Image
-            }).OrderByDescending(news => news.Id).ToListAsync();
-            
-            return PagedList<News>.ToPagedList(news,
-                    parameters.PageNumber,
-                    parameters.PageSize);
+                Image = n.Image,
+            }).Where(n => n.Id == id).ToListAsync();
+            if (news.Count != 0)
+            {
+                return news[0];
+            }
+            return null;
         }
 
-        public async Task PostNews(News newNews)
+        public async Task<bool> PostNews(News newNews)
         {
-            newNews = ChangeImage(newNews);
-            await _context.News.AddAsync(newNews);
+            var imagenews = ChangeImage(newNews);
+            if (imagenews == null)
+            {
+                return false;
+            }
+            await _context.News.AddAsync(imagenews);
             await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public Task<bool> PutNews(News news, int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

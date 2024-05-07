@@ -9,6 +9,7 @@ namespace Domain.Repository
 {
     public interface IRestrictionRepository
     {
-        Task<List<Restriction>> GetRestrictions();
+        Task<List<Restriction>?> GetRestrictions();
+        Task<bool> DeleteRestriction(int id);
     }
 }

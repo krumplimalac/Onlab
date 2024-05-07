@@ -3,11 +3,6 @@ using Domain.Models;
 using Domain.Parameters;
 using Domain.Repository;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
@@ -20,7 +15,7 @@ namespace DataAccess.Repository
             _context = dbcontext;
         }
 
-        public Drink ChangeImage(Drink drink)
+        public Drink? ChangeImage(Drink drink)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -42,7 +37,19 @@ namespace DataAccess.Repository
             }
         }
 
-        public async Task<PagedList<Drink>> GetAll(Parameter parameters)
+        public async Task<bool> DeleteDrink(int id)
+        {
+            var drink = await _context.Drinks.FindAsync(id);
+            if (drink == null)
+            {
+                return false;
+            }
+            _context.Drinks.Remove(drink);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<PagedList<Drink>?> GetAll(Parameter parameters)
         {
             var drinks = await _context.Drinks.Select(d => new Drink
             {
@@ -53,12 +60,13 @@ namespace DataAccess.Repository
                 Type = d.Type,
                 Image = d.Image
             }).ToListAsync();
+            if(drinks == null) { return null; }
             return PagedList<Drink>.ToPagedList(drinks,
                     parameters.PageNumber,
                     parameters.PageSize);
         }
 
-        public async Task<Drink> GetDrinkById(int id)
+        public async Task<Drink?> GetDrinkById(int id)
         {
             var drinks = await _context.Drinks.Select(d => new Drink
             {
@@ -72,11 +80,22 @@ namespace DataAccess.Repository
             return drinks != null ? drinks[0] : null;
         }
 
-        public async Task PostDrink(Drink newDrink)
+        public async Task<bool> PostDrink(Drink newDrink)
         {
-            newDrink = ChangeImage(newDrink);
+            var imagedrink = ChangeImage(newDrink);
+            if(imagedrink == null)
+            {
+                return false;
+            }
+            newDrink = imagedrink;
             await _context.Drinks.AddAsync(newDrink);
             await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public Task<bool> PutDrink(Drink drink, int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

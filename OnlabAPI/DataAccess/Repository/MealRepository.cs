@@ -3,11 +3,6 @@ using Domain.Models;
 using Domain.Parameters;
 using Domain.Repository;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
@@ -20,41 +15,39 @@ namespace DataAccess.Repository
             _context = context;
         }
 
-        public Meal ChangeImage(Meal meal)
+        public Meal? ChangeImage(Meal meal)
         {
-            using (var memoryStream = new MemoryStream())
+            using var memoryStream = new MemoryStream();
+            meal.File.CopyToAsync(memoryStream);
+            if (memoryStream.Length < 2097152)
             {
-                meal.File.CopyToAsync(memoryStream);
-                if (memoryStream.Length < 2097152)
+                var newimage = new Image
                 {
-                    var newimage = new Image
-                    {
-                        Bytes = memoryStream.ToArray(),
-                        Description = meal.File.FileName
-                    };
-                    meal.Image = newimage;
-                    return meal;
-                }
-                else
-                {
-                    return null;
-                }
+                    Bytes = memoryStream.ToArray(),
+                    Description = meal.File.FileName
+                };
+                meal.Image = newimage;
+                return meal;
+            }
+            else
+            {
+                return null;
             }
         }
 
-        public async Task<int> Delete(int id)
+        public async Task<bool> DeleteMeal(int id)
         {
             var meal = await _context.Meals.FindAsync(id);
             if (meal == null)
             {
-                return 0;
+                return false;
             }
             _context.Meals.Remove(meal);
             await _context.SaveChangesAsync();
-            return 1;
+            return true;
         }
 
-        public async Task<PagedList<Meal>> GetAllMeals(MealParameters mealParameters)
+        public async Task<PagedList<Meal>?> GetAllMeals(MealParameters mealParameters)
         {
             if ( mealParameters.Restrictions == null )
             {
@@ -80,7 +73,7 @@ namespace DataAccess.Repository
                 Restrictions = meal.Restrictions.ToList(),
                 Image = meal.Image
             }).Where(m => m.Restrictions.Any(r => mealParameters.Restrictions.Contains(r.Id))).ToListAsync();
-            if (meals.Any())
+            if (meals.Count != 0)
             {
                 return PagedList<Meal>.ToPagedList(meals,
                             mealParameters.PageNumber,
@@ -89,7 +82,7 @@ namespace DataAccess.Repository
             return null;
         }
 
-        public async Task<Meal> GetMealById(int id)
+        public async Task<Meal?> GetMealById(int id)
         {
             var meals = await _context.Meals.Select(m => new Meal
             {
@@ -101,18 +94,18 @@ namespace DataAccess.Repository
                 Image = m.Image,
                 File = m.File
             }).Where(m => m.Id == id).ToListAsync();
-            if (meals.Any())
+            if (meals.Count != 0)
             {
                 return meals[0];
             }
             return null;
         }
 
-        public async Task PostMeal(Meal meal, string[]? restrictionNames)
+        public async Task<bool> PostMeal(Meal meal, string[]? restrictionNames)
         {
             var restrictions = _context.Restrictions.ToList();
-            meal.Restrictions = new List<Restriction>();
-            if (restrictions.Any() && restrictionNames != null)
+            meal.Restrictions = [];
+            if (restrictions.Count != 0 && restrictionNames != null)
             {
                 foreach (var restriction in restrictions)
                 {
@@ -126,30 +119,34 @@ namespace DataAccess.Repository
                 }
             }
            
-            meal = ChangeImage(meal);
-            await _context.Meals.AddAsync(meal);
+            var imagemeal = ChangeImage(meal);
+            if (imagemeal == null)  
+            {
+                return false; 
+            }
+            await _context.Meals.AddAsync(imagemeal);
             await _context.SaveChangesAsync();
+            return true;
         }
 
-        public async void PutMeal(Meal meal, int id)
+        public async Task<bool> PutMeal(Meal meal, int id)
         {
-           
-            meal = ChangeImage(meal);
-
+            var imagemeal = ChangeImage(meal);
+            if (imagemeal == null)
+            {
+                return false;
+            }
+            meal = imagemeal;
             _context.Entry(meal).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                
-                    throw;
-              
+                return false;
             }
-
-            return;
+            return true;
         }
 
     }

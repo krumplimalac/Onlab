@@ -75,7 +75,7 @@ namespace OnlabAPI.Controllers
                 return Ok();
             }
 
-            return NoContent();
+            return BadRequest(result);
         }
 
         [HttpPost("Logout")]

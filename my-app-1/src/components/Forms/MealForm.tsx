@@ -1,4 +1,3 @@
-
 import { Box, Button, Container, FormControlLabel, FormGroup, Checkbox, TextField, Typography } from "@mui/material";
 import axios, { AxiosError } from "axios";
 import { useState } from "react";
@@ -36,7 +35,7 @@ export default function MealForm() {
         const restrictions = JSON.stringify(restrictionNames);
         data.append("restrictions",restrictions);
         console.log(data);
-        let stringifiedData = JSON.stringify(data);
+        
         axios.post(`/api/Meal`, data)
               .catch((e: AxiosError) => {
                 console.log(e);
@@ -128,6 +127,7 @@ export default function MealForm() {
                 />
                 <Box sx={{borderRadius: "20px", backgroundColor: "#252530", padding: "1rem", marginTop: "10px"}}>
                     <input 
+                    onChange={() => {console.log("uploaded???")}}
                     id="formfile"
                     name="formfile"
                     type="file"

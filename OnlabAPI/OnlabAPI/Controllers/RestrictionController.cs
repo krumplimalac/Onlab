@@ -1,4 +1,5 @@
 ﻿using Domain.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,18 @@ namespace OnlabAPI.Controllers
                 return NotFound();
             }
             return Ok(restrictions);
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteRestriction(int id)
+        {
+            var result = await _restrictionRepository.DeleteRestriction(id);
+            if(!result) 
+            {
+                return NotFound(); 
+            }
+            return Ok();
         }
     }
 }

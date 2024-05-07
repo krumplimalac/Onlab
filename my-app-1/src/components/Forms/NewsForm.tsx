@@ -17,6 +17,7 @@ export default function NewsForm(){
     let currentTime = new Date;
     setLoading(true);
     data.append('date',currentTime.toDateString());
+    console.log(data.get("file"));
     axios.post('/api/News', data)
       .catch((e: AxiosError) => {
         console.log(e);

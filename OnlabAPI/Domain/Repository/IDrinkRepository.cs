@@ -10,8 +10,10 @@ namespace Domain.Repository
 {
     public interface IDrinkRepository
     {
-        public Task<PagedList<Drink>> GetAll(Parameter parameter);
-        public Task<Drink> GetDrinkById(int id);
-        public Task PostDrink(Drink drink);
+        Task<PagedList<Drink>?> GetAll(Parameter parameter);
+        Task<Drink?> GetDrinkById(int id);
+        Task<bool> PostDrink(Drink drink);
+        Task<bool> PutDrink(Drink drink, int id);
+        Task<bool> DeleteDrink(int id);
     }
 }

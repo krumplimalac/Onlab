@@ -17,16 +17,29 @@ namespace DataAccess.Repository
         {
             _context = databaseContext;
         }
-        public async Task<List<Topping>> GetAllToppings()
+
+        public async Task<bool> DeleteTopping(int id)
+        {
+            var topping = await _context.Toppings.FindAsync(id);
+            if (topping == null)
+            {
+                return false;
+            }
+            _context.Toppings.Remove(topping);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<List<Topping>?> GetAllToppings()
         {
             return await _context.Toppings.ToListAsync();   
         }
 
-        public async Task PostTopping(Topping topping, string[] restrictionNames)
+        public async Task<bool> PostTopping(Topping topping, string[]? restrictionNames)
         {
-            var restrictions = _context.Restrictions.ToList();
-            topping.Restrictions = new List<Restriction>();
-            if (restrictions.Any() && restrictionNames != null)
+            var restrictions = await _context.Restrictions.Include(r => r.Toppings).ToListAsync();
+            topping.Restrictions = [];
+            if (restrictions.Count != 0 && restrictionNames != null)
             {
                 foreach (var restriction in restrictions)
                 {
@@ -38,9 +51,13 @@ namespace DataAccess.Repository
                         }
                     }
                 }
+            } else
+            {
+                return false;
             }
             await _context.Toppings.AddAsync(topping);
             await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

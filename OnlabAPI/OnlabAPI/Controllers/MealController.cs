@@ -27,7 +27,15 @@ namespace OnlabAPI.Controllers
         public async Task<ActionResult> GetMeals([FromQuery] MealParameters mealParameters)
         {
             var meals = await _mealRepository.GetAllMeals(mealParameters);
-            List<ItemDTO> itemDTOs = new List<ItemDTO>();
+            List<ItemDTO> itemDTOs = [];
+            if (meals == null)
+            {
+                return NotFound();
+            }
+            foreach (var meal in meals)
+            {
+                itemDTOs.Add(mapper.MealToDTO(meal));
+            }
             var metadata = new
             {
                 meals.TotalCount,
@@ -37,24 +45,14 @@ namespace OnlabAPI.Controllers
                 meals.HasNext,
                 meals.HasPrevious
             };
-
             Response.Headers.Append("X-Pagination", System.Text.Json.JsonSerializer.Serialize(metadata));
-
-            if (meals == null)
-            {
-                return NotFound();
-            }
-            foreach (var meal in meals)
-            {
-                itemDTOs.Add(mapper.MealToDTO(meal));
-            }
             return Ok(itemDTOs);
         }
         
         [HttpGet("{id}")]
         public async Task<ActionResult<Meal>> GetMeal(int id)
         {
-            ItemDTO itemDTO = new ItemDTO();
+            ItemDTO itemDTO;
             var meal = await _mealRepository.GetMealById(id);
             if (meal == null)
             {
@@ -79,13 +77,17 @@ namespace OnlabAPI.Controllers
                 Price = meal.Price,
                 File = meal.FormFile,
             };
-            await _mealRepository.PostMeal(newmeal,names);
+            var result = await _mealRepository.PostMeal(newmeal,names);
+            if (!result)
+            {
+                return BadRequest();
+            }
             return CreatedAtAction(nameof(PostMeal), meal);
         }
 
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMeal(MealDTO meal,int id)
+        public async Task<ActionResult> PutMeal(MealDTO meal,int id)
         {
             var newmeal = new Meal
             {
@@ -95,7 +97,11 @@ namespace OnlabAPI.Controllers
                 Price = meal.Price,
                 File = meal.FormFile
             };
-           _mealRepository.PutMeal(newmeal,id);
+            var result = await _mealRepository.PutMeal(newmeal,id);
+            if (!result)
+            {
+                return BadRequest();
+            }
             ItemDTO itemDTO = mapper.MealToDTO(newmeal);
             return Ok(itemDTO);
         }
@@ -104,8 +110,8 @@ namespace OnlabAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-           var tmp = await _mealRepository.Delete(id);
-            if(tmp == 0)
+           var deleted = await _mealRepository.DeleteMeal(id);
+            if(!deleted)
             {
                 return NotFound();
             }

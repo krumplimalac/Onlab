@@ -13,6 +13,7 @@ interface newsProp {
 
 export default function NewsCard({item}:{item:newsProp}){
     const img = item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image.bytes}`; 
+    console.log(item.image.bytes);
     return(
         <Container maxWidth={false} sx={{maxWidth: '1500px'}}>
             <Card key={item.title} sx={{backgroundColor: '#30343A'}}>

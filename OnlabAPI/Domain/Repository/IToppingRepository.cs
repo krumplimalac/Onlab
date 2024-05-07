@@ -9,7 +9,8 @@ namespace Domain.Repository
 {
     public interface IToppingRepository
     {
-        Task<List<Topping>> GetAllToppings();
-        Task PostTopping(Topping topping, string[] names); 
+        Task<List<Topping>?> GetAllToppings();
+        Task<bool> PostTopping(Topping topping, string[]? toppingNames);
+        Task<bool> DeleteTopping(int id);
     }
 }

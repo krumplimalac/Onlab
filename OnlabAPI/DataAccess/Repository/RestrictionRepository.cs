@@ -16,7 +16,20 @@ namespace DataAccess.Repository
         {
             _dbContext = dbContext;
         }
-        public async Task<List<Restriction>> GetRestrictions()
+
+        public async Task<bool> DeleteRestriction(int id)
+        {
+            var restriction = await _dbContext.Restrictions.FindAsync(id);
+            if (restriction == null)
+            {
+                return false;
+            }
+            _dbContext.Restrictions.Remove(restriction);
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<List<Restriction>?> GetRestrictions()
         {
             return await _dbContext.Restrictions.ToListAsync();
         }

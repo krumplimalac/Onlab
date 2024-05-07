@@ -16,6 +16,9 @@ import { AuthProvider } from './components/AuthProvider'
 import LogOut from './components/LogOut'
 import DetailedNews from './components/DetailedNews'
 import ToppingForm from './components/Forms/ToppingForm'
+import PizzaForm from './components/Forms/PizzaForm'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 
 type IAuthContext = {
   authenticated: boolean;
@@ -36,10 +39,29 @@ const initialUserValue = {
   role: ""
 }
 
-
-
 const AuthContext = createContext<IAuthContext>(initialAuthValue);
 const UserContext = createContext<IUserContext>(initialUserValue);
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    sajt: Palette['primary'];
+  }
+
+  interface PaletteOptions {
+    sajt?: PaletteOptions['primary'];
+  }
+}
+
+const theme = createTheme({
+  palette: {
+    sajt: {
+      main: '#FFFFFF',
+      light: '#FFFFFF',
+      dark: '#000000',
+      contrastText: '#101010',
+    },
+  },
+});
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -61,6 +83,7 @@ function App() {
 
   return (
       <BrowserRouter>
+      <ThemeProvider theme={theme}>
         <AuthContext.Provider value={{authenticated,setAuthenticated}}>
           <UserContext.Provider value={user}>
             <ResponsiveAppBar /> 
@@ -74,6 +97,7 @@ function App() {
                 <Route path="Etelek" element={<Etelek />} />
                 <Route path="Etelek/:id" element={<DetailedView path='Meal' /> } />
                 <Route path="Italok/:id" element={<DetailedView path='Drink' />} />
+                <Route path="Pizzak/:id" element={<DetailedView path='Pizza'/>} />
                 <Route path="Hirek/:id" element={<DetailedNews />} />
                 <Route path="Pizzak" element={<Pizzak />} />
                 <Route path="Italok" element={<Italok />} /> 
@@ -82,10 +106,12 @@ function App() {
                 <Route path="Ujetel" element={<MealForm />} /> 
                 <Route path="Ujhir" element={<NewsForm />} /> 
                 <Route path="Ujital" element={<DrinkForm />} />  
-                <Route path="Ujfeltet" element={<ToppingForm /> } />  
+                <Route path="Ujfeltet" element={<ToppingForm />} /> 
+                <Route path="Ujpizza" element={<PizzaForm />}  />
               </Routes>
           </UserContext.Provider>
         </AuthContext.Provider>
+      </ThemeProvider>
       </BrowserRouter>
   )
 }

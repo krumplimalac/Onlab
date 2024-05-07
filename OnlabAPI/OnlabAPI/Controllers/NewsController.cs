@@ -23,7 +23,10 @@ namespace OnlabAPI.Controllers
         public async Task<IActionResult>  GetNews([FromQuery] Parameter parameters)
         {
             var news = await _newsRepository.GetAllNews(parameters);
-
+            if (news == null)
+            {
+                return NotFound();
+            }
             var metadata = new
             {
                 news.TotalCount,
@@ -33,9 +36,14 @@ namespace OnlabAPI.Controllers
                 news.HasNext,
                 news.HasPrevious
             };
-
             Response.Headers.Append("X-Pagination", System.Text.Json.JsonSerializer.Serialize(metadata));
+            return Ok(news);
+        }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetNewsById(int id)
+        {
+            var news = await _newsRepository.GetNewsById(id);
             if (news == null)
             {
                 return NotFound();
@@ -54,8 +62,24 @@ namespace OnlabAPI.Controllers
                 Description = news.Description,
                 File = news.File
             };
-            await _newsRepository.PostNews(newNews);
+            var result = await _newsRepository.PostNews(newNews);
+            if (!result)
+            {
+                return BadRequest();
+            }
             return CreatedAtAction(nameof(GetNews), newNews); ;
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteNews(int id)
+        {
+            var result = await _newsRepository.DeleteNews(id);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return Ok();
         }
     }
 }

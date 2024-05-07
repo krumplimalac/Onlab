@@ -26,10 +26,11 @@ export default function SignUp() {
       username: data.get('email'),
       password: data.get('password')
     }
-      axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}&role=${chosenRole}`,jsonData)
+      axios.post(`/api/Auth/Register?username=${jsonData.username}&password=${jsonData.password}&role=${chosenRole}`,jsonData)
       .catch((e: AxiosError) => {
         setOpenErr(true);
         setError(true);
+        console.log(e);
       })
       .then(res => {
         if ( res !== undefined ){
@@ -39,6 +40,7 @@ export default function SignUp() {
           }else{
             setOpenErr(true);
             setError(true);
+            console.log(res);
           }
         }
     });
