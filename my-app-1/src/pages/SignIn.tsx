@@ -8,11 +8,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext, UserContext } from '../App';
 import SnackBar from '../components/SnackBar';
 import Loading from '../components/Loading';
+import { Theme, colors } from '@mui/material';
 
 
 export default function SignIn() {
@@ -25,6 +26,20 @@ export default function SignIn() {
   const navigate = useNavigate();
   const {authenticated, setAuthenticated } = useContext(AuthContext);
   let user = useContext(UserContext);
+
+  const styles = (theme:Theme) => ({
+    textField: {
+        width: '90%',
+        marginLeft: 'auto',
+        marginRight: 'auto',            
+        paddingBottom: 0,
+        marginTop: 0,
+        fontWeight: 500
+    },
+    input: {
+        color: 'white'
+    }
+  });
 
   const handleChangeEmail = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     if (event.currentTarget.validity.valid) {
@@ -90,7 +105,7 @@ export default function SignIn() {
   };
 
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log(authenticated);
   });
 
@@ -129,7 +144,17 @@ export default function SignIn() {
               onFocus={handleChangeEmail}
               onChange={handleChangeEmail}
               error={errorEmail}
-              sx={{backgroundColor: 'white', borderRadius: '5px'}}
+              InputProps={{
+                style: {
+                  color: "#FFFFFF"
+                }
+              }}
+              InputLabelProps={{
+                style: {
+                  color: "#FFFFFF"
+                }
+              }}
+              sx={{backgroundColor: '#202020', borderRadius: '5px'}}
             />
             <TextField
               margin="normal"
@@ -143,12 +168,23 @@ export default function SignIn() {
               onChange={handleChangePass}
               error={errorPass}
               autoComplete="current-password"
-              sx={{backgroundColor: 'white', borderRadius: '5px'}}
+              InputProps={{
+                style: {
+                  color: "#FFFFFF"
+                }
+              }}
+              InputLabelProps={{
+                style: {
+                  color: "#FFFFFF"
+                }
+              }}
+              sx={{backgroundColor: '#202020', borderRadius: '5px'}}
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
+              disabled={errorEmail || errorPass}
               sx={{ mt: 3, mb: 2, backgroundColor:'#222222' }}
             >
               Belépés

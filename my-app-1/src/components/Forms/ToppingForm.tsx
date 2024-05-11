@@ -1,21 +1,29 @@
 import { Button, Checkbox, Container, FormControlLabel, FormGroup, TextField, Typography } from "@mui/material";
 import axios, { AxiosError } from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../Loading";
 import SnackBar from "../SnackBar";
+import { useParams } from "react-router-dom";
 
+interface item{
+  name:string
+}
 
 export default function ToppingForm(){
-    const [state, setState] = useState({
+
+  const [state, setState] = useState({
         glutenfree: false,
         vegan: false,
         vegetarian: false,
         lactosefree: false,
-      });
+  });
+
   const [openErr, setOpenErr] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [error, setError] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [topping, setTopping] = useState<item>();
+  const params = useParams();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
@@ -34,14 +42,16 @@ export default function ToppingForm(){
     if (state.lactosefree) restrictionNames.push("Laktózmentes");
     const restrictions = JSON.stringify(restrictionNames);
     data.append("restrictions",restrictions);
-    setLoading(true);
-    console.log(restrictions);
-    console.log(data);
-    axios.post('/api/Topping', data)
+    params.id != undefined ? putTopping(data) : postTopping(data);
+    setLoading(false);  
+  };
+
+  const postTopping = async (data:FormData) => {
+    let response = await axios.post('/api/Topping', data)
       .catch((e: AxiosError) => {
         console.log(e);
         setError(true);
-        setErrorMessage("Sikertelen feltét! Error: "+e.code)
+        setErrorMessage("Sikertelen feltétfelvétel! Error: "+e.code)
         setOpenErr(true);
       })
       .then(res => {
@@ -57,10 +67,55 @@ export default function ToppingForm(){
           }
         }
       })
-    setLoading(false);  
-  };
+  }
 
-    return (
+  const putTopping = async (data:FormData) => {
+    let response = await axios.put(`/api/Topping/${params.id}`, data)
+      .catch((e: AxiosError) => {
+        console.log(e);
+        setError(true);
+        setErrorMessage("Sikertelen szerkesztés! Error: "+e.code)
+        setOpenErr(true);
+      })
+      .then(res => {
+        if(res != undefined){
+          if(res.status = 200){
+            setError(false);
+            setErrorMessage("Sikeres szerkesztés!")
+            setOpenErr(true);
+          }else{
+            setError(true);
+            setErrorMessage("Sikertelen szerkesztés!")
+            setOpenErr(true);
+          }
+        }
+      })
+  }
+
+  const getTopping = async () => {
+    let response = await axios.get(`/api/Topping/${params.id}`)
+    .catch((error) => {
+      console.log(error);
+    })
+    .then( res => {
+      if( res != undefined){
+        setTopping(res.data);
+      }
+    })
+  }
+
+  useEffect(()=>{
+    if(params.id != undefined){
+      getTopping();
+    }else{
+      setTopping({
+        name: ""
+      })
+    }
+    setLoading(false);
+  },[])
+
+  return (
         <Container
           maxWidth={false}
           sx={{backgroundColor: "#30343A",
@@ -69,8 +124,8 @@ export default function ToppingForm(){
               maxWidth: "800px"}}>
             <Loading loading={loading} />
             <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
-            <Typography variant="h3" align="center" margin="normal">
-                Új feltét
+            <Typography variant="h3" align="center" margin="normal" marginBottom="10px">
+              {params.id == undefined ? "Új feltét" : "Szerkesztés" }
             </Typography>
             <FormGroup id="rest_checks_toppings" row sx={{display: "flex", justifyContent: "space-around"}}>
                 <FormControlLabel
@@ -98,14 +153,19 @@ export default function ToppingForm(){
                   label="Laktózmentes"
                 />
               </FormGroup>
-            <form id="new_topping_form" onSubmit={handleSubmit}>
+            <form id="new_topping_form" onSubmit={(e) => {setLoading(true); handleSubmit(e)}}>
                 <TextField
                 margin="normal"
                 required
                 fullWidth
                 name="name"
-                label="Név"
+                label={params.id == undefined ? "Név" : ""}
                 id="name"
+                value={topping?.name}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  if (topping != undefined)
+                  setTopping({...topping,["name"]:event.target.value});
+                }}
                 sx={{backgroundColor: 'white', borderRadius: '5px'}}
                 />
                 <Button type="submit">

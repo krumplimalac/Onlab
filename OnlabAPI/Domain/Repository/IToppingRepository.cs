@@ -11,6 +11,7 @@ namespace Domain.Repository
     {
         Task<List<Topping>?> GetAllToppings();
         Task<bool> PostTopping(Topping topping, string[]? toppingNames);
+        Task<bool> PutTopping(Topping topping,int id,string[]? restrictionNames);
         Task<bool> DeleteTopping(int id);
     }
 }

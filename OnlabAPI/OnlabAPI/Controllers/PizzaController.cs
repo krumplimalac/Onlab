@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using DataAccess.Repository;
+using Domain.Models;
 using Domain.Parameters;
 using Domain.Repository;
 using Microsoft.AspNetCore.Authorization;
@@ -68,7 +69,7 @@ namespace OnlabAPI.Controllers
                 Name = pizza.Name,
                 Description = pizza.Description,
                 Price = pizza.Price,
-                File = pizza.formFile
+                File = pizza.FormFile
             };
             var result = await _repository.PostPizza(newPizza, toppings);
             if (!result)
@@ -76,6 +77,27 @@ namespace OnlabAPI.Controllers
                 return BadRequest();
             }
             return Ok();
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutPizza(PizzaDTO pizza, int id)
+        {
+            var toppingIds = JsonConvert.DeserializeObject<int[]>(pizza.Toppings);
+            var newPizza = new Pizza
+            {
+                Name = pizza.Name,
+                Description = pizza.Description,
+                Price = pizza.Price,
+                File = pizza.FormFile
+            };
+            var result = await _repository.PutPizza(newPizza, id, toppingIds);
+            if (!result)
+            {
+                return BadRequest();
+            }
+            ItemDTO itemDTO = mapper.PizzaToDTO(newPizza);
+            return Ok(itemDTO);
         }
 
         [Authorize]

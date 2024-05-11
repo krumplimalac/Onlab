@@ -69,7 +69,7 @@ namespace OnlabAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<MealDTO>> PostMeal(MealDTO meal)
         {
-            var names = JsonConvert.DeserializeObject<string[]>(meal.Restrictions);
+            var restrictionnames = JsonConvert.DeserializeObject<string[]>(meal.Restrictions);
             var newmeal = new Meal
             {
                 Name = meal.Name,
@@ -77,7 +77,7 @@ namespace OnlabAPI.Controllers
                 Price = meal.Price,
                 File = meal.FormFile,
             };
-            var result = await _mealRepository.PostMeal(newmeal,names);
+            var result = await _mealRepository.PostMeal(newmeal,restrictionnames);
             if (!result)
             {
                 return BadRequest();
@@ -89,15 +89,15 @@ namespace OnlabAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> PutMeal(MealDTO meal,int id)
         {
+            var restrictionnames = JsonConvert.DeserializeObject<string[]>(meal.Restrictions);
             var newmeal = new Meal
             {
-                Id = id,
                 Name = meal.Name,
                 Description = meal.Description,
                 Price = meal.Price,
                 File = meal.FormFile
             };
-            var result = await _mealRepository.PutMeal(newmeal,id);
+            var result = await _mealRepository.PutMeal(newmeal,id,restrictionnames);
             if (!result)
             {
                 return BadRequest();

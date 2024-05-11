@@ -6,15 +6,12 @@ export const AuthProvider = ({ children }:{ children? : ReactNode}) => {
   const {authenticated} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  useEffect(()=>{
-    console.log(location);
-  })
-
-    useEffect(() => {
+  
+  useEffect(() => {
       if(!authenticated && (location.pathname !== "/Belepes")){
         navigate('/Belepes');
       }
-    });
+    },[]);
   return(
     <>
       {children}

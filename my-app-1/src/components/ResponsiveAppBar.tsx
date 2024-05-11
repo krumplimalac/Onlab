@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
 import { LocalPizza } from '@mui/icons-material';
-import { AuthContext, UserContext } from '../App';
+import { AuthContext } from '../App';
 import { useContext, useState } from 'react';
 
 const pages = ['Hirek', 'Etelek', 'Pizzak', 'Italok'];
@@ -24,9 +24,8 @@ const name = 'TemporaryCompanyName';
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const user = useContext(UserContext);
   const auth = useContext(AuthContext);
-  const settings = user.role == "Admin" ? ['Kilepes','Regisztracio', 'Ujetel', 'Ujhir', 'Ujital', 'Ujfeltet', 'Ujpizza'] : auth.authenticated ? ['Kilepes','Regisztracio'] : ['Belepes','Regisztracio'];
+  const settings = auth.authenticated ? ['Kilepes','Regisztracio'] : ['Belepes','Regisztracio'];
 
   const handleOpenNavMenu = (event:React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);

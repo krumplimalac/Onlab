@@ -24,6 +24,6 @@ namespace Domain.Models
         public Image Image { get; set; }
         public int ImageId { get; set; }
         [NotMapped]
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
     }
 }

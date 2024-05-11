@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using DataAccess.Repository;
+using Domain.Models;
 using Domain.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,23 @@ namespace OnlabAPI.Controllers
             };
             await _repo.PostTopping(newtopping,names);
             return Ok();
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutTopping(ToppingDTO topping, int id)
+        {
+            var names = JsonConvert.DeserializeObject<string[]>(topping.Restrictions);
+            var newTopping = new Topping
+            {
+                Name = topping.Name,
+            };
+            var result = await _repo.PutTopping(newTopping, id, names);
+            if (!result)
+            {
+                return BadRequest();
+            }
+            return CreatedAtAction(nameof(PutTopping), newTopping);
         }
 
         [Authorize]

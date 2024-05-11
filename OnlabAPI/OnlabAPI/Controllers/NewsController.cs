@@ -21,7 +21,7 @@ namespace OnlabAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult>  GetNews([FromQuery] Parameter parameters)
+        public async Task<IActionResult> GetNews([FromQuery] Parameter parameters)
         {
             var news = await _newsRepository.GetAllNews(parameters);
             if (news == null)

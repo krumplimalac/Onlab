@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Params, useParams, useNavigate } from "react-router-dom"
 import { Card, CardMedia, Container, IconButton, Typography } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import { UserContext } from "../App";
 
 interface myProp {
@@ -40,6 +41,17 @@ export default function DetailedView({path}:{path:string}){
         }
     }
 
+    function EditButton(){
+        if (user.role == 'Admin'){
+            let urlPath = path == "Meal" ? "Etelek" : path == "Pizza" ? "Pizzak" : "Italok";
+            return (
+                <IconButton size="large" onClick={() => navigate(`/${urlPath}/${params.id}/Edit`)} sx={{color: "#FFFFFF", backgroundColor: "#20242A", padding: "20px", marginLeft: "20px"}}>
+                    <EditIcon fontSize="inherit"/>
+                </IconButton>
+            )
+        }
+    }
+
     const fetch = async (params:Params<string>) => {
         const response = await axios.get(`/api/${path+'/'+params.id}`);
         let res = response.data;
@@ -64,14 +76,17 @@ export default function DetailedView({path}:{path:string}){
                      <Typography variant='h2' sx={{color: 'white', margin: "2rem", marginBottom: "2px"}}>
                         {item.name}   
                     </Typography>
-                    <Container maxWidth={false} sx={{display: "flex", margin: "5px", justifyContent:"space-between"}}>
+                    <Container maxWidth={false} sx={{display: "flex", margin: "5px"}}>
                         <Typography variant='h5' sx={{color: 'white',backgroundColor:'#20242A',borderRadius: "50px", padding: "10px", paddingTop: "15px"}}>
                             {item.price} Ft   
                         </Typography> 
-                        <DeleteButton/>
+                        <Container disableGutters sx={{display: "flex", justifyContent: "end"}}>
+                            <DeleteButton/>
+                            <EditButton/>
+                        </Container>
                     </Container>      
                     <Container sx={{display: "flex", margin: "5px"}}>
-                        <Typography sx={{color: 'white', backgroundColor: "#50545A",borderRadius: "25px", padding: "10px",flexWrap:"wrap"}}>{item.type}</Typography>
+                        {item.type == "" ? null : <Typography sx={{color: 'white', backgroundColor: "#50545A",borderRadius: "25px", padding: "10px",flexWrap:"wrap"}}>{item.type}</Typography>}
                     </Container>
                         <Typography sx={{marginTop: "15px",backgroundColor: "#353940", padding: "2rem"}}>
                             {item.description}

@@ -24,6 +24,10 @@ namespace DataAccess.Repository
         {
             using (var memoryStream = new MemoryStream())
             {
+                if (news.File == null)
+                {
+                    return null;
+                }
                 news.File.CopyToAsync(memoryStream);
                 if (memoryStream.Length < 2097152)
                 {
@@ -95,9 +99,33 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public Task<bool> PutNews(News news, int id)
+        public async Task<bool> PutNews(News news, int id)
         {
-            throw new NotImplementedException();
+            var originalnews = _context.News.Include(n => n.Image).Single(n => n.Id == id);
+            if (originalnews == null)
+            {
+                return false;
+            }
+            originalnews.Title = news.Title;
+            originalnews.Description = news.Description;
+            originalnews.Date = news.Date;
+            if (news.File != null)
+            {
+                var imagenews = ChangeImage(news);
+                if (imagenews == null) return false;
+                originalnews.Image = imagenews.Image;
+            }
+            _context.Update(originalnews);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

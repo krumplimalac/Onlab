@@ -15,6 +15,8 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 
 builder.Services.AddDbContext<DatabaseContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("default"))
+    //.EnableSensitiveDataLogging()
+
 );
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -81,6 +81,25 @@ namespace OnlabAPI.Controllers
             return CreatedAtAction(nameof(GetDrinks), newDrink);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutDrink(DrinkDTO drink,int id)
+        {
+            var newDrink = new Drink
+            {
+                Name = drink.Name,
+                Description = drink.Description,
+                Price = drink.Price,
+                Type = drink.Type,
+                File = drink.File
+            };
+            var result = await _drinkRepository.PutDrink(newDrink, id);
+            if (!result)
+            {
+                return BadRequest();
+            }
+            return CreatedAtAction(nameof(GetDrinks), newDrink);
+        }
+
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteDrink(int id)

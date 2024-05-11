@@ -19,6 +19,10 @@ namespace DataAccess.Repository
         {
             using (var memoryStream = new MemoryStream())
             {
+                if (drink.File == null)
+                {
+                    return null;
+                }
                 drink.File.CopyToAsync(memoryStream);
                 if (memoryStream.Length < 2097152)
                 {
@@ -93,9 +97,34 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public Task<bool> PutDrink(Drink drink, int id)
+        public async Task<bool> PutDrink(Drink drink, int id)
         {
-            throw new NotImplementedException();
+            var originaldrink = _context.Drinks.Include(p => p.Image).Single(d => d.Id == id);
+            if ( originaldrink == null )
+            {
+                return false;
+            }
+            originaldrink.Name = drink.Name;
+            originaldrink.Price = drink.Price;
+            originaldrink.Description = drink.Description;
+            originaldrink.Type = drink.Type;
+            if (drink.File != null)
+            {
+                var imagedrink = ChangeImage(drink);
+                if (imagedrink == null) return false;
+                originaldrink.Image = imagedrink.Image;
+            }
+            _context.Update(originaldrink);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

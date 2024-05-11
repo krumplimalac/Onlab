@@ -105,29 +105,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Meals");
                 });
 
-            modelBuilder.Entity("Domain.Models.MealRestriction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("MealId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RestrictionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MealId");
-
-                    b.HasIndex("RestrictionId");
-
-                    b.ToTable("MealRestrictions");
-                });
-
             modelBuilder.Entity("Domain.Models.News", b =>
                 {
                     b.Property<int>("Id")
@@ -241,6 +218,21 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Toppings");
+                });
+
+            modelBuilder.Entity("MealRestriction", b =>
+                {
+                    b.Property<int>("MealsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RestrictionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MealsId", "RestrictionsId");
+
+                    b.HasIndex("RestrictionsId");
+
+                    b.ToTable("MealRestriction");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -508,25 +500,6 @@ namespace DataAccess.Migrations
                     b.Navigation("Image");
                 });
 
-            modelBuilder.Entity("Domain.Models.MealRestriction", b =>
-                {
-                    b.HasOne("Domain.Models.Meal", "Meal")
-                        .WithMany()
-                        .HasForeignKey("MealId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Models.Restriction", "Restriction")
-                        .WithMany()
-                        .HasForeignKey("RestrictionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Meal");
-
-                    b.Navigation("Restriction");
-                });
-
             modelBuilder.Entity("Domain.Models.News", b =>
                 {
                     b.HasOne("Domain.Models.Image", "Image")
@@ -547,6 +520,21 @@ namespace DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Image");
+                });
+
+            modelBuilder.Entity("MealRestriction", b =>
+                {
+                    b.HasOne("Domain.Models.Meal", null)
+                        .WithMany()
+                        .HasForeignKey("MealsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Restriction", null)
+                        .WithMany()
+                        .HasForeignKey("RestrictionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

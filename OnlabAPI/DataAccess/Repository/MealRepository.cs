@@ -18,6 +18,10 @@ namespace DataAccess.Repository
         public Meal? ChangeImage(Meal meal)
         {
             using var memoryStream = new MemoryStream();
+            if (meal.File == null)
+            {
+                return null;
+            }
             meal.File.CopyToAsync(memoryStream);
             if (memoryStream.Length < 2097152)
             {
@@ -33,6 +37,27 @@ namespace DataAccess.Repository
             {
                 return null;
             }
+        }
+
+        public async Task<Meal> AddRestricitons(Meal meal, string[]? restrictionNames)
+        {
+            List<Restriction> restrictions = [];
+            restrictions = await _context.Restrictions.ToListAsync();
+            meal.Restrictions = [];
+            if (restrictions.Count != 0 && restrictionNames != null)
+            {
+                foreach (var restriction in restrictions)
+                {
+                    foreach (var name in restrictionNames)
+                    {
+                        if (restriction.Name == name)
+                        {
+                            meal.Restrictions.Add(restriction);
+                        }
+                    }
+                }
+            }
+            return meal;
         }
 
         public async Task<bool> DeleteMeal(int id)
@@ -103,22 +128,7 @@ namespace DataAccess.Repository
 
         public async Task<bool> PostMeal(Meal meal, string[]? restrictionNames)
         {
-            var restrictions = _context.Restrictions.ToList();
-            meal.Restrictions = [];
-            if (restrictions.Count != 0 && restrictionNames != null)
-            {
-                foreach (var restriction in restrictions)
-                {
-                    foreach (var name in restrictionNames)
-                    {
-                        if (restriction.Name == name)
-                        {
-                            meal.Restrictions.Add(restriction);
-                        }
-                    }
-                }
-            }
-           
+            meal = await AddRestricitons(meal, restrictionNames);
             var imagemeal = ChangeImage(meal);
             if (imagemeal == null)  
             {
@@ -129,23 +139,34 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public async Task<bool> PutMeal(Meal meal, int id)
+        public async Task<bool> PutMeal(Meal meal, int id, string[]? restrictionNames)
         {
-            var imagemeal = ChangeImage(meal);
-            if (imagemeal == null)
+            var originalmeal = _context.Meals.Include(m => m.Image).Include(m => m.Restrictions).Single(m => m.Id == id);
+            if (originalmeal == null)
             {
                 return false;
             }
-            meal = imagemeal;
-            _context.Entry(meal).State = EntityState.Modified;
+            originalmeal.Name = meal.Name;
+            originalmeal.Price = meal.Price;
+            originalmeal.Description = meal.Description;
+            originalmeal.Restrictions.Clear();
+            originalmeal = await AddRestricitons(originalmeal, restrictionNames);
+            if (meal.File != null)
+            {
+                var imagemeal = ChangeImage(meal);
+                if (imagemeal == null) return false;
+                originalmeal.Image = imagemeal.Image;
+            }
+            _context.Update(originalmeal);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
-            {
+            { 
                 return false;
             }
+
             return true;
         }
 

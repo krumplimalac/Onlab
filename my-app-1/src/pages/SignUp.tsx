@@ -13,10 +13,12 @@ import { useState } from 'react';
 import SnackBar from '../components/SnackBar';
 
 export default function SignUp() {
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPass, setErrorPass] = useState(false);
   const [openErr, setOpenErr] = useState(false);
   const [errorMessage, setErrorMessage] = useState("Hibás regisztráció");
   const [error, setError] = useState(true);
-  const [chosenRole, setChosenRole] = useState("User");
+  const [chosenRole, setChosenRole] = useState("Admin");
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -44,6 +46,22 @@ export default function SignUp() {
           }
         }
     });
+  };
+
+  const handleChangeEmail = (event: React.FocusEvent<HTMLTextAreaElement>) => {
+    if (event.currentTarget.validity.valid) {
+      setErrorEmail(false)
+    } else {
+      setErrorEmail(true)
+    }
+  };
+
+  const handleChangePass = (event: React.FocusEvent<HTMLTextAreaElement>) => {
+    if (event.currentTarget.validity.valid) {
+      setErrorPass(false)
+    } else {
+      setErrorPass(true)
+    }
   };
 
   return (
@@ -75,7 +93,22 @@ export default function SignUp() {
                   label="Email Cím"
                   name="email"
                   autoComplete="email"
-                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
+                  inputProps={{type: "email"}}
+                  autoFocus
+                  onFocus={handleChangeEmail}
+                  onChange={handleChangeEmail}
+                  error={errorEmail}
+                  InputProps={{
+                    style: {
+                      color: "#FFFFFF"
+                    }
+                  }}
+                  InputLabelProps={{
+                    style: {
+                      color: "#FFFFFF"
+                    }
+                  }}
+                  sx={{backgroundColor: '#202020', borderRadius: '5px'}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -87,7 +120,20 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  sx={{backgroundColor: 'white', borderRadius: '5px'}}
+                  onFocus={handleChangePass}
+                  onChange={handleChangePass}
+                  error={errorPass}
+                  InputProps={{
+                    style: {
+                      color: "#FFFFFF"
+                    }
+                  }}
+                  InputLabelProps={{
+                    style: {
+                      color: "#FFFFFF"
+                    }
+                  }}
+                  sx={{backgroundColor: '#202020', borderRadius: '5px'}}
                 />
               </Grid>
             </Grid>
@@ -95,6 +141,7 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
+              disabled={errorEmail || errorPass}
               sx={{ mt: 3, mb: 2, backgroundColor:'#222222'}}
             >
               Regisztráció

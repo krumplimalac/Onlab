@@ -6,6 +6,6 @@
         public string Description { get; set; }
         public string Restrictions { get; set; }
         public int Price { get; set; }
-        public IFormFile FormFile { get; set; }
+        public IFormFile? FormFile { get; set; }
     }
 }

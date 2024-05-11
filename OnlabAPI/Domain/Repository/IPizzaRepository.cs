@@ -12,8 +12,8 @@ namespace Domain.Repository
     {
         Task<PagedList<Pizza>?> GetAllPizzas(PizzaParameters pizzalParameters);
         Task<Pizza?> GetPizzaById(int id);
-        Task<bool> PostPizza(Pizza pizza, int[]? toppingNames);
-        Task<bool> PutPizza(Pizza pizza, int id);
+        Task<bool> PostPizza(Pizza pizza, int[]? toppingIds);
+        Task<bool> PutPizza(Pizza pizza, int id, int[]? toppingIds);
         Task<bool> DeletePizza(int id);
     }
 }

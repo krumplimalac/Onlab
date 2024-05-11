@@ -22,6 +22,10 @@ namespace DataAccess.Repository
         public Pizza? ChangeImage(Pizza pizza)
         {
             using var memoryStream = new MemoryStream();
+            if (pizza.File == null)
+            {
+                return null;
+            }
             pizza.File.CopyToAsync(memoryStream);
             if (memoryStream.Length < 2097152)
             {
@@ -37,6 +41,47 @@ namespace DataAccess.Repository
             {
                 return null;
             }
+        }
+
+        public async Task<Pizza> AddToppingsWithRestrictions(Pizza pizza, int[]? toppingIds)
+        {
+            var toppings = await _context.Toppings.Include(t => t.Restrictions).ToListAsync();
+            pizza.Toppings = [];
+            if (toppings != null && toppingIds != null)
+            {
+                foreach (var topping in toppings)
+                {
+                    foreach (var id in toppingIds)
+                    {
+                        if (topping.Id == id)
+                        {
+                            pizza.Toppings.Add(topping);
+                        }
+                    }
+                }
+            }
+            pizza.Restrictions = [];
+            var restrictions = await _context.Restrictions.ToListAsync();
+            bool put = true;
+            foreach (var restriction in restrictions)
+            {
+                foreach (var topping in pizza.Toppings)
+                {
+                    if (!topping.Restrictions.Contains(restriction))
+                    {
+                        put = false;
+                    }
+                }
+                if (put)
+                {
+                    pizza.Restrictions.Add(restriction);
+                }
+                else
+                {
+                    put = true;
+                }
+            }
+            return pizza;
         }
 
         public async Task<bool> DeletePizza(int id)
@@ -104,42 +149,7 @@ namespace DataAccess.Repository
 
         public async Task<bool> PostPizza(Pizza pizza, int[]? toppingIds)
         {
-            var toppings = await _context.Toppings.Include(t => t.Restrictions).ToListAsync();
-            pizza.Toppings = [];
-            if (toppings != null && toppingIds != null)
-            {
-                foreach (var topping in toppings)
-                {
-                    foreach (var id in toppingIds)
-                    {
-                        if (topping.Id == id)
-                        {
-                            pizza.Toppings.Add(topping);
-                        }
-                    }
-                }
-            }
-            pizza.Restrictions = [];
-            var restrictions = await _context.Restrictions.ToListAsync();
-            bool put = true;
-            foreach (var restriction in restrictions)
-            {
-                foreach (var topping in pizza.Toppings)
-                {
-                    if (!topping.Restrictions.Contains(restriction))
-                    {
-                        put = false;
-                    }
-                }
-                if (put)
-                {
-                    pizza.Restrictions.Add(restriction);
-                } else
-                {
-                    put = true;
-                }
-            }
-            
+            pizza = await AddToppingsWithRestrictions(pizza, toppingIds);
             var imagepizza = ChangeImage(pizza);
             if (imagepizza == null)
             {
@@ -151,9 +161,33 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public Task<bool> PutPizza(Pizza pizza, int id)
+        public async Task<bool> PutPizza(Pizza pizza, int id, int[]? ids)
         {
-            throw new NotImplementedException();
+            var originalpizza = _context.Pizzas.Include(p => p.Image).Include(p => p.Restrictions).Include(p => p.Toppings).Single(p => p.Id == id);
+            originalpizza.Name = pizza.Name;
+            originalpizza.Price = pizza.Price;
+            originalpizza.Description = pizza.Description;
+            originalpizza.Restrictions.Clear();
+            originalpizza.Toppings.Clear();
+            originalpizza = await AddToppingsWithRestrictions(originalpizza, ids);
+            if (pizza.File != null)
+            {
+                var imagepizza = ChangeImage(pizza);
+                if (imagepizza == null) return false;
+                originalpizza.Image = imagepizza.Image;
+            }
+            _context.Update(originalpizza);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return false;
+            }
+
+            return true;
+
         }
     }
 }

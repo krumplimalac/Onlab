@@ -9,6 +9,6 @@ namespace OnlabAPI.DataTransferObjects
         public string Description { get; set; }
         public string Type { get; set; }
         public int Price { get; set; }
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
     }
 }

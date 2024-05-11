@@ -18,6 +18,7 @@ import DetailedNews from './components/DetailedNews'
 import ToppingForm from './components/Forms/ToppingForm'
 import PizzaForm from './components/Forms/PizzaForm'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Toppings from './components/Toppings'
 
 
 type IAuthContext = {
@@ -79,7 +80,7 @@ function App() {
     if(role != null){
       user.role = role;
     }
-  })
+  },[])
 
   return (
       <BrowserRouter>
@@ -102,12 +103,16 @@ function App() {
                 <Route path="Pizzak" element={<Pizzak />} />
                 <Route path="Italok" element={<Italok />} /> 
                 <Route path="Ujetel" element={<AuthProvider><MealForm /></AuthProvider>} /> 
-                <Route path="Ujhir" element={<NewsForm />} />
-                <Route path="Ujetel" element={<MealForm />} /> 
+                <Route path="Etelek/:id/Edit" element={<AuthProvider><MealForm/></AuthProvider>} /> 
                 <Route path="Ujhir" element={<NewsForm />} /> 
+                <Route path="Hirek/:id/Edit" element={<NewsForm />} /> 
                 <Route path="Ujital" element={<DrinkForm />} />  
+                <Route path="Italok/:id/Edit" element={<DrinkForm />} />  
                 <Route path="Ujfeltet" element={<ToppingForm />} /> 
+                <Route path="Feltetek/:id/Edit" element={<ToppingForm />} /> 
                 <Route path="Ujpizza" element={<PizzaForm />}  />
+                <Route path="Pizzak/:id/Edit" element={<PizzaForm />}  />
+                <Route path="Feltetek" element={<Toppings/>} />
               </Routes>
           </UserContext.Provider>
         </AuthContext.Provider>

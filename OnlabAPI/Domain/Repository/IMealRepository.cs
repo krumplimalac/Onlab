@@ -14,7 +14,7 @@ namespace Domain.Repository
         Task<PagedList<Meal>?> GetAllMeals(MealParameters mealParameters);
         Task<Meal?> GetMealById(int id);
         Task<bool> PostMeal(Meal meal, string[]? restrictionNames);
-        Task<bool> PutMeal(Meal meal, int id);
+        Task<bool> PutMeal(Meal meal, int id, string[]? restrictionNames);
         Task<bool> DeleteMeal(int id);
     }
 }
