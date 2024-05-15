@@ -3,16 +3,88 @@
   "WorkspaceRootPath": "D:\\BME\\Onlab\\OnlabAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\toppingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\toppingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\toppingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\toppingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\pizzarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\pizzarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\mealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\mealrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\drinkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\drinkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\newsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\newsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\pizzadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\pizzadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\drinkdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\drinkdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\dtomappers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\dtomappers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\mealdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\mealdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\newsformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\newsformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\mealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\mealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\newsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\newsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\toppingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\toppingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\drinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\drinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\pizzacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\pizzacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\restrictioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\restrictioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\toppingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\toppingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\toppingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\toppingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\repository\\itoppingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,24 +99,8 @@
       "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\repository\\inewsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\drinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\drinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\mealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\mealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\drinkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\drinkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\repository\\idrinkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\repository\\idrinkrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\pizzacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\pizzacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\models\\drink.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,48 +123,8 @@
       "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\models\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\toppingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\toppingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\mealdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\mealdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\pizzadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\pizzadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\newsformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\newsformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\newsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\newsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\drinkdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\drinkdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\repository\\ipizzarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\repository\\ipizzarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\pizzarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\pizzarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\repository\\newsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\newsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\dtomappers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\dtomappers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,24 +139,8 @@
       "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repository\\restrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\datatransferobjects\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\datatransferobjects\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\imagemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\imagemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\restrictioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\controllers\\restrictioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0146F04E-C589-4126-A540-84DA063369D3}|DataAccess\\DataAccess.csproj|d:\\bme\\onlab\\onlabapi\\dataaccess\\dataobjects\\dbmeal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -206,137 +206,271 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ToppingRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\ToppingRepository.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Repository\\ToppingRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\ToppingRepository.cs",
-              "RelativeToolTip": "DataAccess\\Repository\\ToppingRepository.cs",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAAAEAAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "PizzaDTO.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\PizzaDTO.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\PizzaDTO.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\PizzaDTO.cs",
+              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\PizzaDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T19:58:42.307Z",
+              "WhenOpened": "2024-05-02T15:09:48.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MealDTO.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\MealDTO.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\MealDTO.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\MealDTO.cs",
+              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\MealDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T16:10:03.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ItemDTO.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\ItemDTO.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\ItemDTO.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\ItemDTO.cs",
+              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\ItemDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-23T15:44:19.28Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "MealController.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\MealController.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\MealController.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\MealController.cs",
-              "RelativeToolTip": "OnlabAPI\\Controllers\\MealController.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAIwGoAAAAJAAAA",
+              "Title": "DTOMappers.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\DTOMappers.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\DTOMappers.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\DTOMappers.cs",
+              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\DTOMappers.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowEQAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T08:24:54.476Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "IPizzaRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IPizzaRepository.cs",
-              "RelativeDocumentMoniker": "Domain\\Repository\\IPizzaRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IPizzaRepository.cs",
-              "RelativeToolTip": "Domain\\Repository\\IPizzaRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T11:56:59.522Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IDrinkRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IDrinkRepository.cs",
-              "RelativeDocumentMoniker": "Domain\\Repository\\IDrinkRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IDrinkRepository.cs",
-              "RelativeToolTip": "Domain\\Repository\\IDrinkRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T15:27:35.68Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DrinkRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\DrinkRepository.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Repository\\DrinkRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\DrinkRepository.cs",
-              "RelativeToolTip": "DataAccess\\Repository\\DrinkRepository.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAxwHIAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T10:04:55.871Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DrinkController.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\DrinkController.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\DrinkController.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\DrinkController.cs",
-              "RelativeToolTip": "OnlabAPI\\Controllers\\DrinkController.cs",
-              "ViewState": "AQIAAEYAAAAAAAAAAAAQwGMAAABAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T09:15:23.657Z",
+              "WhenOpened": "2024-04-23T16:10:56.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "INewsRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\INewsRepository.cs",
-              "RelativeDocumentMoniker": "Domain\\Repository\\INewsRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\INewsRepository.cs",
-              "RelativeToolTip": "Domain\\Repository\\INewsRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAmAAAA",
+              "DocumentIndex": 6,
+              "Title": "DrinkDTO.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
+              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T09:59:09.219Z",
+              "WhenOpened": "2024-03-27T09:47:00.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NewsRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\NewsRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repository\\NewsRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\NewsRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repository\\NewsRepository.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAQwGoAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T12:38:34.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\NewsController.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "OnlabAPI\\Controllers\\NewsController.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAQwFIAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T12:47:35.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NewsDTO.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\NewsDTO.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\NewsDTO.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\NewsDTO.cs",
+              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\NewsDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-07T15:11:08.693Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "DrinkRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\DrinkRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repository\\DrinkRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\DrinkRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repository\\DrinkRepository.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAgwHgAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T10:04:55.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PizzaRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\PizzaRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repository\\PizzaRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\PizzaRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repository\\PizzaRepository.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAACMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T09:36:21.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "NewsFormDTO.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\NewsFormDTO.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\NewsFormDTO.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\NewsFormDTO.cs",
+              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\NewsFormDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T08:22:21.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MealRepository.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\MealRepository.cs",
               "RelativeDocumentMoniker": "DataAccess\\Repository\\MealRepository.cs",
               "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\MealRepository.cs",
               "RelativeToolTip": "DataAccess\\Repository\\MealRepository.cs",
-              "ViewState": "AQIAAIYAAAAAAAAAAAAQwKkAAAAYAAAA",
+              "ViewState": "AQIAAHwAAAAAAAAAAAAAAJsAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-02T10:05:39.285Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 16,
+              "Title": "PizzaController.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\PizzaController.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\PizzaController.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\PizzaController.cs",
+              "RelativeToolTip": "OnlabAPI\\Controllers\\PizzaController.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAArwD0AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T17:36:40.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MealController.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\MealController.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\MealController.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\MealController.cs",
+              "RelativeToolTip": "OnlabAPI\\Controllers\\MealController.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAowEMAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T08:24:54.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ToppingDTO.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\ToppingDTO.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\ToppingDTO.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\ToppingDTO.cs",
+              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\ToppingDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T16:09:40.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Program.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
+              "RelativeToolTip": "OnlabAPI\\Program.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAWwB8AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T14:57:41.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "ToppingController.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\ToppingController.cs",
               "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\ToppingController.cs",
               "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\ToppingController.cs",
               "RelativeToolTip": "OnlabAPI\\Controllers\\ToppingController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAADUAAABHAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwD0AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-10T10:22:11.333Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IToppingRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IToppingRepository.cs",
-              "RelativeDocumentMoniker": "Domain\\Repository\\IToppingRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IToppingRepository.cs",
-              "RelativeToolTip": "Domain\\Repository\\IToppingRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA1AAAA",
+              "DocumentIndex": 15,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "OnlabAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAIwE0AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T20:09:22.459Z",
+              "WhenOpened": "2024-04-13T10:10:38.312Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
+              "Title": "DrinkController.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\DrinkController.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\DrinkController.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\DrinkController.cs",
+              "RelativeToolTip": "OnlabAPI\\Controllers\\DrinkController.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAQwFwAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T09:15:23.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RestrictionController.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\RestrictionController.cs",
+              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\RestrictionController.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\RestrictionController.cs",
+              "RelativeToolTip": "OnlabAPI\\Controllers\\RestrictionController.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAAwBwAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T08:40:27.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
               "Title": "Drink.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Drink.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Drink.cs",
@@ -348,7 +482,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 21,
+              "Title": "IToppingRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IToppingRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repository\\IToppingRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IToppingRepository.cs",
+              "RelativeToolTip": "Domain\\Repository\\IToppingRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-10T20:09:22.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "INewsRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\INewsRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repository\\INewsRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\INewsRepository.cs",
+              "RelativeToolTip": "Domain\\Repository\\INewsRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:59:09.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IDrinkRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IDrinkRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repository\\IDrinkRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IDrinkRepository.cs",
+              "RelativeToolTip": "Domain\\Repository\\IDrinkRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T15:27:35.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IPizzaRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IPizzaRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repository\\IPizzaRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IPizzaRepository.cs",
+              "RelativeToolTip": "Domain\\Repository\\IPizzaRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T11:56:59.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ToppingRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\ToppingRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repository\\ToppingRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\ToppingRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repository\\ToppingRepository.cs",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAEAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-10T19:58:42.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "IRestrictionRepository.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IRestrictionRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Repository\\IRestrictionRepository.cs",
@@ -356,12 +550,11 @@
               "RelativeToolTip": "Domain\\Repository\\IRestrictionRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T10:25:46.835Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T10:25:46.835Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 26,
               "Title": "Image.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Image.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Image.cs",
@@ -373,7 +566,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 27,
               "Title": "Meal.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Meal.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Meal.cs",
@@ -385,7 +578,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 28,
               "Title": "News.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\News.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\News.cs",
@@ -397,7 +590,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 29,
               "Title": "Pizza.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Pizza.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Pizza.cs",
@@ -409,115 +602,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ToppingDTO.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\ToppingDTO.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\ToppingDTO.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\ToppingDTO.cs",
-              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\ToppingDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T16:09:40.724Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "NewsFormDTO.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\NewsFormDTO.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\NewsFormDTO.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\NewsFormDTO.cs",
-              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\NewsFormDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T08:22:21.967Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PizzaController.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\PizzaController.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\PizzaController.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\PizzaController.cs",
-              "RelativeToolTip": "OnlabAPI\\Controllers\\PizzaController.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAhwEcAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T17:36:40.135Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "NewsDTO.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\NewsDTO.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\NewsDTO.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\NewsDTO.cs",
-              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\NewsDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T15:11:08.693Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "DrinkDTO.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
-              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\DrinkDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T09:47:00.645Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "MealDTO.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\MealDTO.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\MealDTO.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\MealDTO.cs",
-              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\MealDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T16:10:03.627Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "PizzaDTO.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\PizzaDTO.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\PizzaDTO.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\PizzaDTO.cs",
-              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\PizzaDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T15:09:48.999Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "PizzaRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\PizzaRepository.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Repository\\PizzaRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\PizzaRepository.cs",
-              "RelativeToolTip": "DataAccess\\Repository\\PizzaRepository.cs",
-              "ViewState": "AQIAAJwAAAAAAAAAAAAQwLMAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:36:21.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "NewsRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\NewsRepository.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Repository\\NewsRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\NewsRepository.cs",
-              "RelativeToolTip": "DataAccess\\Repository\\NewsRepository.cs",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAQwHMAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T12:38:34.988Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "DatabaseContext.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\DatabaseContext.cs",
               "RelativeDocumentMoniker": "DataAccess\\DatabaseContext.cs",
@@ -529,7 +614,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "IMealRepository.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IMealRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Repository\\IMealRepository.cs",
@@ -541,31 +626,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "DTOMappers.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\DTOMappers.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\DTOMappers.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\DTOMappers.cs",
-              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\DTOMappers.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T16:10:56.233Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Program.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
-              "RelativeToolTip": "OnlabAPI\\Program.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAWwCkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T14:57:41.667Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "RestrictionRepository.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\RestrictionRepository.cs",
               "RelativeDocumentMoniker": "DataAccess\\Repository\\RestrictionRepository.cs",
@@ -577,31 +638,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "NewsController.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\NewsController.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\NewsController.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\NewsController.cs",
-              "RelativeToolTip": "OnlabAPI\\Controllers\\NewsController.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAQwBcAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T12:47:35.099Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "ItemDTO.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\ItemDTO.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\DataTransferObjects\\ItemDTO.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\DataTransferObjects\\ItemDTO.cs",
-              "RelativeToolTip": "OnlabAPI\\DataTransferObjects\\ItemDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T15:44:19.28Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "ImageMapper.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\ImageMapper.cs",
               "RelativeDocumentMoniker": "DataAccess\\ImageMapper.cs",
@@ -610,30 +647,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-06T15:24:12.409Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "OnlabAPI\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAIwE0AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-13T10:10:38.312Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "RestrictionController.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\RestrictionController.cs",
-              "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\RestrictionController.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\RestrictionController.cs",
-              "RelativeToolTip": "OnlabAPI\\Controllers\\RestrictionController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAYwCUAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T08:40:27.536Z"
             },
             {
               "$type": "Document",

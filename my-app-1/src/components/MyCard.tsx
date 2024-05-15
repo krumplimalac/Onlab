@@ -15,8 +15,8 @@ export default function MyCard({item}:{item:myProp | undefined}){
         const img = item.image.length == 0 || item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image}`; 
         return( 
             <Grid item xs={12} md={6} lg={4} key={item.id}>
-                    <Link to={`${item.id}`}>
-                        <Card component={Paper} elevation={20} key={item.id} sx={{transition: "0.5s", backgroundColor: '#30343A',maxWidth: '1600',borderRadius: "10px",marginTop: "2rem", height: "440px",":hover":{borderRadius: "30px", boxShadow:"5px 5px 50px",backgroundColor: '#40444A'}}}>
+                <Link to={`${item.id}`}>
+                    <Card component={Paper} elevation={20} key={item.id} sx={{transition: "0.5s", backgroundColor: '#30343A',maxWidth: '1600',borderRadius: "10px",marginTop: "2rem", height: "440px",":hover":{borderRadius: "30px", boxShadow:"5px 5px 50px",backgroundColor: '#40444A'}}}>
                             <CardMedia 
                                 component = 'img'
                                 height='300'

@@ -71,6 +71,7 @@ namespace OnlabAPI.DataTransferObjects
             NewsDTO newsDTO = new()
             {
                 Title = news.Title,
+                Id = news.Id,
                 Description = news.Description,
                 Date = news.Date,
                 Image = news.Image != null ? Convert.ToBase64String(news.Image.Bytes) : null

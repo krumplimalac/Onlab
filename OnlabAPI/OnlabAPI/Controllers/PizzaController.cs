@@ -59,7 +59,7 @@ namespace OnlabAPI.Controllers
             return Ok(mapper.PizzaToDTO(pizza));
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<PizzaDTO>> PostPizza(PizzaDTO pizza)
         {
@@ -79,7 +79,7 @@ namespace OnlabAPI.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutPizza(PizzaDTO pizza, int id)
         {
@@ -100,7 +100,7 @@ namespace OnlabAPI.Controllers
             return Ok(itemDTO);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePizza(int id)
         {

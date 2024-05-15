@@ -26,7 +26,7 @@ namespace OnlabAPI.Controllers
             return Ok(restrictions);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteRestriction(int id)
         {

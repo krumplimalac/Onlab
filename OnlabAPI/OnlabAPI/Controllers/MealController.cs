@@ -65,7 +65,7 @@ namespace OnlabAPI.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<MealDTO>> PostMeal(MealDTO meal)
         {
@@ -85,7 +85,7 @@ namespace OnlabAPI.Controllers
             return CreatedAtAction(nameof(PostMeal), meal);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutMeal(MealDTO meal,int id)
         {
@@ -106,7 +106,7 @@ namespace OnlabAPI.Controllers
             return Ok(itemDTO);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

@@ -19,14 +19,14 @@ namespace DataAccess.Repository
         {
             _context = context;
         }
-        public Pizza? ChangeImage(Pizza pizza)
+        public async Task<Pizza?> ChangeImage(Pizza pizza)
         {
             using var memoryStream = new MemoryStream();
             if (pizza.File == null)
             {
                 return null;
             }
-            pizza.File.CopyToAsync(memoryStream);
+            await pizza.File.CopyToAsync(memoryStream);
             if (memoryStream.Length < 2097152)
             {
                 var newimage = new Image
@@ -150,7 +150,7 @@ namespace DataAccess.Repository
         public async Task<bool> PostPizza(Pizza pizza, int[]? toppingIds)
         {
             pizza = await AddToppingsWithRestrictions(pizza, toppingIds);
-            var imagepizza = ChangeImage(pizza);
+            var imagepizza = await ChangeImage(pizza);
             if (imagepizza == null)
             {
                 return false;
@@ -172,7 +172,7 @@ namespace DataAccess.Repository
             originalpizza = await AddToppingsWithRestrictions(originalpizza, ids);
             if (pizza.File != null)
             {
-                var imagepizza = ChangeImage(pizza);
+                var imagepizza = await ChangeImage(pizza);
                 if (imagepizza == null) return false;
                 originalpizza.Image = imagepizza.Image;
             }

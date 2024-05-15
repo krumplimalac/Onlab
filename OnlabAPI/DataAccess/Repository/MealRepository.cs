@@ -15,14 +15,14 @@ namespace DataAccess.Repository
             _context = context;
         }
 
-        public Meal? ChangeImage(Meal meal)
+        public async Task<Meal?> ChangeImage(Meal meal)
         {
             using var memoryStream = new MemoryStream();
             if (meal.File == null)
             {
                 return null;
             }
-            meal.File.CopyToAsync(memoryStream);
+            await meal.File.CopyToAsync(memoryStream);
             if (memoryStream.Length < 2097152)
             {
                 var newimage = new Image
@@ -129,7 +129,7 @@ namespace DataAccess.Repository
         public async Task<bool> PostMeal(Meal meal, string[]? restrictionNames)
         {
             meal = await AddRestricitons(meal, restrictionNames);
-            var imagemeal = ChangeImage(meal);
+            var imagemeal = await ChangeImage(meal);
             if (imagemeal == null)  
             {
                 return false; 
@@ -153,7 +153,7 @@ namespace DataAccess.Repository
             originalmeal = await AddRestricitons(originalmeal, restrictionNames);
             if (meal.File != null)
             {
-                var imagemeal = ChangeImage(meal);
+                var imagemeal = await ChangeImage(meal);
                 if (imagemeal == null) return false;
                 originalmeal.Image = imagemeal.Image;
             }

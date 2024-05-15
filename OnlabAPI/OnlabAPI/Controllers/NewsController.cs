@@ -57,7 +57,7 @@ namespace OnlabAPI.Controllers
             return Ok(mapper.NewsToDTO(news));
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<NewsFormDTO>> PostNews(NewsFormDTO news)
         {
@@ -73,10 +73,29 @@ namespace OnlabAPI.Controllers
             {
                 return BadRequest();
             }
-            return CreatedAtAction(nameof(GetNews), newNews); ;
+            return CreatedAtAction(nameof(PostNews), newNews);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutNews(NewsFormDTO news, int id)
+        {
+            var newNews = new News
+            {
+                Title = news.Title,
+                Date = news.Date,
+                Description = news.Description,
+                File = news.File
+            };
+            var result = await _newsRepository.PutNews(newNews, id);
+            if (!result)
+            {
+                return BadRequest();
+            }
+            return CreatedAtAction(nameof(PutNews), newNews);
+        }
+
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteNews(int id)
         {

@@ -15,7 +15,7 @@ namespace DataAccess.Repository
             _context = dbcontext;
         }
 
-        public Drink? ChangeImage(Drink drink)
+        public async Task<Drink?> ChangeImage(Drink drink)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -23,7 +23,7 @@ namespace DataAccess.Repository
                 {
                     return null;
                 }
-                drink.File.CopyToAsync(memoryStream);
+                await drink.File.CopyToAsync(memoryStream);
                 if (memoryStream.Length < 2097152)
                 {
                     var newimage = new Image
@@ -86,7 +86,7 @@ namespace DataAccess.Repository
 
         public async Task<bool> PostDrink(Drink newDrink)
         {
-            var imagedrink = ChangeImage(newDrink);
+            var imagedrink = await ChangeImage(newDrink);
             if(imagedrink == null)
             {
                 return false;
@@ -110,7 +110,7 @@ namespace DataAccess.Repository
             originaldrink.Type = drink.Type;
             if (drink.File != null)
             {
-                var imagedrink = ChangeImage(drink);
+                var imagedrink = await ChangeImage(drink);
                 if (imagedrink == null) return false;
                 originaldrink.Image = imagedrink.Image;
             }

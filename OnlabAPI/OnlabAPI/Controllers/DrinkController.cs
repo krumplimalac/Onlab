@@ -61,7 +61,7 @@ namespace OnlabAPI.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> PostDrink(DrinkDTO drink)
         {
@@ -81,6 +81,7 @@ namespace OnlabAPI.Controllers
             return CreatedAtAction(nameof(GetDrinks), newDrink);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutDrink(DrinkDTO drink,int id)
         {
@@ -100,7 +101,7 @@ namespace OnlabAPI.Controllers
             return CreatedAtAction(nameof(GetDrinks), newDrink);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteDrink(int id)
         {

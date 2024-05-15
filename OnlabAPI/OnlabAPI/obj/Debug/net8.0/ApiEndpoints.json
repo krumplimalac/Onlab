@@ -441,6 +441,42 @@
   },
   {
     "ContainingType": "OnlabAPI.Controllers.NewsController",
+    "Method": "PutNews",
+    "RelativePath": "api/News/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Date",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.NewsController",
     "Method": "DeleteNews",
     "RelativePath": "api/News/{id}",
     "HttpMethod": "DELETE",

@@ -80,6 +80,13 @@ export default function NewsForm(){
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    console.log(data);
+    if ( data.get("file") == undefined ){
+      setError(true);
+      setErrorMessage("Sikertelen szerkesztés!")
+      setOpenErr(true);
+      return;
+    }
     let currentTime = new Date;
     params.id == undefined ? data.append('date',currentTime.toDateString()) : news != undefined ? data.append('date',news.date) : {} ;
     console.log(data);

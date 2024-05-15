@@ -1,6 +1,6 @@
 import { useContext, ReactNode, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../App";
+import { AuthContext, UserContext } from "../App";
 
 export const AuthProvider = ({ children }:{ children? : ReactNode}) => {
   const {authenticated} = useContext(AuthContext);
@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }:{ children? : ReactNode}) => {
   const location = useLocation();
   
   useEffect(() => {
-      if(!authenticated && (location.pathname !== "/Belepes")){
+      if((!authenticated) && (location.pathname !== "/Belepes")){
         navigate('/Belepes');
       }
     },[]);

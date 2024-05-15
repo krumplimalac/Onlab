@@ -29,7 +29,7 @@ namespace OnlabAPI.Controllers
             return Ok(toppings);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<ToppingDTO>> PostTopping([FromForm]ToppingDTO topping)
         {
@@ -42,7 +42,7 @@ namespace OnlabAPI.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutTopping(ToppingDTO topping, int id)
         {
@@ -59,7 +59,7 @@ namespace OnlabAPI.Controllers
             return CreatedAtAction(nameof(PutTopping), newTopping);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTopping(int id)
         {
