@@ -43,6 +43,7 @@ export default function Italok({urlProp,title,addUrl}:{urlProp:string, title:str
     }));
 
     const fetchItems = async (page:number) => {
+        setLoading(true);
         try {
             const response = await axios.get(url+`&PageNumber=${page}&PageSize=6`);
             const headers = response.headers;
@@ -55,13 +56,12 @@ export default function Italok({urlProp,title,addUrl}:{urlProp:string, title:str
             setItems([]);
             console.log(error);
         }
+        setLoading(false);
     };
 
     useEffect(() => {
         console.log(url);
-        setLoading(true);
         fetchItems(currentPage);
-        setLoading(false)
         console.log(url);
     }, [currentPage, url]);
 
@@ -94,7 +94,7 @@ export default function Italok({urlProp,title,addUrl}:{urlProp:string, title:str
 
     return(
         <Container disableGutters maxWidth={false} sx={{marginTop: '2rem'}}>
-            <Loading loading={loading} />
+            { loading ? <Loading /> : null }
             <Container maxWidth={false}>
                 <Container disableGutters maxWidth={false} sx={{display: "flex", alignItems: "center"}}>
                     <Typography variant='h1'>

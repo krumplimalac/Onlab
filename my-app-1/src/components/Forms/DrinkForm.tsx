@@ -13,6 +13,14 @@ interface item {
   image: string
 }
 
+const initialDrink = {
+  name: "",
+  description: "",
+  price: 0,
+  type: "",
+  image: ""
+}
+
 export default function DrinkForm() {
     const types = [
       {
@@ -35,17 +43,12 @@ export default function DrinkForm() {
     const [openErr, setOpenErr] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [error, setError] = useState(true);
-    const [loading, setLoading] = useState(true);
-    const [drink, setDrink] = useState<item>({
-      name: "",
-      description: "",
-      price: 0,
-      type: "",
-      image: ""
-    });
+    const [loading, setLoading] = useState(false);
+    const [drink, setDrink] = useState<item>(initialDrink);
     const params = useParams();
 
     const postDrink = async (data:FormData) => {
+      setLoading(true);
       let response = await axios.post(`/api/Drink`, data)
           .catch((e: AxiosError) => {
             console.log(e);
@@ -66,9 +69,11 @@ export default function DrinkForm() {
               }
             }
           })
+      setLoading(false);
     }
 
     const putDrink = async (data:FormData) => {
+      setLoading(true);
       let response = await axios.put(`/api/Drink/${params.id}`, data)
           .catch((e: AxiosError) => {
             console.log(e);
@@ -89,9 +94,11 @@ export default function DrinkForm() {
               }
             }
           })
+      setLoading(false);
     }
 
     const getDrink = async () => {
+      setLoading(true);
       let response = await axios.get(`/api/Drink/${params.id}`)
       .catch((error) => {
         console.log(error);
@@ -100,6 +107,7 @@ export default function DrinkForm() {
         if(res != undefined)
         setDrink(res.data);
       });
+      setLoading(false);
     } 
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -107,7 +115,6 @@ export default function DrinkForm() {
         const data = new FormData(event.currentTarget);
         console.log(data);
         params.id != undefined? putDrink(data) : postDrink(data);
-        setLoading(false);
       };
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -119,8 +126,9 @@ export default function DrinkForm() {
       useEffect(() =>{
         if(params.id != undefined){
           getDrink();
+        } else {
+          setDrink(initialDrink)
         }
-        setLoading(false);
       },[]);
 
     return (
@@ -130,7 +138,7 @@ export default function DrinkForm() {
               paddingTop: '4rem',
               paddingBottom:'4rem',
               maxWidth: "800px"}}>
-            <Loading loading={loading} />
+            { loading ? <Loading/> : null }
             <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
             <Typography variant="h3" align="center" margin="normal" marginBottom="10px">
             {params.id == undefined ? "Új ital" : "Szerkesztés" }
@@ -148,7 +156,7 @@ export default function DrinkForm() {
                 >
                   {
                     types.map((option) => (
-                      <MenuItem key={option.value} value={option.value}>
+                      <MenuItem key={option.value} value={option.value} >
                         {option.label}
                       </MenuItem>
                       ))

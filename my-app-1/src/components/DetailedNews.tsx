@@ -5,6 +5,7 @@ import { Params, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../App";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Loading from "./Loading";
 
 interface newsProp {
     title: string,
@@ -18,6 +19,7 @@ export default function DetailedNews(){
     const params = useParams();
     const navigate = useNavigate();
     const user = useContext(UserContext);
+    const [loading, setLoading] = useState(false);
     
     const handleDelete = () => {
         axios.delete(`/api/News/${params.id}`)
@@ -50,9 +52,11 @@ export default function DetailedNews(){
     }
 
     const fetch = async (params:Params<string>) => {
+        setLoading(true);
         const response = await axios.get(`/api/News/${params.id}`);
         let res = response.data;
         setItem(res);
+        setLoading(false);
     }
 
     useEffect(()=>{
@@ -63,6 +67,7 @@ export default function DetailedNews(){
         let img = item.image == "" ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image}`;
         return(
             <Container disableGutters maxWidth={false} sx={{ maxWidth: "1400px", backgroundColor: "#30343A"}}>
+                { loading ? <Loading/> : null }
                     <Card>
                         <CardMedia 
                             component = 'img'

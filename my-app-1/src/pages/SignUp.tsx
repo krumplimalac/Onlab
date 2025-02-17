@@ -11,6 +11,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios, { AxiosError, AxiosHeaders } from 'axios';
 import { useState } from 'react';
 import SnackBar from '../components/SnackBar';
+import Loading from '../components/Loading';
 
 export default function SignUp() {
   const [errorEmail, setErrorEmail] = useState(false);
@@ -18,7 +19,8 @@ export default function SignUp() {
   const [openErr, setOpenErr] = useState(false);
   const [errorMessage, setErrorMessage] = useState("Hibás regisztráció");
   const [error, setError] = useState(true);
-  const [chosenRole, setChosenRole] = useState("Admin");
+  const [loading, setLoading] = useState(false);
+  const [chosenRole, setChosenRole] = useState("User");
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +30,9 @@ export default function SignUp() {
       username: data.get('email'),
       password: data.get('password')
     }
-      axios.post(`/api/Auth/Register?username=${jsonData.username}&password=${jsonData.password}&role=${chosenRole}`,jsonData)
+      const register = async () => {
+      setLoading(true);
+      const response = await axios.post(`/api/Auth/Register?username=${jsonData.username}&password=${jsonData.password}&role=${chosenRole}`,jsonData)
       .catch((e: AxiosError) => {
         setOpenErr(true);
         setError(true);
@@ -46,6 +50,9 @@ export default function SignUp() {
           }
         }
     });
+    setLoading(false);
+    }
+    register();
   };
 
   const handleChangeEmail = (event: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -69,6 +76,7 @@ export default function SignUp() {
       sx={{backgroundColor: '#30343A',
       paddingTop: '4rem',
       paddingBottom:'4rem'}}>
+        { loading ? <Loading/> : null }
         <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
         <Box
           sx={{

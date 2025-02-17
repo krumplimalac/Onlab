@@ -69,6 +69,7 @@ function App() {
   const user = initialUserValue;
 
   useEffect(() => {
+    const auth = async () => {
     const email = localStorage.getItem('email');
     const role = localStorage.getItem('role');
     if(localStorage.getItem('isAuth') != null){
@@ -80,6 +81,8 @@ function App() {
     if(role != null){
       user.role = role;
     }
+    }
+    auth();
   },[])
 
   return (

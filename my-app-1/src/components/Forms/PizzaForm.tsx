@@ -18,12 +18,20 @@ interface item {
   image: string
 }
 
+const initialPizza = {
+  name: "",
+  description: "",
+  price: 0,
+  type: "",
+  image: ""
+}
+
 export default function PizzaForm() {
     const [ids, setIds] = useState<number[]>([]);
     const [openErr, setOpenErr] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [error, setError] = useState(true);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [toppings, setToppings] = useState<Topping[]>([]);
     const [pizza, setPizza] = useState<item>();
     const [ok, setOk] = useState(false);
@@ -39,6 +47,7 @@ export default function PizzaForm() {
     }
 
     const postPizza = async (data:FormData) => {
+      setLoading(true);
       let response = await axios.post(`/api/Pizza`, data)
       .catch((e: AxiosError) => {
         console.log(e);
@@ -59,9 +68,11 @@ export default function PizzaForm() {
           }
         }
       })
+      setLoading(false);
     }
 
     const putPizza = async (data:FormData) => {
+      setLoading(true);
       let response = await axios.put(`/api/Pizza/${params.id}`, data)
       .catch((e: AxiosError) => {
         console.log(e);
@@ -75,13 +86,15 @@ export default function PizzaForm() {
             setError(false);
             setErrorMessage("Sikeres szerkesztés!")
             setOpenErr(true);
+            setPizza(initialPizza);
           }else{
             setError(true);
             setErrorMessage("Sikertelen szerkesztés!")
             setOpenErr(true);
           }
         }
-      })
+      });
+      setLoading(false);
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -89,19 +102,21 @@ export default function PizzaForm() {
         const data = new FormData(event.currentTarget);
         data.append('toppings',JSON.stringify(ids));
         params.id != undefined ? putPizza(data) : postPizza(data);
-        setLoading(false);
     };
 
     const getToppings = async () => {
+      setLoading(true);
       try {
         const data = await axios.get('/api/Topping');
         data != undefined ? setToppings(data.data) : setToppings([]);
       } catch (error) {
           console.log(error);
       }
+      setLoading(false);
     };
 
     const getPizza = async () => {
+      setLoading(true);
       try{
         if( params.id != undefined ){
           const response = await axios.get(`/api/Pizza/${params.id}`);
@@ -110,6 +125,7 @@ export default function PizzaForm() {
       } catch (error) {
         console.log(error);
       }
+      setLoading(false);
     }
 
     useEffect(() => {
@@ -118,15 +134,8 @@ export default function PizzaForm() {
         getPizza();
         setOk(!ok);
       }else{
-        setPizza({
-          name: "",
-          description: "",
-          price: 0,
-          type: "",
-          image: ""
-        })
+        setPizza(initialPizza)
       }
-      setLoading(false);
     },[]);   
 
     useEffect(()=>{
@@ -151,11 +160,11 @@ export default function PizzaForm() {
               paddingTop: '4rem',
               paddingBottom:'4rem',
               maxWidth: "800px"}}>
-            <Loading loading={loading} />
+            { loading ? <Loading/> : null }
             <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
             <Typography variant="h3" align="center" margin="normal" marginBottom="10px">
               {params.id == undefined ? "Új pizza" : "Szerkesztés" }
-              </Typography>
+            </Typography>
             <FormGroup id="Topping_checks" row sx={{display: "flex", justifyContent: "space-around"}}>
                 {
                   toppings.map((topping) => {

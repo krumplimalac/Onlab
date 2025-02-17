@@ -65,7 +65,8 @@ export default function SignIn() {
       password: data.get('password')
     }
       const login = async () => {
-        await axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}`,jsonData)
+        setLoading(true);
+        const response = await axios.post(`/api/Auth/Login?username=${jsonData.username}&password=${jsonData.password}`,jsonData)
         .catch(function (error) {
           if (error.response) {
             setErrorMessage("Hibás Email-cím, vagy jelszó!");
@@ -98,10 +99,9 @@ export default function SignIn() {
             }
           }
       });
+      setLoading(false);
     }
-    setLoading(true);
     login();
-    setLoading(false);
   };
 
 
@@ -115,7 +115,7 @@ export default function SignIn() {
       backgroundColor: '#30343A',
       paddingTop: '4rem',
       paddingBottom:'4rem'}}>
-        <Loading loading={loading} />
+        { loading ? <Loading/> : null }
         <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
         <Box
           sx={{

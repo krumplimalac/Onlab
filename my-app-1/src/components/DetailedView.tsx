@@ -5,6 +5,7 @@ import { Card, CardMedia, Container, IconButton, Typography } from "@mui/materia
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { UserContext } from "../App";
+import Loading from "./Loading";
 
 interface myProp {
     name: string,
@@ -20,6 +21,7 @@ export default function DetailedView({path}:{path:string}){
     const params = useParams();
     const navigate = useNavigate();
     const user = useContext(UserContext);
+    const [loading, setLoading] = useState(false);
 
     const handleDelete = () => {
         axios.delete(`/api/${path+'/'+params.id}`)
@@ -53,9 +55,11 @@ export default function DetailedView({path}:{path:string}){
     }
 
     const fetch = async (params:Params<string>) => {
+        setLoading(true);
         const response = await axios.get(`/api/${path+'/'+params.id}`);
         let res = response.data;
         setItem(res);
+        setLoading(false);
     }
 
     useEffect(()=>{
@@ -66,6 +70,7 @@ export default function DetailedView({path}:{path:string}){
         const img = item.image.length == 0 || item.image == undefined ? "/src/img/img.jpg" : `data:image/jpg;base64,${item.image}`;
         return(
             <Container disableGutters maxWidth={false} sx={{ maxWidth: "1400px", backgroundColor: "#30343A"}}>
+                { loading ? <Loading/> : null }
                 <Card>
                     <CardMedia 
                         component = 'img'

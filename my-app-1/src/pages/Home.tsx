@@ -3,8 +3,6 @@ import '../CSS/main.css'
 import HomeNav from "../components/HomeNav"
 import { useContext } from "react"
 import { UserContext } from "../App"
-import { ThemeContext } from "@emotion/react"
-import HomeNews from "../components/HomeNews"
 
 let etel = {
     img : '/src/img/foods.jpg',

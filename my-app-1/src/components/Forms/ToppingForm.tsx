@@ -43,10 +43,10 @@ export default function ToppingForm(){
     const restrictions = JSON.stringify(restrictionNames);
     data.append("restrictions",restrictions);
     params.id != undefined ? putTopping(data) : postTopping(data);
-    setLoading(false);  
   };
 
   const postTopping = async (data:FormData) => {
+    setLoading(true);
     let response = await axios.post('/api/Topping', data)
       .catch((e: AxiosError) => {
         console.log(e);
@@ -67,9 +67,11 @@ export default function ToppingForm(){
           }
         }
       })
+      setLoading(false);
   }
 
   const putTopping = async (data:FormData) => {
+    setLoading(true);
     let response = await axios.put(`/api/Topping/${params.id}`, data)
       .catch((e: AxiosError) => {
         console.log(e);
@@ -90,9 +92,11 @@ export default function ToppingForm(){
           }
         }
       })
+      setLoading(false);
   }
 
   const getTopping = async () => {
+    setLoading(true);
     let response = await axios.get(`/api/Topping/${params.id}`)
     .catch((error) => {
       console.log(error);
@@ -102,6 +106,7 @@ export default function ToppingForm(){
         setTopping(res.data);
       }
     })
+    setLoading(false);
   }
 
   useEffect(()=>{
@@ -112,7 +117,6 @@ export default function ToppingForm(){
         name: ""
       })
     }
-    setLoading(false);
   },[])
 
   return (
@@ -122,7 +126,7 @@ export default function ToppingForm(){
               paddingTop: '4rem',
               paddingBottom:'4rem',
               maxWidth: "800px"}}>
-            <Loading loading={loading} />
+            { loading ? <Loading/> : null }
             <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
             <Typography variant="h3" align="center" margin="normal" marginBottom="10px">
               {params.id == undefined ? "Új feltét" : "Szerkesztés" }

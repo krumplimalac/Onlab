@@ -15,11 +15,12 @@ export default function NewsForm(){
   const [openErr, setOpenErr] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [error, setError] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [news, setNews] = useState<newsInterface>();
   const params = useParams();
 
   const postNews = async (data:FormData) => {
+    setLoading(true);
     let response = await axios.post('/api/News', data)
       .catch((e: AxiosError) => {
         console.log(e);
@@ -40,9 +41,11 @@ export default function NewsForm(){
           }
         }
       })
+      setLoading(false);
   }
 
   const putNews = async (data:FormData) => {
+    setLoading(true);
     let response = await axios.put(`/api/News/${params.id}`, data)
       .catch((e: AxiosError) => {
         console.log(e);
@@ -63,9 +66,11 @@ export default function NewsForm(){
           }
         }
       })
+      setLoading(false);
   }
 
   const getNews = async () => {
+    setLoading(true);
     let response = await axios.get(`/api/News/${params.id}`)
     .catch((error) => {
       console.log(error);
@@ -75,6 +80,7 @@ export default function NewsForm(){
       setNews(res.data);
       }
     })
+    setLoading(false);
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -90,8 +96,7 @@ export default function NewsForm(){
     let currentTime = new Date;
     params.id == undefined ? data.append('date',currentTime.toDateString()) : news != undefined ? data.append('date',news.date) : {} ;
     console.log(data);
-    params.id == undefined ? postNews(data) : putNews(data);
-    setLoading(false);  
+    params.id == undefined ? postNews(data) : putNews(data);  
   };
 
   useEffect(() =>{
@@ -104,8 +109,6 @@ export default function NewsForm(){
         date: ""
       })
     }
-      
-    setLoading(false);
   },[]);
 
     return (
@@ -115,7 +118,7 @@ export default function NewsForm(){
               paddingTop: '4rem',
               paddingBottom:'4rem',
               maxWidth: "800px"}}>
-            <Loading loading={loading} />
+            { loading ? <Loading/> : null }
             <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
             <Typography variant="h3" align="center" margin="normal" marginBottom="10px">
               {params.id == undefined ? "Új hír" : "Szerkesztés" }

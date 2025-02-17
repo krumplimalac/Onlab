@@ -23,7 +23,7 @@ export default function MealForm() {
     const [openErr, setOpenErr] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [error, setError] = useState(true);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [meal, setMeal] = useState<item>();
     const [ok, setOk] = useState(false);
     const params = useParams();
@@ -36,6 +36,7 @@ export default function MealForm() {
     };
 
     const getItem = async (id:number) => {
+      setLoading(true);
       try {
           const response = await axios.get(`/api/Meal/${id}`);
           if ( response.data != undefined){
@@ -45,9 +46,11 @@ export default function MealForm() {
       } catch (error) {
           console.log(error);
       }
+      setLoading(false);
     };
 
     const postItem = async (data:FormData) => {
+      setLoading(true);
       try {
         const response = await axios.post(`/api/Meal`, data)
         .catch((e: AxiosError) => {
@@ -73,9 +76,11 @@ export default function MealForm() {
       } catch (error) {
           console.log(error);
       }
+      setLoading(false);
     };
 
     const putItem = async (data:FormData) => {
+      setLoading(true);
       try {
         data.append("id",String(params.id));
         const response = await axios.put(`/api/Meal/${params.id}`, data)
@@ -102,6 +107,7 @@ export default function MealForm() {
       } catch (error) {
           console.log(error);
       }
+      setLoading(false);
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -115,7 +121,6 @@ export default function MealForm() {
         const restrictions = JSON.stringify(restrictionNames);
         data.append("restrictions",restrictions);
         params.id != undefined ? putItem(data) : postItem(data);       
-        setLoading(false);
     };
 
     useEffect(() => {
@@ -130,7 +135,6 @@ export default function MealForm() {
           image: ""
         })
       }
-      setLoading(false);
     },[]);
 
     useEffect(() => {
@@ -161,7 +165,7 @@ export default function MealForm() {
               paddingTop: '4rem',
               paddingBottom:'4rem',
               maxWidth: "800px"}}>
-            <Loading loading={loading} />
+            { loading ? <Loading/> : null }
             <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
             <Typography variant="h3" align="center" margin="normal" marginBottom="10px">
               {params.id == undefined ? "Új étel" : "Szerkesztés" }
