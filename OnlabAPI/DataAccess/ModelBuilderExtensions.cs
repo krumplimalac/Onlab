@@ -33,6 +33,12 @@ namespace DataAccess
                 new Restriction { Name = "Vegán", Id = 4}
                 );
 
+            modelBuilder.Entity<Table>().HasData(
+                new Table { Number = 1, Id = 1, Reservations = [] },
+                new Table { Number = 2, Id = 2, Reservations = [] },
+                new Table { Number = 3, Id = 3, Reservations = [] }
+                );
+
            /* modelBuilder.Entity<MealRestriction>().HasData(
                 new MealRestriction { MealId = 1, RestrictionId = 2 , Id = 1},
                 new MealRestriction { MealId = 1, RestrictionId = 3 , Id = 2},

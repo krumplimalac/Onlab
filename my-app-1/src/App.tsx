@@ -17,8 +17,8 @@ import LogOut from './components/LogOut'
 import DetailedNews from './components/DetailedNews'
 import ToppingForm from './components/Forms/ToppingForm'
 import PizzaForm from './components/Forms/PizzaForm'
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Toppings from './components/Toppings'
+import Chat from './pages/Chat'
 
 
 type IAuthContext = {
@@ -43,26 +43,6 @@ const initialUserValue = {
 const AuthContext = createContext<IAuthContext>(initialAuthValue);
 const UserContext = createContext<IUserContext>(initialUserValue);
 
-declare module '@mui/material/styles' {
-  interface Palette {
-    sajt: Palette['primary'];
-  }
-
-  interface PaletteOptions {
-    sajt?: PaletteOptions['primary'];
-  }
-}
-
-const theme = createTheme({
-  palette: {
-    sajt: {
-      main: '#FFFFFF',
-      light: '#FFFFFF',
-      dark: '#000000',
-      contrastText: '#101010',
-    },
-  },
-});
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -70,28 +50,27 @@ function App() {
 
   useEffect(() => {
     const auth = async () => {
-    const email = localStorage.getItem('email');
-    const role = localStorage.getItem('role');
-    if(localStorage.getItem('isAuth') != null){
-      setAuthenticated(true);
-    }
-    if(email != null){
-      user.email = email;
-    }
-    if(role != null){
-      user.role = role;
-    }
+      const email = localStorage.getItem('email');
+      const role = localStorage.getItem('role');
+      if(localStorage.getItem('isAuth') != null){
+        setAuthenticated(true);
+      }
+      if(email != null){
+       user.email = email;
+      }
+      if(role != null){
+        user.role = role;
+      }
     }
     auth();
   },[])
 
   return (
       <BrowserRouter>
-      <ThemeProvider theme={theme}>
         <AuthContext.Provider value={{authenticated,setAuthenticated}}>
           <UserContext.Provider value={user}>
             <ResponsiveAppBar /> 
-              <Routes>
+            <Routes>
                 <Route path="Belepes" element={<SignIn />} />
                 <Route path="Kilepes" element={<LogOut/>} />
                 <Route index element={<Home />} />
@@ -116,10 +95,10 @@ function App() {
                 <Route path="Ujpizza" element={<PizzaForm />}  />
                 <Route path="Pizzak/:id/Edit" element={<PizzaForm />}  />
                 <Route path="Feltetek" element={<Toppings/>} />
-              </Routes>
+                <Route path="Chat" element={<Chat/>} />
+            </Routes>
           </UserContext.Provider>
         </AuthContext.Provider>
-      </ThemeProvider>
       </BrowserRouter>
   )
 }

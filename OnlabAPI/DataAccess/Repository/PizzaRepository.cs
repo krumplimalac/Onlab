@@ -164,11 +164,14 @@ namespace DataAccess.Repository
         public async Task<bool> PutPizza(Pizza pizza, int id, int[]? ids)
         {
             var originalpizza = _context.Pizzas.Include(p => p.Image).Include(p => p.Restrictions).Include(p => p.Toppings).Single(p => p.Id == id);
+            //????
+            /*
             originalpizza.Name = pizza.Name;
             originalpizza.Price = pizza.Price;
-            originalpizza.Description = pizza.Description;
+            originalpizza.Description = pizza.Description;*/
+            originalpizza = pizza;
             originalpizza.Restrictions.Clear();
-            originalpizza.Toppings.Clear();
+            originalpizza.Toppings.Clear(); 
             originalpizza = await AddToppingsWithRestrictions(originalpizza, ids);
             if (pizza.File != null)
             {

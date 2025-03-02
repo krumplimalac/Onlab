@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using DataAccess;
 using DataAccess.Repository;
 using Domain.Repository;
+using OnlabAPI;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Security.Claims;
@@ -19,6 +20,22 @@ builder.Services.AddDbContext<DatabaseContext>(opt =>
 
 );
 
+builder.Services.AddSignalR(e =>
+{
+    e.EnableDetailedErrors = true;
+    e.MaximumReceiveMessageSize = 102400000;
+});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("reactapp", builder =>
+    {
+        builder.WithOrigins("http://localhost:5173")
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -28,6 +45,8 @@ builder.Services.AddScoped<INewsRepository, NewsRepository>();
 builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
 builder.Services.AddScoped<IToppingRepository, ToppingRepository>();
 builder.Services.AddScoped<IPizzaRepository, PizzaRepository>();
+builder.Services.AddScoped<IChatRepository, ChatRepository>();
+builder.Services.AddScoped<ChatHub>();
 builder.Services.AddAuthorization();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<DatabaseContext>();
@@ -69,6 +88,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("reactapp");
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
@@ -77,6 +98,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<ChatHub>("/chat");
+
 //app.MapIdentityApi<IdentityUser>();
 
 app.Run();

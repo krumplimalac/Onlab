@@ -13,8 +13,6 @@ import axios from 'axios';
 import { AuthContext, UserContext } from '../App';
 import SnackBar from '../components/SnackBar';
 import Loading from '../components/Loading';
-import { Theme, colors } from '@mui/material';
-
 
 export default function SignIn() {
   const [errorEmail, setErrorEmail] = useState(false);
@@ -25,21 +23,8 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const {authenticated, setAuthenticated } = useContext(AuthContext);
+  
   let user = useContext(UserContext);
-
-  const styles = (theme:Theme) => ({
-    textField: {
-        width: '90%',
-        marginLeft: 'auto',
-        marginRight: 'auto',            
-        paddingBottom: 0,
-        marginTop: 0,
-        fontWeight: 500
-    },
-    input: {
-        color: 'white'
-    }
-  });
 
   const handleChangeEmail = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     if (event.currentTarget.validity.valid) {

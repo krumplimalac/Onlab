@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "kR3UENsngb92WEJLzwWAgFSvk40qXj0m5p5oUTyEWl8=",
+  "Hash": "l8DQyMZ7G2qzoL7k0Sg2oFu1zcRAF0hn2Hjqs0RIzBM=",
   "Source": "OnlabAPI",
   "BasePath": "_content/OnlabAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

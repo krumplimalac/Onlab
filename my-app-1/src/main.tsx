@@ -4,9 +4,9 @@ import App from './App.tsx'
 import './index.css'
 import Footer from './components/Footer.tsx'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render( 
   <React.StrictMode>
       <App />
-    <Footer/>
+      <Footer />
   </React.StrictMode>,
 )

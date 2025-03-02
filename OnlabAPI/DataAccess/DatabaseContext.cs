@@ -20,13 +20,14 @@ namespace DataAccess
         public DbSet<News> News { get; set; }
         public DbSet<Topping> Toppings { get; set; }
         public DbSet<Restriction> Restrictions { get; set; }
-       // public DbSet<MealRestriction> MealRestrictions { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Table> Tables { get; set; }
         public DatabaseContext(DbContextOptions<DatabaseContext> options) :base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-           // modelBuilder.Entity<Meal>().HasMany(e => e.Restrictions).WithMany(e => e.Meals).UsingEntity<MealRestriction>();
             modelBuilder.Seed();
 
         }

@@ -32,6 +32,7 @@ export default function PizzaForm() {
     const [errorMessage, setErrorMessage] = useState("");
     const [error, setError] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [progress, setProgress] = useState(0);
     const [toppings, setToppings] = useState<Topping[]>([]);
     const [pizza, setPizza] = useState<item>();
     const [ok, setOk] = useState(false);
@@ -231,6 +232,7 @@ export default function PizzaForm() {
                     type="file"
                     accept=".jpg"
                     />
+                    
                 </Box>
                 <Button type="submit">
                     Feltöltés

@@ -73,7 +73,7 @@ export default function Toppings(){
 
     return(
         <Container disableGutters maxWidth={false} sx={{marginTop: '2rem'}}>
-            <Loading loading={loading} />
+            { loading ? <Loading/> : null }
             <Container maxWidth={false}>
                 <Container disableGutters maxWidth={false} sx={{display: "flex", alignItems: "center"}}>
                     <Typography variant='h1'>
@@ -90,11 +90,9 @@ export default function Toppings(){
                                 <Grid item xs={12} md={6} lg={4} key={item.id}>
                                     <Card key={item.id} sx={{borderRadius: "20px", backgroundColor: "#30343A"}}>
                                         <CardContent>
-                                        <Container disableGutters sx={{backgroundColor: "#20242A"}}>
                                             <Typography sx={{color: 'white'}}>
                                                 {item.name}
                                             </Typography>
-                                        </Container>
                                         <Container>
                                             {item.type}
                                         </Container>
