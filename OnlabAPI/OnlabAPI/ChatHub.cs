@@ -40,6 +40,11 @@ namespace OnlabAPI
             await Clients.Caller.SendAsync("SendAdminId", await _repo.GetAdminId());
         }
 
+        public async Task SeenAll(string chatId)
+        {
+            await _repo.SeenAll(chatId);
+        }
+
         public async Task SendMessage(string chatId, string senderId, string receiverId, string message, DateTime time)
         {
             await Clients.Group(chatId).SendAsync("ReceiveMessage", senderId, message);
@@ -48,7 +53,8 @@ namespace OnlabAPI
                 ReceiverId = receiverId,
                 SenderId = senderId,
                 Text = message,
-                Timestamp = time
+                Timestamp = time,
+                Seen = false
             };
             await _repo.PostMessage(msg);
         }

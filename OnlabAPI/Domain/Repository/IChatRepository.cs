@@ -13,5 +13,6 @@ namespace Domain.Repository
         Task<bool> PostMessage(Message msg);
         Task<List<List<string>>?> GetChats();
         Task<string> GetAdminId();
+        Task SeenAll(string chatId);
     }
 }

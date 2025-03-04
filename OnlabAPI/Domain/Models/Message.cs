@@ -22,6 +22,9 @@ namespace Domain.Models
         [Required]
         public string Receiver { get; set; }
         [Required]
+        public bool Seen { get; set; }
+
+        [Required]
         public DateTime Timestamp { get; set; }
         public string Text { get; set; }
 

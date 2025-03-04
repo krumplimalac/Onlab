@@ -63,5 +63,23 @@ namespace DataAccess.Repository
             var admin = await _userManager.FindByEmailAsync("hunyadyzsombor@gmail.com");
             return admin.Id;
         }
+
+        public async Task SeenAll(string chatId)
+        {
+            var messages = await _context.Messages.Select(m => m).Where(m => m.SenderId == chatId && m.Seen == false).ToListAsync();
+            foreach (var m in messages)
+            {
+                m.Seen = true;
+            }
+            _context.Messages.UpdateRange(messages);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw (new DbUpdateConcurrencyException());
+            }
+        }
     }
 }
