@@ -68,13 +68,22 @@ export default function SignIn() {
               setAuthenticated(true);
               user.email = res.data[0].value;
               if(res.data.length > 1){
-                user.role = res.data[1].value;
-              }else {
-                user.role = "";
+                user.id = res.data[1].value;
+                console.log(" id = IDra");
+              } else {
+                user.id = "";
+                console.log(" id = semmire");
               }
+              if(res.data.length > 2){
+                user.role = res.data[2].value
+              } else {
+                user.role = ""
+              }
+              
               localStorage.setItem('isAuth','true');
               localStorage.setItem('email',user.email);
               localStorage.setItem('role',user.role);
+              localStorage.setItem('id',user.id);
               setErrorMessage("Sikeres bejelentkezés!");
               setError(false);
               setOpenErr(true);

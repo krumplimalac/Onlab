@@ -13,11 +13,13 @@ namespace OnlabAPI.Controllers
     {
         private readonly IReservationRepository _repo;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly DTOMappers mapper;
 
         public ReservationController(IReservationRepository repository, UserManager<IdentityUser> usermanager)
         {
             _repo = repository;
             _userManager = usermanager;
+            mapper = new();
         }
 
         [HttpGet]
@@ -25,7 +27,12 @@ namespace OnlabAPI.Controllers
         {
             var reservations = await _repo.GetReservations();
             if (reservations == null) return NotFound();
-            return Ok(reservations);
+            List<ReservationDTO> dtos = [];
+            foreach (var r in reservations)
+            {
+                dtos.Add(mapper.ReservationToDTO(r));
+            }
+            return Ok(dtos);
         }
 
         [HttpGet("{id}")]
@@ -35,7 +42,12 @@ namespace OnlabAPI.Controllers
             if (user == null) return NotFound();
             var reservations = await _repo.GetReservationsByUser(user);
             if (reservations == null) return NotFound();
-            return Ok(reservations);
+            List<ReservationDTO> dtos = [];
+            foreach (var r in reservations)
+            {
+                dtos.Add(mapper.ReservationToDTO(r));
+            }
+            return Ok(dtos);
         }
 
         [HttpDelete("{id}")]
@@ -54,7 +66,8 @@ namespace OnlabAPI.Controllers
             var newReservation = new Reservation
             {
                 Date = reservation.Date,
-                Duration = reservation.Duration,
+                StartTime = reservation.StarTime,
+                EndTime = reservation.EndTime,
                 NumberOfPeople = reservation.NumberOfPeople,
                 Reserver = user,
             };

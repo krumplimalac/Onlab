@@ -72,9 +72,11 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    SenderId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReceiverId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Sender = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Receiver = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Timestamp = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -93,6 +95,19 @@ namespace DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Restrictions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tables",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Number = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tables", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -304,6 +319,35 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReserverId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    TableId = table.Column<int>(type: "int", nullable: false),
+                    NumberOfPeople = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateOnly>(type: "date", nullable: false),
+                    StartTime = table.Column<TimeOnly>(type: "time", nullable: false),
+                    EndTime = table.Column<TimeOnly>(type: "time", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reservations_AspNetUsers_ReserverId",
+                        column: x => x.ReserverId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Reservations_Tables_TableId",
+                        column: x => x.TableId,
+                        principalTable: "Tables",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RestrictionTopping",
                 columns: table => new
                 {
@@ -410,6 +454,16 @@ namespace DataAccess.Migrations
                     { 4, "Vegán" }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Tables",
+                columns: new[] { "Id", "Number" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 },
+                    { 3, 3 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -485,6 +539,16 @@ namespace DataAccess.Migrations
                 column: "ToppingsId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reservations_ReserverId",
+                table: "Reservations",
+                column: "ReserverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_TableId",
+                table: "Reservations",
+                column: "TableId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RestrictionTopping_ToppingsId",
                 table: "RestrictionTopping",
                 column: "ToppingsId");
@@ -527,19 +591,25 @@ namespace DataAccess.Migrations
                 name: "PizzaTopping");
 
             migrationBuilder.DropTable(
+                name: "Reservations");
+
+            migrationBuilder.DropTable(
                 name: "RestrictionTopping");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Meals");
 
             migrationBuilder.DropTable(
                 name: "Pizzas");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Tables");
 
             migrationBuilder.DropTable(
                 name: "Restrictions");

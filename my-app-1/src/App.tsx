@@ -27,7 +27,8 @@ type IAuthContext = {
 }
 type IUserContext = {
   email: string,
-  role: string
+  role: string,
+  id: string
 }
 
 const initialAuthValue = {
@@ -37,7 +38,8 @@ const initialAuthValue = {
 
 const initialUserValue = {
   email: "",
-  role: ""
+  role: "",
+  id: ""
 }
 
 const AuthContext = createContext<IAuthContext>(initialAuthValue);
@@ -49,9 +51,10 @@ function App() {
   const user = initialUserValue;
 
   useEffect(() => {
-    const auth = async () => {
+    const auth = () => {
       const email = localStorage.getItem('email');
       const role = localStorage.getItem('role');
+      const id = localStorage.getItem('id');
       if(localStorage.getItem('isAuth') != null){
         setAuthenticated(true);
       }
@@ -60,6 +63,9 @@ function App() {
       }
       if(role != null){
         user.role = role;
+      }
+      if(id != null){
+        user.id = id;
       }
     }
     auth();

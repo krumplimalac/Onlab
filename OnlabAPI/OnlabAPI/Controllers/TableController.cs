@@ -10,10 +10,12 @@ namespace OnlabAPI.Controllers
     public class TableController : ControllerBase
     {
         private readonly ITableRepository _repo;
+        private readonly DTOMappers mapper;
 
         public TableController(ITableRepository repository)
         {
             _repo = repository;
+             mapper = new();
         }
 
         [HttpGet]
@@ -21,7 +23,12 @@ namespace OnlabAPI.Controllers
         {
             var tables = await _repo.GetTables();
             if (tables == null) return NotFound();
-            return Ok(tables);
+            List<TableDTO> dtos = [];
+            foreach (var t in tables)
+            {
+                dtos.Add(mapper.TableToDTO(t));
+            }
+            return Ok(dtos);
         }
 
         [HttpDelete("{id}")]

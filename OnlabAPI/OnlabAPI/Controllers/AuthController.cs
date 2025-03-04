@@ -41,6 +41,7 @@ namespace OnlabAPI.Controllers
                 //var now = DateTime.UtcNow;
                 var claims = new List<Claim>(){
                 new Claim(ClaimTypes.Name, user.Email),
+                new Claim("ID", user.Id)
                 };
                foreach (var item in roles)
                 {

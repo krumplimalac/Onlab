@@ -46,6 +46,8 @@ builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
 builder.Services.AddScoped<IToppingRepository, ToppingRepository>();
 builder.Services.AddScoped<IPizzaRepository, PizzaRepository>();
 builder.Services.AddScoped<IChatRepository, ChatRepository>();
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+builder.Services.AddScoped<ITableRepository, TableRepository>();
 builder.Services.AddScoped<ChatHub>();
 builder.Services.AddAuthorization();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()

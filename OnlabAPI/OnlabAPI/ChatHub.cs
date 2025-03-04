@@ -12,17 +12,22 @@ namespace OnlabAPI
 {
     public class ChatHub : Hub
     {
-        private IChatRepository _repo;
+        private readonly IChatRepository _repo;
 
         public ChatHub(IChatRepository repository)
         {
             _repo = repository;
         }
 
-        public async Task JoinChatRoom(string chatName)
+        public async Task JoinChatRoom(string chatId)
         {
-            await Groups.AddToGroupAsync(Context.ConnectionId, chatName);
-            await Clients.Group(chatName).SendAsync("LoadMessages", await _repo.GetLastMessages(chatName));
+            await Groups.AddToGroupAsync(Context.ConnectionId, chatId);
+            await LoadMessages(chatId,1);
+        }
+
+        public async Task LoadMessages(string chatId,int quantity)
+        {
+            await Clients.Caller.SendAsync("LoadMessages", await _repo.GetLastMessages(chatId,quantity));
         }
 
         public async Task GetChats()
@@ -30,13 +35,18 @@ namespace OnlabAPI
             await Clients.Caller.SendAsync("ReceiveChats", await _repo.GetChats());
         }
 
-        public async Task SendMessage(string chatName, string sender, string receiver, string message, string time)
+        public async Task GetAdminId()
         {
-            await Clients.Group(chatName).SendAsync("ReceiveMessage", sender, message);
+            await Clients.Caller.SendAsync("SendAdminId", await _repo.GetAdminId());
+        }
+
+        public async Task SendMessage(string chatId, string senderId, string receiverId, string message, DateTime time)
+        {
+            await Clients.Group(chatId).SendAsync("ReceiveMessage", senderId, message);
             var msg = new Message
             {
-                Receiver = receiver,
-                Sender = sender,
+                ReceiverId = receiverId,
+                SenderId = senderId,
                 Text = message,
                 Timestamp = time
             };

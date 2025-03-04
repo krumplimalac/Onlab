@@ -15,8 +15,9 @@ namespace Domain.Models
         public IdentityUser Reserver { get; set; }
         public Table Table { get; set; }
         public int NumberOfPeople { get; set; }
-        public DateTime Date { get; set; }
-        public int Duration { get; set; }
+        public DateOnly Date { get; set; }
+        public TimeOnly StartTime { get; set; }
+        public TimeOnly EndTime { get; set; }
 
 
 

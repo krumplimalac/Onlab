@@ -1018,6 +1018,95 @@
         }
       }
     },
+    "/api/Reservation": {
+      "get": {
+        "tags": [
+          "Reservation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Reservation"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationDTO"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Reservation/{id}": {
+      "get": {
+        "tags": [
+          "Reservation"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Reservation"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Restriction": {
       "get": {
         "tags": [
@@ -1034,6 +1123,75 @@
       "delete": {
         "tags": [
           "Restriction"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Table": {
+      "get": {
+        "tags": [
+          "Table"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Table"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableDTO"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Table/{id}": {
+      "delete": {
+        "tags": [
+          "Table"
         ],
         "parameters": [
           {
@@ -1188,6 +1346,50 @@
   },
   "components": {
     "schemas": {
+      "DateOnly": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dayOfWeek": {
+            "$ref": "#/components/schemas/DayOfWeek"
+          },
+          "dayOfYear": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "dayNumber": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DayOfWeek": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "Image": {
         "type": "object",
         "properties": {
@@ -1409,6 +1611,33 @@
         },
         "additionalProperties": false
       },
+      "ReservationDTO": {
+        "type": "object",
+        "properties": {
+          "reserverId": {
+            "type": "string",
+            "nullable": true
+          },
+          "tableId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfPeople": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "date": {
+            "$ref": "#/components/schemas/DateOnly"
+          },
+          "starTime": {
+            "$ref": "#/components/schemas/TimeOnly"
+          },
+          "endTime": {
+            "$ref": "#/components/schemas/TimeOnly"
+          }
+        },
+        "additionalProperties": false
+      },
       "Restriction": {
         "type": "object",
         "properties": {
@@ -1440,6 +1669,55 @@
               "$ref": "#/components/schemas/Pizza"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TableDTO": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeOnly": {
+        "type": "object",
+        "properties": {
+          "hour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minute": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "second": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "millisecond": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "microsecond": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "nanosecond": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "ticks": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
           }
         },
         "additionalProperties": false

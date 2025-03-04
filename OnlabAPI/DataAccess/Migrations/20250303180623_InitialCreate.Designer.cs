@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250225164542_InitialCreate")]
+    [Migration("20250303180623_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -120,7 +120,15 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ReceiverId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Sender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -128,9 +136,8 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Timestamp")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -196,6 +203,41 @@ namespace DataAccess.Migrations
                     b.ToTable("Pizzas");
                 });
 
+            modelBuilder.Entity("Domain.Models.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("NumberOfPeople")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReserverId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("TableId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReserverId");
+
+                    b.HasIndex("TableId");
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("Domain.Models.Restriction", b =>
                 {
                     b.Property<int>("Id")
@@ -232,6 +274,39 @@ namespace DataAccess.Migrations
                         {
                             Id = 4,
                             Name = "Vegán"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Models.Table", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tables");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Number = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Number = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Number = 3
                         });
                 });
 
@@ -554,6 +629,23 @@ namespace DataAccess.Migrations
                     b.Navigation("Image");
                 });
 
+            modelBuilder.Entity("Domain.Models.Reservation", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Reserver")
+                        .WithMany()
+                        .HasForeignKey("ReserverId");
+
+                    b.HasOne("Domain.Models.Table", "Table")
+                        .WithMany("Reservations")
+                        .HasForeignKey("TableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reserver");
+
+                    b.Navigation("Table");
+                });
+
             modelBuilder.Entity("MealRestriction", b =>
                 {
                     b.HasOne("Domain.Models.Meal", null)
@@ -663,6 +755,11 @@ namespace DataAccess.Migrations
                         .HasForeignKey("ToppingsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Table", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

@@ -642,6 +642,64 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "OnlabAPI.Controllers.ReservationController",
+    "Method": "GetAllReservations",
+    "RelativePath": "api/Reservation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.ReservationController",
+    "Method": "PostReservation",
+    "RelativePath": "api/Reservation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reservation",
+        "Type": "OnlabAPI.DataTransferObjects.ReservationDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.ReservationController",
+    "Method": "GetReservationByUser",
+    "RelativePath": "api/Reservation/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.ReservationController",
+    "Method": "DeleteReservation",
+    "RelativePath": "api/Reservation/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "OnlabAPI.Controllers.RestrictionController",
     "Method": "GetRestrictions",
     "RelativePath": "api/Restriction",
@@ -655,6 +713,48 @@
     "ContainingType": "OnlabAPI.Controllers.RestrictionController",
     "Method": "DeleteRestriction",
     "RelativePath": "api/Restriction/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.TableController",
+    "Method": "GetAllTables",
+    "RelativePath": "api/Table",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.TableController",
+    "Method": "PostTable",
+    "RelativePath": "api/Table",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "table",
+        "Type": "OnlabAPI.DataTransferObjects.TableDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.TableController",
+    "Method": "DeleteTable",
+    "RelativePath": "api/Table/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

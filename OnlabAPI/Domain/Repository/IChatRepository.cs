@@ -9,8 +9,9 @@ namespace Domain.Repository
 {
     public interface IChatRepository
     {
-        Task<List<Message>?> GetLastMessages(string Name);
+        Task<List<Message>?> GetLastMessages(string id, int quantity);
         Task<bool> PostMessage(Message msg);
-        Task<List<string>?> GetChats();
+        Task<List<List<string>>?> GetChats();
+        Task<string> GetAdminId();
     }
 }

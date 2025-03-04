@@ -34,7 +34,7 @@ export default function Home(){
             alt="Kép"
             sx={{'&:hover': {height: '550px'},transition: '0.5s'}}/> 
             <Container maxWidth={false} className='myclass' sx={{display: 'grid'}}>
-                <h1>Üdvözlünk {user.email}! {user.role !== "" ? `role:${user.role}` : ""}</h1>
+                <h4>Üdvözlünk {user.email}! {user.role !== "" ? `role:${user.role}` : ""} {user.id}</h4>
                 
             </Container>
             

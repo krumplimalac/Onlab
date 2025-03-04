@@ -18,6 +18,7 @@ export default function LogOut(){
             if(res.status == 200){
                 user.email = "";
                 user.role = "";
+                user.id = "";
                 auth.setAuthenticated(false);
                 document.cookie = "MyCookie=;expires=Thu, 01 Jan 1970 00:00:00 GMT;Samesite=None;Secure";
                 localStorage.clear();

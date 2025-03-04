@@ -14,11 +14,15 @@ namespace Domain.Models
         public int Id { get; set; }
 
         [Required]
+        public string SenderId { get; set; }
+        [Required]
+        public string ReceiverId { get; set; }
+        [Required]
         public string Sender { get; set; }
         [Required]
         public string Receiver { get; set; }
         [Required]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
         public string Text { get; set; }
 
     }

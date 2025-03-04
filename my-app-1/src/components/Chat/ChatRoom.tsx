@@ -1,14 +1,21 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { Button, Container, TextField, Typography } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { UserContext } from '../../App';
 
-export default function ChatRoom({ userMessages, userName, sendMessage } : { userMessages:{sender:string,text:string}[], userName:string, sendMessage: (message:string, time:string) => {}} ){
+export default function ChatRoom({ userMessages, sendMessage, loadMessages } : 
+    { userMessages:{senderId:string,text:string}[], sendMessage: (message:string, time:Date) => {}, loadMessages: (quantity:number)=>{}} ){
     const messagesEndRef = useRef<null | HTMLDivElement>(null);
+    const user = useContext(UserContext);
     const [message, setMessage] = useState('');
-    
+    const [oldMessageButtonCounter, setOldMessageButtonCounter] = useState(1);
+    const [dontScroll, setDontScroll] = useState(false);
+
     const handleSend = () => {
         if (message.trim()) {
             let currentTime = new Date;
-            sendMessage(message, currentTime.toString());
+            sendMessage(message, currentTime);
             setMessage('');
         }
     };
@@ -26,37 +33,36 @@ export default function ChatRoom({ userMessages, userName, sendMessage } : { use
     };
 
     useEffect(() => {
-        scrollToBottom();
+        if(!dontScroll){
+            scrollToBottom();
+        }
+        setDontScroll(false);
     }, [userMessages]);
 
     return (
-        <Container disableGutters sx={{background: '#000000'}}>
-            <Container sx={{background: '#181818'}}>
-                <Typography>
-                    Chat
-                </Typography>
+        <Container disableGutters sx={{background: '#000000', paddingTop: '2rem'}}>
+            <Container disableGutters sx={{display: 'flex', justifyContent: 'center'}}>
+                <KeyboardArrowUpIcon fontSize='large' onClick={() => {setOldMessageButtonCounter(oldMessageButtonCounter+1);loadMessages(oldMessageButtonCounter+1);setDontScroll(true)}} sx={{backgroundColor: '#222222', borderRadius: 8, transition: '0.5s', '&:hover': {padding: '0.3rem', backgroundColor: '#444444'}}}/>
             </Container>
             {userMessages.map((msg, index) => (
                 <Container maxWidth={false} key={index} sx={{display: 'flex', flexDirection: 'column'}} >
-                    { msg.sender == userName ? 
-                    <Container sx={{display: 'flex', flexDirection: 'row'}}>
-                        <Container sx={{flexGrow: 2}}></Container>
-                        <Typography align={'right'} sx={{backgroundColor: '#222222', borderRadius: 4, padding: 1, flexGrow: 2, margin: 0.5}}>
+                    { msg.senderId == user.id ? 
+                    <Container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end'}}>
+                        <Typography align={'left'} sx={{textWarp: 'balance', wordWrap: 'break-word',maxWidth: '16rem', backgroundColor: '#222222', borderRadius: 4, padding: 1, margin: 0.5}}>
                             {msg.text}
                         </Typography>
                     </Container>
                     :
-                    <Container sx={{display: 'flex', flexDirection: 'row'}}>
-                        <Typography align={'left'} sx={{backgroundColor: '#444444', borderRadius: 4, padding: 1,  flexGrow: 6, margin: 0.5}}>
+                    <Container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-start'}}>
+                        <Typography align={'left'} sx={{textWarp: 'balance', wordWrap: 'break-word', maxWidth: '16rem', backgroundColor: '#444444', borderRadius: 4, padding: 1, margin: 0.5}}>
                             {msg.text}
                         </Typography>
-                        <Container sx={{flexGrow: 1}}></Container>
                     </Container>
                     }
                 </Container>
             ))}
             <div ref={messagesEndRef} />
-            <Container maxWidth={false} sx={{padding: '2rem', display: 'flex', background: '#181818', marginTop: 3}}>
+            <Container maxWidth={false} sx={{padding: '2rem', display: 'flex', background: '#181818', marginTop: '2rem'}}>
                 <TextField 
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -64,8 +70,8 @@ export default function ChatRoom({ userMessages, userName, sendMessage } : { use
                     sx={{flexGrow: 10, background: '#FFFFFF', borderRadius: '4px'}}
                     >
                 </TextField>
-                <Button onClick={handleSend} sx={{flexGrow: 1}}>
-                    SEND
+                <Button variant='contained' onClick={handleSend} sx={{flexGrow: 1, backgroundColor: '#444444'}}>
+                    <SendIcon fontSize='large' />
                 </Button>
             </Container>
         </Container>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlabAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4e92fd7ffb702d3b1145bc25e7e3dba1c518dc2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50ace698a94978fafc86bd3365b5b1ab66ae836e")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlabAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlabAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -7,7 +7,8 @@ namespace OnlabAPI.DataTransferObjects
         public string ReserverId { get; set; }
         public int TableId { get; set; }
         public int NumberOfPeople { get; set; }
-        public DateTime Date { get; set; }
-        public int Duration { get; set; }
+        public DateOnly Date { get; set; }
+        public TimeOnly StarTime { get; set; }
+        public TimeOnly EndTime { get; set; }
     }
 }

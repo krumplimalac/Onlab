@@ -78,5 +78,24 @@ namespace OnlabAPI.DataTransferObjects
             };
             return newsDTO;
         }
+
+        public ReservationDTO ReservationToDTO(Reservation resetvation)
+        {
+            ReservationDTO reservationDTO = new()
+            {
+                Date = resetvation.Date,
+                EndTime = resetvation.EndTime,
+                StarTime = resetvation.StartTime,
+                NumberOfPeople = resetvation.NumberOfPeople,
+                ReserverId = resetvation.Reserver.Id,
+                TableId = resetvation.Table.Id
+            };
+            return reservationDTO;
+        }
+
+        public TableDTO TableToDTO(Table table)
+        {
+            return new TableDTO { Number = table.Number };
+        }
     }
 }
