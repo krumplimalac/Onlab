@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\BME\\Onlab\\OnlabAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|solutionrelative:onlabapi\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\repository\\irestrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\repository\\irestrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|d:\\bme\\onlab\\onlabapi\\domain\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA602EC2-3FF9-46A1-8A2A-8701BF2584B4}|Domain\\Domain.csproj|solutionrelative:domain\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{869B6677-4F76-4770-B5DF-565EFB14240D}|OnlabAPI\\OnlabAPI.csproj|d:\\bme\\onlab\\onlabapi\\onlabapi\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -178,23 +178,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IChatRepository.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IChatRepository.cs",
-              "RelativeDocumentMoniker": "Domain\\Repository\\IChatRepository.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IChatRepository.cs",
-              "RelativeToolTip": "Domain\\Repository\\IChatRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T13:13:36.734Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "ChatRepository.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\ChatRepository.cs",
               "RelativeDocumentMoniker": "DataAccess\\Repository\\ChatRepository.cs",
@@ -206,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IReservationRepository.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IReservationRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Repository\\IReservationRepository.cs",
@@ -218,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Program.cs",
               "RelativeDocumentMoniker": "OnlabAPI\\Program.cs",
@@ -230,7 +218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ReservationRepository.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess\\Repository\\ReservationRepository.cs",
               "RelativeDocumentMoniker": "DataAccess\\Repository\\ReservationRepository.cs",
@@ -266,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ChatHub.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\ChatHub.cs",
               "RelativeDocumentMoniker": "OnlabAPI\\ChatHub.cs",
@@ -279,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "RestrictionController.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\RestrictionController.cs",
               "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\RestrictionController.cs",
@@ -288,6 +276,31 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAAACYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T08:55:25.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Message.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Message.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Message.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Message.cs",
+              "RelativeToolTip": "Domain\\Models\\Message.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T13:15:39.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IChatRepository.cs",
+              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IChatRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\Repository\\IChatRepository.cs",
+              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IChatRepository.cs",
+              "RelativeToolTip": "Domain\\Repository\\IChatRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T13:13:36.734Z"
             },
             {
               "$type": "Document",
@@ -303,7 +316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "OnlabAPI\\Controllers\\AuthController.cs",
@@ -327,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "IRestrictionRepository.cs",
               "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Repository\\IRestrictionRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Repository\\IRestrictionRepository.cs",
@@ -336,18 +349,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T18:09:28.049Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Message.cs",
-              "DocumentMoniker": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Message.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Message.cs",
-              "ToolTip": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Models\\Message.cs",
-              "RelativeToolTip": "Domain\\Models\\Message.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T13:15:39.205Z"
             },
             {
               "$type": "Document",

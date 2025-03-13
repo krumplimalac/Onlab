@@ -25,7 +25,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const auth = useContext(AuthContext);
-  const settings = auth.authenticated ? ['Kilepes','Regisztracio','Chat'] : ['Belepes','Regisztracio'];
+  const settings = auth.authenticated ? ['Kilepes','Regisztracio','Chat','Foglalas'] : ['Belepes','Regisztracio'];
 
   const handleOpenNavMenu = (event:React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);

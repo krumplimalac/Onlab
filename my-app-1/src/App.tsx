@@ -19,6 +19,7 @@ import ToppingForm from './components/Forms/ToppingForm'
 import PizzaForm from './components/Forms/PizzaForm'
 import Toppings from './components/Toppings'
 import Chat from './pages/Chat'
+import Foglalas from './pages/Foglalas'
 
 
 type IAuthContext = {
@@ -102,6 +103,7 @@ function App() {
                 <Route path="Pizzak/:id/Edit" element={<PizzaForm />}  />
                 <Route path="Feltetek" element={<Toppings/>} />
                 <Route path="Chat" element={<Chat/>} />
+                <Route path="Foglalas" element={<Foglalas/> } />
             </Routes>
           </UserContext.Provider>
         </AuthContext.Provider>

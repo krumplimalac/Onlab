@@ -55,7 +55,7 @@ export default function Chat() {
             if (user.role == 'Admin') {
                 connectionVar.invoke('GetChats');
                 connectionVar.on("ReceiveChats", (ch:string[][]) => {
-                setChats(chats);
+                setChats(ch);
                 });
             } else {
                 setChatId(user.id);
