@@ -20,31 +20,6 @@ namespace DataAccess.Repository
             _context = databaseContext;
         }
 
-        public async Task<News?> ChangeImage(News news)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                if (news.File == null)
-                {
-                    return null;
-                }
-                await news.File.CopyToAsync(memoryStream);
-                if (memoryStream.Length < 2097152)
-                {
-                    var newimage = new Image
-                    {
-                        Bytes = memoryStream.ToArray(),
-                        Description = news.File.FileName
-                    };
-                    news.Image = newimage;
-                    return news;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
 
         public async Task<bool> DeleteNews(int id)
         {
@@ -58,57 +33,25 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public async Task<PagedList<News>?> GetAllNews(Parameter parameters)
+        public async Task<List<News>?> GetAllNews()
         {
-            var news = await _context.News.Include(n => n.Image).OrderByDescending(news => news.Id).ToListAsync();
-            if(news != null)
-            {
-                return PagedList<News>.ToPagedList(news,
-                    parameters.PageNumber,
-                    parameters.PageSize);
-            }
-            return null;
+            return await _context.News.Include(n => n.Image).OrderByDescending(news => news.Id).ToListAsync();
         }
 
         public async Task<News?> GetNewsById(int id)
         {
-            var news = await _context.News.Include(n => n.Image).Where(n => n.Id == id).ToListAsync();
-            if (news.Count != 0)
-            {
-                return news[0];
-            }
-            return null;
+            return await _context.News.Include(n => n.Image).Where(n => n.Id == id).Include(n => n.Image).FirstAsync();
         }
 
-        public async Task<bool> PostNews(News newNews)
+        public async Task CreateNews(News news)
         {
-            var imagenews = await ChangeImage(newNews);
-            if (imagenews == null)
-            {
-                return false;
-            }
-            await _context.News.AddAsync(imagenews);
+            await _context.News.AddAsync(news);
             await _context.SaveChangesAsync();
-            return true;
         }
 
-        public async Task<bool> PutNews(News news, int id)
+        public async Task<bool> UpdateNews(News news)
         {
-            var originalnews = _context.News.Include(n => n.Image).Single(n => n.Id == id);
-            if (originalnews == null)
-            {
-                return false;
-            }
-            originalnews.Title = news.Title;
-            originalnews.Description = news.Description;
-            originalnews.Date = news.Date;
-            if (news.File != null)
-            {
-                var imagenews = await ChangeImage(news);
-                if (imagenews == null) return false;
-                originalnews.Image = imagenews.Image;
-            }
-            _context.Update(originalnews);
+            _context.Update(news);
             try
             {
                 await _context.SaveChangesAsync();

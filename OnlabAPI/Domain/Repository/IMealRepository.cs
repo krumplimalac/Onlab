@@ -11,10 +11,14 @@ namespace Domain.Repository
 {
     public interface IMealRepository
     {
-        Task<PagedList<Meal>?> GetAllMeals(MealParameters mealParameters);
+        Task<List<Meal>?> GetMealsByParameters(MealParameters mealParameters);
+        Task<List<Meal>?> GetMeals();
         Task<Meal?> GetMealById(int id);
-        Task<bool> PostMeal(Meal meal, string[]? restrictionNames);
-        Task<bool> PutMeal(Meal meal, int id, string[]? restrictionNames);
+        Task CreateMeal(Meal meal);
+        Task<bool> UpdateMeal(Meal meal);
         Task<bool> DeleteMeal(int id);
+        Task<List<Restriction>?> GetRestrictions();
+        Task<bool> DeleteRestriction(int id);
+        Task<List<Restriction>?> GetRestrictionsIncludingToppings();
     }
 }

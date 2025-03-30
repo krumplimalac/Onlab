@@ -118,7 +118,6 @@ D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.GeneratedMSBuildEditorC
 D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.AssemblyInfoInputs.cache
 D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.AssemblyInfo.cs
 D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.csproj.CoreCompileInputs.cache
-D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.MvcApplicationPartsAssemblyInfo.cs
 D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.MvcApplicationPartsAssemblyInfo.cache
 D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.sourcelink.json
 D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\staticwebassets.build.json

@@ -208,20 +208,25 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
-
-                    b.Property<TimeOnly>("EndTime")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("NumberOfPeople")
                         .HasColumnType("int");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ReserverId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time");
+                    b.Property<string>("ReserverName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("TableId")
                         .HasColumnType("int");
@@ -282,7 +287,7 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Number")
+                    b.Property<int>("Capacity")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -293,17 +298,17 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            Number = 1
+                            Capacity = 4
                         },
                         new
                         {
                             Id = 2,
-                            Number = 2
+                            Capacity = 6
                         },
                         new
                         {
                             Id = 3,
-                            Number = 3
+                            Capacity = 2
                         });
                 });
 

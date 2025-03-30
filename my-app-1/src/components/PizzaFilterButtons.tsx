@@ -1,4 +1,4 @@
-import { Button, Container } from "@mui/material";
+import { Button, Container, SxProps, Theme } from "@mui/material";
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState} from "react";
 
@@ -12,8 +12,15 @@ export default function PizzaFilterButtons({setUrl,url}: {setUrl:Dispatch<SetSta
     const [toppings, setToppings] = useState<filterProp[]>([]);
     const [restrictionIds, setRestrictionIds] = useState<number[]>([]);
     const [toppingIds, setToppingIds] = useState<number[]>([]);
+    const buttonSx : SxProps<Theme> = {
+        backgroundColor: "#343444",
+        color: "#FFFFFF",
+        borderRadius: "25px", 
+        margin: "1rem", 
+        padding: "10px 20px 10px 20px"
+    }
 
-    const fetchresRrictions = async () => {
+    const fetchRestrictions = async () => {
         try 
         {
             const response = await axios.get(`api/Restriction`);
@@ -25,7 +32,7 @@ export default function PizzaFilterButtons({setUrl,url}: {setUrl:Dispatch<SetSta
         }
     }
 
-    const fetchresToppings = async () => {
+    const fetchToppings = async () => {
         try 
         {
             const response = await axios.get(`api/Topping`);
@@ -56,8 +63,8 @@ export default function PizzaFilterButtons({setUrl,url}: {setUrl:Dispatch<SetSta
     }
 
     useEffect(() => {
-        fetchresRrictions();
-        fetchresToppings();
+        fetchRestrictions();
+        fetchToppings();
     },[]);
 
     useEffect(() => {
@@ -89,10 +96,7 @@ export default function PizzaFilterButtons({setUrl,url}: {setUrl:Dispatch<SetSta
             <Button 
             key={-1} 
             onClick={() => (setUrl(url), setRestrictionIds([]))} 
-            sx={{backgroundColor: "#343444", 
-            borderRadius: "25px", 
-            margin: "1rem", 
-            padding: "10px 20px 10px 20px"}} >
+            sx={buttonSx} >
                 Mindegyik
             </Button>
             </Container> 
@@ -111,10 +115,7 @@ export default function PizzaFilterButtons({setUrl,url}: {setUrl:Dispatch<SetSta
             <Button 
             key={-1} 
             onClick={() => (setUrl(url), setToppingIds([]))} 
-            sx={{backgroundColor: "#343444", 
-            borderRadius: "25px", 
-            margin: "1rem", 
-            padding: "10px 20px 10px 20px"}} >
+            sx={buttonSx} >
                 Mindegyik
             </Button>
         </Container> 

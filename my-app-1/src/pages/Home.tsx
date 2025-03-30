@@ -23,8 +23,8 @@ let ital = {
 }
 
 export default function Home(){   
-    const user = useContext(UserContext);
-
+    const {user} = useContext(UserContext);
+    console.log(user);
     return (
         <Container disableGutters maxWidth={false} >
             <CardMedia 
@@ -35,7 +35,6 @@ export default function Home(){
             sx={{'&:hover': {height: '550px'},transition: '0.5s'}}/> 
             <Container maxWidth={false} className='myclass' sx={{display: 'grid'}}>
                 <h4>Üdvözlünk {user.email}! {user.role !== "" ? `role:${user.role}` : ""} {user.id}</h4>
-                
             </Container>
             
             <HomeNav {...etel}/>

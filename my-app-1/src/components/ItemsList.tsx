@@ -35,7 +35,7 @@ export default function Italok({urlProp,title,addUrl}:{urlProp:string, title:str
     const [url, setUrl] = useState(urlProp);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
-    const user = useContext(UserContext);
+    const {user} = useContext(UserContext);
     const StyledPagination = styled(Pagination)(({ theme }) => ({
         "& .MuiPaginationItem-root": {
             color: "#FFFFFF"
@@ -93,7 +93,7 @@ export default function Italok({urlProp,title,addUrl}:{urlProp:string, title:str
 
 
     return(
-        <Container disableGutters maxWidth={false} sx={{marginTop: '2rem'}}>
+        <Container disableGutters maxWidth={false} sx={{marginTop: '2rem',minHeight: '780px'}}>
             { loading ? <Loading /> : null }
             <Container maxWidth={false}>
                 <Container disableGutters maxWidth={false} sx={{display: "flex", alignItems: "center"}}>

@@ -27,7 +27,7 @@ export default function Hirek(){
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [news, setNews] = useState<NewsProp[]>([]);
-    const user = useContext(UserContext);
+    const {user} = useContext(UserContext);
     const navigate = useNavigate();
     const url = `/api/News?`;
     const StyledPagination = styled(Pagination)(({ theme }) => ({
@@ -69,7 +69,7 @@ export default function Hirek(){
     }, [currentPage]);
 
     return(
-        <Container maxWidth={false} disableGutters>
+        <Container maxWidth={false} disableGutters sx={{minHeight: '780px'}}>
             <Container maxWidth={false}>
                 <Container disableGutters maxWidth={false} sx={{display: "flex", alignItems: "center"}}>
                     <Typography variant='h1'>

@@ -29,16 +29,26 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public async Task<List<Table>> GetTables()
+        public async Task<List<Table>?> GetReservedTablesByTimeFrame(DateTime startTime, DateTime endTime)
+        {
+            return await _context.Reservations.
+                Select(r => r).
+                Where(r => r.StartTime < endTime && r.EndTime > startTime).
+                Include(r => r.Table).
+                Select(r => r.Table).
+                Distinct().
+                ToListAsync();
+        }
+
+        public async Task<List<Table>?> GetTables()
         {
             return await _context.Tables.Select(t => t).Include(t => t.Reservations).ToListAsync();
         }
 
-        public async Task<bool> PostTable(Table table)
+        public async Task CreateTable(Table table)
         {
             await _context.Tables.AddAsync(table);
             await _context.SaveChangesAsync();
-            return true;
         }
     }
 }

@@ -13,11 +13,12 @@ namespace Domain.Models
         [Key]
         public int Id { get; set; }
         public IdentityUser Reserver { get; set; }
+        public string ReserverName { get; set; }
+        public string PhoneNumber { get; set; }
         public Table Table { get; set; }
         public int NumberOfPeople { get; set; }
-        public DateOnly Date { get; set; }
-        public TimeOnly StartTime { get; set; }
-        public TimeOnly EndTime { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
 
 
 

@@ -230,7 +230,17 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[OnlabAPI.DataTransferObjects.ItemDTO, OnlabAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "OnlabAPI.Controllers.MealController",
@@ -280,7 +290,7 @@
   },
   {
     "ContainingType": "OnlabAPI.Controllers.MealController",
-    "Method": "GetMeal",
+    "Method": "GetMealById",
     "RelativePath": "api/Meal/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -294,7 +304,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Models.Meal",
+        "Type": "OnlabAPI.DataTransferObjects.ItemDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -343,7 +353,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "OnlabAPI.DataTransferObjects.ItemDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "OnlabAPI.Controllers.MealController",
@@ -643,12 +663,18 @@
   },
   {
     "ContainingType": "OnlabAPI.Controllers.ReservationController",
-    "Method": "GetAllReservations",
+    "Method": "GetReservarionsByDay",
     "RelativePath": "api/Reservation",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -695,6 +721,27 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.ReservationController",
+    "Method": "GetFreeTimes",
+    "RelativePath": "api/Reservation/GetFreeTimes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numberOfPeople",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "duration",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

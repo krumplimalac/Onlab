@@ -26,6 +26,51 @@ namespace OnlabAPI.DataTransferObjects
             return itemDTO;
         }
 
+        public Meal DTOtoMeal(MealDTO meal)
+        {
+            return new Meal
+            {
+                Name = meal.Name,
+                Description = meal.Description,
+                Price = meal.Price,
+                File = meal.FormFile,
+            };
+        }
+
+        public Drink DTOtoDrink(DrinkDTO drink)
+        {
+            return new Drink
+            {
+                Name = drink.Name,
+                Description = drink.Description,
+                Price = drink.Price,
+                Type = drink.Type,
+                File = drink.File
+            };
+        }
+
+        public News DTOtoNews(NewsFormDTO news)
+        {
+            return new News
+            {
+                Title = news.Title,
+                Description = news.Description,
+                Date = news.Date,
+                File = news.File
+            };
+        }
+
+        public Pizza DTOtoPizza(PizzaDTO pizza)
+        {
+            return new Pizza
+            {
+                Name = pizza.Name,
+                Description = pizza.Description,
+                Price = pizza.Price,
+                File = pizza.FormFile
+            };
+        }
+
         public ItemDTO PizzaToDTO(Pizza pizza)
         {
             ItemDTO itemDTO = new()
@@ -79,23 +124,24 @@ namespace OnlabAPI.DataTransferObjects
             return newsDTO;
         }
 
-        public ReservationDTO ReservationToDTO(Reservation resetvation)
+        public ReservationDTO ReservationToDTO(Reservation reservation)
         {
             ReservationDTO reservationDTO = new()
             {
-                Date = resetvation.Date,
-                EndTime = resetvation.EndTime,
-                StarTime = resetvation.StartTime,
-                NumberOfPeople = resetvation.NumberOfPeople,
-                ReserverId = resetvation.Reserver.Id,
-                TableId = resetvation.Table.Id
+                EndTime = reservation.EndTime,
+                StartTime = reservation.StartTime,
+                NumberOfPeople = reservation.NumberOfPeople,
+                Reserver = reservation.ReserverName,
+                ReserverId = reservation.Reserver.Id,
+                PhoneNumber = reservation.PhoneNumber,
+                TableId = reservation.Table.Id
             };
             return reservationDTO;
         }
 
         public TableDTO TableToDTO(Table table)
         {
-            return new TableDTO { Number = table.Number };
+            return new TableDTO { Capacity = table.Capacity, Id = table.Id };
         }
     }
 }

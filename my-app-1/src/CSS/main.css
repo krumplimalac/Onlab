@@ -4,3 +4,9 @@
 .myclass-lighter{
     background-color: #202020;
 }
+.date{
+    width: 400px;
+    height: auto;
+    font: inherit;
+    font-size: large;
+}

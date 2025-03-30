@@ -24,7 +24,7 @@ export default function SignIn() {
   const navigate = useNavigate();
   const {authenticated, setAuthenticated } = useContext(AuthContext);
   
-  let user = useContext(UserContext);
+  let {user,setUser} = useContext(UserContext);
 
   const handleChangeEmail = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     if (event.currentTarget.validity.valid) {
@@ -65,29 +65,22 @@ export default function SignIn() {
           console.log();
           if ( res !== undefined ){
             if(res.status == 200){
-              setAuthenticated(true);
-              user.email = res.data[0].value;
-              if(res.data.length > 1){
-                user.id = res.data[1].value;
-                console.log(" id = IDra");
-              } else {
-                user.id = "";
-                console.log(" id = semmire");
-              }
-              if(res.data.length > 2){
-                user.role = res.data[2].value
-              } else {
-                user.role = ""
-              }
+              setAuthenticated(a => a = true);
+              setUser(
+                {...user,
+                email:res.data[0].value,
+                id:res.data[1].value,
+                role:res.data[2].value
+              });
               
+              console.log(user);
               localStorage.setItem('isAuth','true');
-              localStorage.setItem('email',user.email);
-              localStorage.setItem('role',user.role);
-              localStorage.setItem('id',user.id);
+              localStorage.setItem('email',res.data[0].value);
+              localStorage.setItem('id',res.data[1].value);
+              localStorage.setItem('role',res.data[2].value);
               setErrorMessage("Sikeres bejelentkezés!");
               setError(false);
               setOpenErr(true);
-              setTimeout(() => {},5000);
               console.log(document.cookie);
               navigate("/Home");
             }
@@ -98,17 +91,14 @@ export default function SignIn() {
     login();
   };
 
-
-  useEffect(() => {
-    console.log(authenticated);
-  });
-
   return (
-      <Container component="main" maxWidth="xs" 
+  <Container disableGutters maxWidth={false} sx={{minHeight: '780px'}}>
+    <Container component="main" maxWidth="xs" 
       sx={{ 
       backgroundColor: '#30343A',
       paddingTop: '4rem',
-      paddingBottom:'4rem'}}>
+      paddingBottom:'4rem',
+      }}>
         { loading ? <Loading/> : null }
         <SnackBar text={errorMessage} error={error} isOpen={openErr} setIsOpen={setOpenErr} />
         <Box
@@ -193,5 +183,6 @@ export default function SignIn() {
           </Box>
         </Box>
       </Container>
+  </Container>
   );
 }

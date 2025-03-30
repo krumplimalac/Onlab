@@ -10,10 +10,10 @@ namespace Domain.Repository
 {
     public interface INewsRepository
     {
-        Task<PagedList<News>?> GetAllNews(Parameter parameters);
+        Task<List<News>?> GetAllNews();
         Task<News?> GetNewsById(int id);
-        Task<bool> PostNews(News newNews);
-        Task<bool> PutNews(News news, int id);
+        Task CreateNews(News newNews);
+        Task<bool> UpdateNews(News news);
         Task<bool> DeleteNews(int id);
     }
 }

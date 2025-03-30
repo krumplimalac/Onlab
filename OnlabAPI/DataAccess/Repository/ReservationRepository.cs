@@ -19,6 +19,7 @@ namespace DataAccess.Repository
             _context = context;
         }
 
+
         public async Task<bool> DeleteReservation(int id)
         {
             var reservation = await _context.Reservations.FindAsync(id);
@@ -31,9 +32,9 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public async Task<List<Reservation>> GetReservations()
+        public async Task<List<Reservation>> GetReservationsByDate(DateTime date)
         {
-            return await _context.Reservations.Select(r => r).Include(r => r.Reserver).ToListAsync();
+            return await _context.Reservations.Select(r => r).Where(r => r.StartTime.Year == date.Year && r.StartTime.Month == date.Month && r.StartTime.Day == date.Day).Include(r => r.Reserver).Include(r => r.Table).ToListAsync();
         }
 
         public async Task<List<Reservation>> GetReservationsByUser(IdentityUser user)
@@ -41,14 +42,11 @@ namespace DataAccess.Repository
             return await _context.Reservations.Select(r => r).Where(r =>r.Reserver == user).Include(r => r.Reserver).ToListAsync();
         }
 
-        public async Task<bool> PostReservation(Reservation reservation, int tableid)
+        public async Task CreateReservation(Reservation reservation)
         {
-            var table = await _context.Tables.Select(t => t).Where(t => t.Id == tableid).SingleAsync();
-            if (table == null) return false;
-            reservation.Table = table;
             await _context.Reservations.AddAsync(reservation);
             await _context.SaveChangesAsync();
-            return true;
         }
+
     }
 }

@@ -19,69 +19,38 @@ namespace DataAccess.Repository
         {
             _context = context;
         }
-        public async Task<Pizza?> ChangeImage(Pizza pizza)
+
+        public async Task<List<Pizza>?> GetAllPizzas()
         {
-            using var memoryStream = new MemoryStream();
-            if (pizza.File == null)
-            {
-                return null;
-            }
-            await pizza.File.CopyToAsync(memoryStream);
-            if (memoryStream.Length < 2097152)
-            {
-                var newimage = new Image
-                {
-                    Bytes = memoryStream.ToArray(),
-                    Description = pizza.File.FileName
-                };
-                pizza.Image = newimage;
-                return pizza;
-            }
-            else
-            {
-                return null;
-            }
+            return await _context.Pizzas.Select(p => p).Include(p => p.Restrictions).Include(p => p.Toppings).Include(p => p.Image).ToListAsync();
+            
         }
 
-        public async Task<Pizza> AddToppingsWithRestrictions(Pizza pizza, int[]? toppingIds)
+        public async Task<Pizza?> GetPizzaById(int id)
         {
-            var toppings = await _context.Toppings.Include(t => t.Restrictions).ToListAsync();
-            pizza.Toppings = [];
-            if (toppings != null && toppingIds != null)
+            return await _context.Pizzas.Select(p => p).Where(p => p.Id == id).Include(p => p.Image).Include(p => p.Restrictions).Include(p => p.Toppings).FirstAsync();
+        }
+
+        public async Task CreatePizza(Pizza pizza)
+        {
+            await _context.Pizzas.AddAsync(pizza);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> UpdatePizza(Pizza pizza)
+        {
+            _context.Update(pizza);
+            try
             {
-                foreach (var topping in toppings)
-                {
-                    foreach (var id in toppingIds)
-                    {
-                        if (topping.Id == id)
-                        {
-                            pizza.Toppings.Add(topping);
-                        }
-                    }
-                }
+                await _context.SaveChangesAsync();
             }
-            pizza.Restrictions = [];
-            var restrictions = await _context.Restrictions.ToListAsync();
-            bool put = true;
-            foreach (var restriction in restrictions)
+            catch (DbUpdateConcurrencyException)
             {
-                foreach (var topping in pizza.Toppings)
-                {
-                    if (!topping.Restrictions.Contains(restriction))
-                    {
-                        put = false;
-                    }
-                }
-                if (put)
-                {
-                    pizza.Restrictions.Add(restriction);
-                }
-                else
-                {
-                    put = true;
-                }
+                return false;
             }
-            return pizza;
+
+            return true;
+
         }
 
         public async Task<bool> DeletePizza(int id)
@@ -96,90 +65,37 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public async Task<PagedList<Pizza>?> GetAllPizzas(PizzaParameters pizzaParameters)
+        public async Task<bool> DeleteTopping(int id)
         {
-            if (pizzaParameters.Restrictions == null && pizzaParameters.Toppings == null)
-            {
-                return PagedList<Pizza>
-                    .ToPagedList(
-                    await _context.Pizzas
-                    .Include(p => p.Restrictions)
-                    .Include(p => p.Toppings)
-                    .Include(p => p.Image)
-                    .ToListAsync(),
-                        pizzaParameters.PageNumber,
-                        pizzaParameters.PageSize);
-            }
-            var pizzas = await _context.Pizzas.Include(p => p.Restrictions).Include(p => p.Toppings).Include(p => p.Image).ToListAsync();
-            if (pizzaParameters.Restrictions != null)
-            {
-                pizzas = pizzas.Where(p => p.Restrictions.Any(r => pizzaParameters.Restrictions.Contains(r.Id))).ToList();
-            }
-            if(pizzaParameters.Toppings != null)
-            {
-                pizzas = pizzas.Where(p => p.Toppings.Any(t => pizzaParameters.Toppings.Contains(t.Id))).ToList();
-            }
-            
-            if (pizzas.Count != 0) { 
-                return PagedList<Pizza>.ToPagedList(pizzas,
-                            pizzaParameters.PageNumber,
-                            pizzaParameters.PageSize);
-            }
-            return null;
-        }
-
-        public async Task<Pizza?> GetPizzaById(int id)
-        {
-            var pizzas = await _context.Pizzas.Select(p => new Pizza
-            {
-                Name = p.Name,
-                Id = p.Id,
-                Description = p.Description,
-                Price = p.Price,
-                Image = p.Image,
-                Restrictions = p.Restrictions.ToList(),
-                Toppings = p.Toppings.ToList(),
-            }).Where(p => p.Id == id).ToListAsync();
-            if (pizzas.Any())
-            {
-                return pizzas[0];
-            }
-            return null;
-        }
-
-        public async Task<bool> PostPizza(Pizza pizza, int[]? toppingIds)
-        {
-            pizza = await AddToppingsWithRestrictions(pizza, toppingIds);
-            var imagepizza = await ChangeImage(pizza);
-            if (imagepizza == null)
+            var topping = await _context.Toppings.FindAsync(id);
+            if (topping == null)
             {
                 return false;
             }
-            pizza = imagepizza;
-            await _context.Pizzas.AddAsync(pizza);
+            _context.Toppings.Remove(topping);
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<bool> PutPizza(Pizza pizza, int id, int[]? ids)
+        public async Task<List<Topping>?> GetAllToppings()
         {
-            var originalpizza = _context.Pizzas.Include(p => p.Image).Include(p => p.Restrictions).Include(p => p.Toppings).Single(p => p.Id == id);
-            //????
-            /*
-            originalpizza.Name = pizza.Name;
-            originalpizza.Price = pizza.Price;
-            originalpizza.Description = pizza.Description;*/
-            originalpizza = pizza;
-            originalpizza.Restrictions.Clear();
-            originalpizza.Toppings.Clear(); 
-            originalpizza = await AddToppingsWithRestrictions(originalpizza, ids);
-            if (pizza.File != null)
-            {
-                var imagepizza = await ChangeImage(pizza);
-                if (imagepizza == null) return false;
-                originalpizza.Image = imagepizza.Image;
-            }
-            _context.Update(originalpizza);
+            return await _context.Toppings.Include(t => t.Restrictions).ToListAsync();
+        }
+
+        public async Task<Topping?> GetToppingById(int id)
+        {
+            return await _context.Toppings.Select(t => t).Where(t => t.Id == id).Include(t => t.Restrictions).FirstAsync();
+        }
+
+        public async Task CreateTopping(Topping topping)
+        {
+            await _context.Toppings.AddAsync(topping);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> UpdateTopping(Topping topping)
+        {
+            _context.Update(topping);
             try
             {
                 await _context.SaveChangesAsync();
@@ -190,7 +106,7 @@ namespace DataAccess.Repository
             }
 
             return true;
-
         }
     }
 }
+

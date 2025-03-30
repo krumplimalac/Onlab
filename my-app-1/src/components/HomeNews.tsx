@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function HomeNews(){
-const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-const delay = 2500;
+  const colors = ["#0088FE", "#00C49F", "#FFBB28"];
+  const delay = 2500;
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(0);
 

@@ -1,9 +1,11 @@
 ﻿using DataAccess.Repository;
+using Domain.Interfaces;
 using Domain.Models;
 using Domain.Parameters;
 using Domain.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using OnlabAPI.DataTransferObjects;
 
@@ -13,21 +15,24 @@ namespace OnlabAPI.Controllers
     [ApiController]
     public class DrinkController : ControllerBase
     {
-        private readonly IDrinkRepository _drinkRepository;
+        private readonly IDrinkService _drinkService;
         private DTOMappers mapper = new DTOMappers();
 
-        public DrinkController(IDrinkRepository repo)
+        public DrinkController(IDrinkService service)
         {
-            _drinkRepository = repo;
+            _drinkService = service;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetDrinks([FromQuery] Parameter parameters) 
         {
-            var drinks = await _drinkRepository.GetAll(parameters);
+            if (parameters == null) return BadRequest("Roszz paraméterek");
+
+            var drinks = await _drinkService.GetAllDrinksToPagedList(parameters);
+
             if (drinks == null)
             {
-                return NotFound();
+                return NotFound("Nincsenek italok");
             }
             List<ItemDTO> items = [];
             foreach (var drink in drinks)
@@ -50,10 +55,10 @@ namespace OnlabAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemDTO>> GetDrink(int id)
         {
-            var drink = await _drinkRepository.GetDrinkById(id);
+            var drink = await _drinkService.GetDrinkById(id);
             if (drink == null)
             {
-                return NotFound();
+                return NotFound("Nincs ilyen ital");
             }
             else
             {
@@ -65,52 +70,33 @@ namespace OnlabAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> PostDrink(DrinkDTO drink)
         {
-            var newDrink = new Drink
-            {
-                Name = drink.Name,
-                Description = drink.Description,
-                Price = drink.Price,
-                Type = drink.Type,
-                File = drink.File
-            };
-            var result = await _drinkRepository.PostDrink(newDrink);
-            if (!result)
-            {
-                return BadRequest();
-            }
-            return CreatedAtAction(nameof(GetDrinks), newDrink);
+            await _drinkService.AddDrink(mapper.DTOtoDrink(drink));
+            return CreatedAtAction(nameof(PostDrink), drink);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutDrink(DrinkDTO drink,int id)
         {
-            var newDrink = new Drink
+            var result = await _drinkService.ChangeDrink(mapper.DTOtoDrink(drink), id);
+            if (result == null)
             {
-                Name = drink.Name,
-                Description = drink.Description,
-                Price = drink.Price,
-                Type = drink.Type,
-                File = drink.File
-            };
-            var result = await _drinkRepository.PutDrink(newDrink, id);
-            if (!result)
-            {
-                return BadRequest();
+                return NotFound("Nincs ilyen ital");
             }
-            return CreatedAtAction(nameof(GetDrinks), newDrink);
+            ItemDTO itemDTO = mapper.DrinkToDTO(result);
+            return Ok(itemDTO);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteDrink(int id)
         {
-            var deleted = await _drinkRepository.DeleteDrink(id);
+            var deleted = await _drinkService.DeleteDrink(id);
             if (!deleted)
             {
-                return NotFound();
+                return NotFound("Nincs ilyen ital");
             }
-            return Ok();
+            return Ok("Sikeres törlés");
         }
 
     }

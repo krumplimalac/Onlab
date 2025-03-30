@@ -18,7 +18,7 @@ export default function DetailedNews(){
     const [item, setItem] = useState<newsProp>();
     const params = useParams();
     const navigate = useNavigate();
-    const user = useContext(UserContext);
+    const {user} = useContext(UserContext);
     const [loading, setLoading] = useState(false);
     
     const handleDelete = () => {

@@ -354,7 +354,33 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ItemDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ItemDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ItemDTO"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -459,17 +485,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Meal"
+                  "$ref": "#/components/schemas/ItemDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Meal"
+                  "$ref": "#/components/schemas/ItemDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Meal"
+                  "$ref": "#/components/schemas/ItemDTO"
                 }
               }
             }
@@ -542,7 +568,24 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDTO"
+                }
+              }
+            }
           }
         }
       },
@@ -1023,6 +1066,16 @@
         "tags": [
           "Reservation"
         ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -1094,6 +1147,36 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Reservation/GetFreeTimes": {
+      "get": {
+        "tags": [
+          "Reservation"
+        ],
+        "parameters": [
+          {
+            "name": "numberOfPeople",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "duration",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1346,69 +1429,6 @@
   },
   "components": {
     "schemas": {
-      "DateOnly": {
-        "type": "object",
-        "properties": {
-          "year": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "month": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "day": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "dayOfWeek": {
-            "$ref": "#/components/schemas/DayOfWeek"
-          },
-          "dayOfYear": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "dayNumber": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "DayOfWeek": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "Image": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "bytes": {
-            "type": "string",
-            "format": "byte",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ItemDTO": {
         "type": "object",
         "properties": {
@@ -1434,53 +1454,6 @@
           },
           "image": {
             "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Meal": {
-        "required": [
-          "description",
-          "id",
-          "name",
-          "price"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "price": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "description": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "restrictions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Restriction"
-            },
-            "nullable": true
-          },
-          "image": {
-            "$ref": "#/components/schemas/Image"
-          },
-          "imageId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "file": {
-            "type": "string",
-            "format": "binary",
             "nullable": true
           }
         },
@@ -1536,54 +1509,6 @@
         },
         "additionalProperties": false
       },
-      "Pizza": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "price": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "toppings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Topping"
-            },
-            "nullable": true
-          },
-          "restrictions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Restriction"
-            },
-            "nullable": true
-          },
-          "image": {
-            "$ref": "#/components/schemas/Image"
-          },
-          "imageId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "file": {
-            "type": "string",
-            "format": "binary",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "PizzaDTO": {
         "type": "object",
         "properties": {
@@ -1618,6 +1543,14 @@
             "type": "string",
             "nullable": true
           },
+          "reserver": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
           "tableId": {
             "type": "integer",
             "format": "int32"
@@ -1626,49 +1559,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "date": {
-            "$ref": "#/components/schemas/DateOnly"
-          },
-          "starTime": {
-            "$ref": "#/components/schemas/TimeOnly"
+          "startTime": {
+            "type": "string",
+            "format": "date-time"
           },
           "endTime": {
-            "$ref": "#/components/schemas/TimeOnly"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Restriction": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
             "type": "string",
-            "nullable": true
-          },
-          "meals": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Meal"
-            },
-            "nullable": true
-          },
-          "toppings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Topping"
-            },
-            "nullable": true
-          },
-          "pizzas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Pizza"
-            },
-            "nullable": true
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -1676,76 +1573,13 @@
       "TableDTO": {
         "type": "object",
         "properties": {
-          "number": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "TimeOnly": {
-        "type": "object",
-        "properties": {
-          "hour": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "minute": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "second": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "millisecond": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "microsecond": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "nanosecond": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "ticks": {
-            "type": "integer",
-            "format": "int64",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Topping": {
-        "type": "object",
-        "properties": {
           "id": {
             "type": "integer",
             "format": "int32"
           },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "restrictions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Restriction"
-            },
-            "nullable": true
-          },
-          "pizzas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Pizza"
-            },
-            "nullable": true
+          "capacity": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

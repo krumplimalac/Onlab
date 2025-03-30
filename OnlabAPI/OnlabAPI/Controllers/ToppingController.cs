@@ -1,4 +1,5 @@
 ﻿using DataAccess.Repository;
+using Domain.Interfaces;
 using Domain.Models;
 using Domain.Repository;
 using Microsoft.AspNetCore.Authorization;
@@ -12,19 +13,19 @@ namespace OnlabAPI.Controllers
     [ApiController]
     public class ToppingController : ControllerBase
     {
-        private readonly IToppingRepository _repo;
-        public ToppingController(IToppingRepository toppingRepository)
+        private readonly IPizzaService _pizzaService;
+        public ToppingController(IPizzaService pizzaService)
         {
-            _repo = toppingRepository;
+            _pizzaService = pizzaService;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetToppings() 
         {
-            var toppings = await _repo.GetAllToppings();
+            var toppings = await _pizzaService.GetAllToppings();
             if (toppings == null)
             {
-                return NotFound();
+                return NotFound("Nincsenek feltétek");
             }
             return Ok(toppings);
         }
@@ -33,28 +34,26 @@ namespace OnlabAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<ToppingDTO>> PostTopping([FromForm]ToppingDTO topping)
         {
-            var names = JsonConvert.DeserializeObject<string[]>(topping.Restrictions);
             var newtopping = new Topping
             {
                 Name = topping.Name,
             };
-            await _repo.PostTopping(newtopping,names);
-            return Ok();
+            await _pizzaService.AddTopping(newtopping, topping.Restrictions);
+            return CreatedAtAction(nameof(PostTopping), topping);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutTopping(ToppingDTO topping, int id)
         {
-            var names = JsonConvert.DeserializeObject<string[]>(topping.Restrictions);
             var newTopping = new Topping
             {
                 Name = topping.Name,
             };
-            var result = await _repo.PutTopping(newTopping, id, names);
+            var result = await _pizzaService.ChangeTopping(newTopping, id, topping.Restrictions);
             if (!result)
             {
-                return BadRequest();
+                return NotFound("Nincs ilyen feltét");
             }
             return CreatedAtAction(nameof(PutTopping), newTopping);
         }
@@ -63,12 +62,12 @@ namespace OnlabAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTopping(int id)
         {
-            var result = await _repo.DeleteTopping(id);
+            var result = await _pizzaService.DeleteTopping(id);
             if (!result)
             {
-                return NotFound();
+                return NotFound("Nincs ilyen feltét");
             }
-            return Ok();
+            return Ok("sikeres törlés");
         }
     }
 }

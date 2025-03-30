@@ -40,10 +40,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMealRepository, MealRepository>();
-builder.Services.AddScoped<IRestrictionRepository, RestrictionRepository>();
 builder.Services.AddScoped<INewsRepository, NewsRepository>();
 builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
-builder.Services.AddScoped<IToppingRepository, ToppingRepository>();
 builder.Services.AddScoped<IPizzaRepository, PizzaRepository>();
 builder.Services.AddScoped<IChatRepository, ChatRepository>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();

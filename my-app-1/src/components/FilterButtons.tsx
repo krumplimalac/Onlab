@@ -48,9 +48,35 @@ export default function FilterButtons({setUrl,url,filter}: {setUrl:Dispatch<SetS
     return(
         <Container sx={{display: "flex", justifyContent: "space-around"}}>
             {restrictions.map((item:filterProp)=>(
-                <Button  variant={ids.includes(item.id) ? "contained" : "text"} key={item.id}  onClick={() => handleFilterButtonClick(item.id)} sx={{backgroundColor: ids.includes(item.id) ? "#343474" : "#343444", borderRadius: "25px",margin: "1rem", padding: "10px 20px 10px 20px"}}>{item.name}</Button>
+                <Button  
+                variant={ids.includes(item.id) ? "contained" : "text"} 
+                key={item.id}  
+                onClick={() => handleFilterButtonClick(item.id)} 
+                sx={{
+                    backgroundColor: 
+                        ids.includes(item.id) ? "#343474" : "#343444",
+                    color: "#FFFFFF",
+                    borderRadius: "25px",
+                    margin: "1rem", 
+                    padding: "10px 20px 10px 20px"
+                }}
+                >
+                    {item.name}
+                </Button>
             ))}
-            <Button key={-1} onClick={() => (setUrl(url), setIds([]))} sx={{backgroundColor: "#343444", borderRadius: "25px",margin: "1rem", padding: "10px 20px 10px 20px"}} >Mindegyik</Button>
+            <Button 
+            key={-1} 
+            onClick={() => (setUrl(url), setIds([]))} 
+            sx={{
+                backgroundColor: "#343444",
+                color: "#FFFFFF", 
+                borderRadius: "25px",
+                margin: "1rem", 
+                padding: "10px 20px 10px 20px"
+                }} 
+            >
+                Mindegyik
+            </Button>
         </Container> 
     )
 }

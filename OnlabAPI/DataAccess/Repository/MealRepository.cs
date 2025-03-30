@@ -15,49 +15,40 @@ namespace DataAccess.Repository
             _context = context;
         }
 
-        public async Task<Meal?> ChangeImage(Meal meal)
+        public async Task<List<Meal>?> GetMeals()
         {
-            using var memoryStream = new MemoryStream();
-            if (meal.File == null)
-            {
-                return null;
-            }
-            await meal.File.CopyToAsync(memoryStream);
-            if (memoryStream.Length < 2097152)
-            {
-                var newimage = new Image
-                {
-                    Bytes = memoryStream.ToArray(),
-                    Description = meal.File.FileName
-                };
-                meal.Image = newimage;
-                return meal;
-            }
-            else
-            {
-                return null;
-            }
+            return await _context.Meals.Select(m => m).Include(m => m.Restrictions).Include(m => m.Image).ToListAsync();
+        }
+        public async Task<List<Meal>?> GetMealsByParameters(MealParameters mealParameters)
+        {
+           return await _context.Meals.Select(m => m).Include(m => m.Restrictions).Include(m => m.Image).Where(m => m.Restrictions.Any(r => mealParameters.Restrictions.Contains(r.Id))).ToListAsync();
+            
         }
 
-        public async Task<Meal> AddRestricitons(Meal meal, string[]? restrictionNames)
+        public async Task<Meal?> GetMealById(int id)
         {
-            List<Restriction> restrictions = [];
-            restrictions = await _context.Restrictions.ToListAsync();
-            meal.Restrictions = [];
-            if (restrictions.Count != 0 && restrictionNames != null)
+            return await _context.Meals.Select(m => m).Include(m => m.Restrictions).Include(m => m.Image).Where(m => m.Id == id).FirstAsync();
+            
+        }
+
+        public async Task CreateMeal(Meal meal)
+        {
+            await _context.Meals.AddAsync(meal);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> UpdateMeal(Meal meal)
+        {
+            _context.Update(meal);
+            try
             {
-                foreach (var restriction in restrictions)
-                {
-                    foreach (var name in restrictionNames)
-                    {
-                        if (restriction.Name == name)
-                        {
-                            meal.Restrictions.Add(restriction);
-                        }
-                    }
-                }
+                await _context.SaveChangesAsync();
             }
-            return meal;
+            catch (DbUpdateConcurrencyException)
+            { 
+                return false;
+            }
+            return true;
         }
 
         public async Task<bool> DeleteMeal(int id)
@@ -72,102 +63,26 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public async Task<PagedList<Meal>?> GetAllMeals(MealParameters mealParameters)
+        public async Task<bool> DeleteRestriction(int id)
         {
-            if ( mealParameters.Restrictions == null )
+            var restriction = await _context.Restrictions.FindAsync(id);
+            if (restriction == null)
             {
-                return PagedList<Meal>.ToPagedList(await _context.Meals.Select(m => new Meal
-                {
-                    Name = m.Name,
-                    Id = m.Id,
-                    Description = m.Description,
-                    Price = m.Price,
-                    Restrictions = m.Restrictions.ToList(),
-                    Image = m.Image
-                }).ToListAsync(),
-                        mealParameters.PageNumber,
-                        mealParameters.PageSize);
+                return false;
             }
-            
-            var meals = await _context.Meals.Select(meal => new Meal
-            {
-                Name = meal.Name,
-                Id = meal.Id,
-                Description = meal.Description,
-                Price = meal.Price,
-                Restrictions = meal.Restrictions.ToList(),
-                Image = meal.Image
-            }).Where(m => m.Restrictions.Any(r => mealParameters.Restrictions.Contains(r.Id))).ToListAsync();
-            if (meals.Count != 0)
-            {
-                return PagedList<Meal>.ToPagedList(meals,
-                            mealParameters.PageNumber,
-                            mealParameters.PageSize);
-            }
-            return null;
-        }
-
-        public async Task<Meal?> GetMealById(int id)
-        {
-            var meals = await _context.Meals.Select(m => new Meal
-            {
-                Name = m.Name,
-                Id = m.Id,
-                Description = m.Description,
-                Price = m.Price,
-                Restrictions = m.Restrictions.ToList(),
-                Image = m.Image,
-                File = m.File
-            }).Where(m => m.Id == id).ToListAsync();
-            if (meals.Count != 0)
-            {
-                return meals[0];
-            }
-            return null;
-        }
-
-        public async Task<bool> PostMeal(Meal meal, string[]? restrictionNames)
-        {
-            meal = await AddRestricitons(meal, restrictionNames);
-            var imagemeal = await ChangeImage(meal);
-            if (imagemeal == null)  
-            {
-                return false; 
-            }
-            await _context.Meals.AddAsync(imagemeal);
+            _context.Restrictions.Remove(restriction);
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<bool> PutMeal(Meal meal, int id, string[]? restrictionNames)
+        public async Task<List<Restriction>?> GetRestrictions()
         {
-            var originalmeal = _context.Meals.Include(m => m.Image).Include(m => m.Restrictions).Single(m => m.Id == id);
-            if (originalmeal == null)
-            {
-                return false;
-            }
-            originalmeal.Name = meal.Name;
-            originalmeal.Price = meal.Price;
-            originalmeal.Description = meal.Description;
-            originalmeal.Restrictions.Clear();
-            originalmeal = await AddRestricitons(originalmeal, restrictionNames);
-            if (meal.File != null)
-            {
-                var imagemeal = await ChangeImage(meal);
-                if (imagemeal == null) return false;
-                originalmeal.Image = imagemeal.Image;
-            }
-            _context.Update(originalmeal);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            { 
-                return false;
-            }
+            return await _context.Restrictions.ToListAsync();
+        }
 
-            return true;
+        public async Task<List<Restriction>?> GetRestrictionsIncludingToppings()
+        {
+            return await _context.Restrictions.Include(r => r.Toppings).ToListAsync();
         }
 
     }

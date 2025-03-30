@@ -1,4 +1,5 @@
 ﻿using DataAccess.Repository;
+using Domain.Interfaces;
 using Domain.Models;
 using Domain.Parameters;
 using Domain.Repository;
@@ -15,20 +16,22 @@ namespace OnlabAPI.Controllers
     [ApiController]
     public class PizzaController : ControllerBase
     {
-        private readonly IPizzaRepository _repository;
+        private readonly IPizzaService _pizzaService;
         DTOMappers mapper = new DTOMappers();
-        public PizzaController(IPizzaRepository repo)
+        public PizzaController(IPizzaService service)
         {
-            _repository = repo;
+            _pizzaService = service;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAllPizzas([FromQuery] PizzaParameters parameters)
         {
-            var pizzas = await _repository.GetAllPizzas(parameters);
+            if (parameters == null) return BadRequest("Rossz paraméterek");
+
+            var pizzas = await _pizzaService.GetAllPizzas(parameters);
             if (pizzas == null)
             {
-                return NotFound();
+                return NotFound("Nincsenek pizzák");
             }
             var metadata = new
             {
@@ -51,10 +54,10 @@ namespace OnlabAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> GetPizzaById(int id)
         {
-            var pizza = await _repository.GetPizzaById(id);
+            var pizza = await _pizzaService.GetPizzaById(id);
             if (pizza == null)
             {
-                return NotFound();
+                return NotFound("Nincs ilyen pizza");
             }
             return Ok(mapper.PizzaToDTO(pizza));
         }
@@ -63,39 +66,22 @@ namespace OnlabAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<PizzaDTO>> PostPizza(PizzaDTO pizza)
         {
-            var toppings = JsonConvert.DeserializeObject<int[]>(pizza.Toppings);
-            var newPizza = new Pizza
-            {
-                Name = pizza.Name,
-                Description = pizza.Description,
-                Price = pizza.Price,
-                File = pizza.FormFile
-            };
-            var result = await _repository.PostPizza(newPizza, toppings);
-            if (!result)
-            {
-                return BadRequest();
-            }
-            return Ok();
+
+            await _pizzaService.AddPizza(mapper.DTOtoPizza(pizza), pizza.Toppings);
+            return CreatedAtAction(nameof(PostPizza), pizza);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutPizza(PizzaDTO pizza, int id)
         {
-            var toppingIds = JsonConvert.DeserializeObject<int[]>(pizza.Toppings);
-            var newPizza = new Pizza
-            {
-                Name = pizza.Name,
-                Description = pizza.Description,
-                Price = pizza.Price,
-                File = pizza.FormFile
-            };
-            var result = await _repository.PutPizza(newPizza, id, toppingIds);
+            var result = await _pizzaService.ChangePizza(mapper.DTOtoPizza(pizza), id, pizza.Toppings);
             if (!result)
             {
-                return BadRequest();
+                return NotFound("Nincs ilyen pizza");
             }
+            var newPizza = await _pizzaService.GetPizzaById(id);
+            if (newPizza == null) return NotFound("Nincs ilyen pizza");
             ItemDTO itemDTO = mapper.PizzaToDTO(newPizza);
             return Ok(itemDTO);
         }
@@ -104,12 +90,12 @@ namespace OnlabAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePizza(int id)
         {
-            var result = await _repository.DeletePizza(id);
+            var result = await _pizzaService.DeletePizza(id);
             if (!result)
             {
-                return BadRequest();
+                return NotFound("Nincs ilyen pizza");
             }
-            return Ok();
+            return Ok("sikeres törlés");
         }
 
     }

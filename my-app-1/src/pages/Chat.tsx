@@ -33,7 +33,7 @@ const backendMessageToMessage = (msg:backendMessage):Message => {
 }
 
 export default function Chat() {
-    const user = useContext(UserContext);
+    const {user} = useContext(UserContext);
     const [connection, setConnection] = useState<HubConnection>();
     const [userMessages, setUserMessages] = useState<Message[]>([]);
     const [receiverName, setReceiverName] = useState(user.role != 'Admin' ? 'hunyadyzsombor@gmail.com' : '');

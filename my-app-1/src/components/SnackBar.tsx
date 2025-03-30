@@ -30,6 +30,7 @@ export default function SnackBar({text,error,isOpen,setIsOpen}:{text:string, err
               <Typography sx={{color:"white"}}>{message}</Typography>
               {error ? <ErrorIcon/> : <CheckCircleIcon/>}
               </Paper>
+              
         </Snackbar>
     )
 }

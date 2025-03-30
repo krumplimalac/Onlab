@@ -53,68 +53,25 @@ namespace DataAccess.Repository
             return true;
         }
 
-        public async Task<PagedList<Drink>?> GetAll(Parameter parameters)
+        public async Task<List<Drink>?> GetAllDrinks()
         {
-            var drinks = await _context.Drinks.Select(d => new Drink
-            {
-                Id = d.Id,
-                Name = d.Name,
-                Description = d.Description,
-                Price = d.Price,
-                Type = d.Type,
-                Image = d.Image
-            }).ToListAsync();
-            if(drinks == null) { return null; }
-            return PagedList<Drink>.ToPagedList(drinks,
-                    parameters.PageNumber,
-                    parameters.PageSize);
+            return await _context.Drinks.Select(d => d).Include(d => d.Image).ToListAsync();
         }
 
         public async Task<Drink?> GetDrinkById(int id)
         {
-            var drinks = await _context.Drinks.Select(d => new Drink
-            {
-                Id = d.Id,
-                Name = d.Name,
-                Description = d.Description,
-                Price = d.Price,
-                Type = d.Type,
-                Image = d.Image
-            }).Where(d => d.Id == id).ToListAsync();
-            return drinks != null ? drinks[0] : null;
+            return await _context.Drinks.Select(d => d).Where(d => d.Id == id).Include(d => d.Image).FirstAsync();
         }
 
-        public async Task<bool> PostDrink(Drink newDrink)
+        public async Task CreateDrink(Drink drink)
         {
-            var imagedrink = await ChangeImage(newDrink);
-            if(imagedrink == null)
-            {
-                return false;
-            }
-            newDrink = imagedrink;
-            await _context.Drinks.AddAsync(newDrink);
+            await _context.Drinks.AddAsync(drink);
             await _context.SaveChangesAsync();
-            return true;
         }
 
-        public async Task<bool> PutDrink(Drink drink, int id)
+        public async Task<bool> UpdateDrink(Drink drink)
         {
-            var originaldrink = _context.Drinks.Include(p => p.Image).Single(d => d.Id == id);
-            if ( originaldrink == null )
-            {
-                return false;
-            }
-            originaldrink.Name = drink.Name;
-            originaldrink.Price = drink.Price;
-            originaldrink.Description = drink.Description;
-            originaldrink.Type = drink.Type;
-            if (drink.File != null)
-            {
-                var imagedrink = await ChangeImage(drink);
-                if (imagedrink == null) return false;
-                originaldrink.Image = imagedrink.Image;
-            }
-            _context.Update(originaldrink);
+            _context.Update(drink);
             try
             {
                 await _context.SaveChangesAsync();

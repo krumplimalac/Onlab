@@ -1,7 +1,9 @@
 ﻿using DataAccess.Repository;
+using Domain.Interfaces;
 using Domain.Models;
 using Domain.Parameters;
 using Domain.Repository;
+using Domain.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,20 +15,22 @@ namespace OnlabAPI.Controllers
     [ApiController]
     public class NewsController : ControllerBase
     {
-        private readonly INewsRepository _newsRepository;
+        private readonly INewsService _newsService;
         private DTOMappers mapper = new();
-        public NewsController(INewsRepository repo)
+        public NewsController(INewsService service)
         {
-            _newsRepository = repo;
+            _newsService = service;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetNews([FromQuery] Parameter parameters)
+        public async Task<ActionResult> GetNews([FromQuery] Parameter parameters)
         {
-            var news = await _newsRepository.GetAllNews(parameters);
+            if (parameters == null) return BadRequest("Roszz paraméterek");
+
+            var news = await _newsService.GetAllNewsToPagedList(parameters);
             if (news == null)
             {
-                return NotFound();
+                return NotFound("Nincsenek hírek");
             }
             List<NewsDTO> newsDTOs = [];
             foreach (var item in news)
@@ -49,10 +53,10 @@ namespace OnlabAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> GetNewsById(int id)
         {
-            var news = await _newsRepository.GetNewsById(id);
+            var news = await _newsService.GetNewsById(id);
             if (news == null)
             {
-                return NotFound();
+                return NotFound("Nincs ilyen hír");
             }
             return Ok(mapper.NewsToDTO(news));
         }
@@ -61,50 +65,33 @@ namespace OnlabAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<NewsFormDTO>> PostNews(NewsFormDTO news)
         {
-            var newNews = new News
-            { 
-                Title = news.Title,
-                Date = news.Date,
-                Description = news.Description,
-                File = news.File
-            };
-            var result = await _newsRepository.PostNews(newNews);
-            if (!result)
-            {
-                return BadRequest();
-            }
-            return CreatedAtAction(nameof(PostNews), newNews);
+            await _newsService.AddNews(mapper.DTOtoNews(news));
+            return CreatedAtAction(nameof(PostNews), news);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutNews(NewsFormDTO news, int id)
         {
-            var newNews = new News
+            var result = await _newsService.ChangeNews(mapper.DTOtoNews(news), id);
+            if (result == null)
             {
-                Title = news.Title,
-                Date = news.Date,
-                Description = news.Description,
-                File = news.File
-            };
-            var result = await _newsRepository.PutNews(newNews, id);
-            if (!result)
-            {
-                return BadRequest();
+                return NotFound("Nincs ilyen hír");
             }
-            return CreatedAtAction(nameof(PutNews), newNews);
+            NewsDTO DTO = mapper.NewsToDTO(result);
+            return Ok(DTO);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteNews(int id)
         {
-            var result = await _newsRepository.DeleteNews(id);
+            var result = await _newsService.DeleteNews(id);
             if (!result)
             {
-                return NotFound();
+                return NotFound("Nincs ilyen hír");
             }
-            return Ok();
+            return Ok("sikeres törlés");
         }
     }
 }

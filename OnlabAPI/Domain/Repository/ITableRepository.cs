@@ -9,8 +9,9 @@ namespace Domain.Repository
 {
     public interface ITableRepository
     {
-        Task<List<Table>> GetTables();
-        Task<bool> PostTable(Table table);
+        Task<List<Table>?> GetTables();
+        Task CreateTable(Table table);
         Task<bool> DeleteTable(int id);
+        Task<List<Table>?> GetReservedTablesByTimeFrame(DateTime startTime, DateTime endTime);
     }
 }

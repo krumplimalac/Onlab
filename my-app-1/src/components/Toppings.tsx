@@ -27,7 +27,7 @@ export default function Toppings(){
     const [totalPages, setTotalPages] = useState(0);
     const [items, setItems] = useState<myProp[]>([]);
     const [loading, setLoading] = useState(true);
-    const user = useContext(UserContext);
+    const {user} = useContext(UserContext);
     const navigate = useNavigate();
     const StyledPagination = styled(Pagination)(({ theme }) => ({
         "& .MuiPaginationItem-root": {

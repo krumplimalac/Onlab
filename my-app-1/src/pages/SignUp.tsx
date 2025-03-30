@@ -7,8 +7,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import axios, { AxiosError, AxiosHeaders } from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import axios, { AxiosError } from 'axios';
+import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
 import SnackBar from '../components/SnackBar';
 import Loading from '../components/Loading';
@@ -21,6 +22,7 @@ export default function SignUp() {
   const [error, setError] = useState(true);
   const [loading, setLoading] = useState(false);
   const [chosenRole, setChosenRole] = useState("User");
+  const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -55,6 +57,15 @@ export default function SignUp() {
     register();
   };
 
+  const handleCheck = () => {
+    if(checked) {
+      setChosenRole("User");
+    } else {
+      setChosenRole("Admin");
+    }
+    setChecked(!checked);
+  }
+
   const handleChangeEmail = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     if (event.currentTarget.validity.valid) {
       setErrorEmail(false)
@@ -72,6 +83,7 @@ export default function SignUp() {
   };
 
   return (
+    <Container disableGutters maxWidth={false} sx={{minHeight: '780px'}}>
       <Container component="main" maxWidth="xs"
       sx={{backgroundColor: '#30343A',
       paddingTop: '4rem',
@@ -145,6 +157,10 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
+            <Checkbox
+              checked={checked}
+              onClick={handleCheck}
+            />
             <Button
               type="submit"
               fullWidth
@@ -164,5 +180,6 @@ export default function SignUp() {
           </Box>
         </Box>
       </Container>
+    </Container>
   );
 }

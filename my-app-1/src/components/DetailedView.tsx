@@ -20,7 +20,7 @@ export default function DetailedView({path}:{path:string}){
     const [item, setItem] = useState<myProp>();
     const params = useParams();
     const navigate = useNavigate();
-    const user = useContext(UserContext);
+    const {user} = useContext(UserContext);
     const [loading, setLoading] = useState(false);
 
     const handleDelete = () => {

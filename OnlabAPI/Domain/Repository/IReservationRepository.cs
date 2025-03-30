@@ -10,9 +10,9 @@ namespace Domain.Repository
 {
     public interface IReservationRepository
     {
-        Task<List<Reservation>> GetReservations();
+        Task<List<Reservation>> GetReservationsByDate(DateTime date);
         Task<List<Reservation>> GetReservationsByUser(IdentityUser user);
-        Task<bool> PostReservation(Reservation reservation, int tableid);
+        Task CreateReservation(Reservation reservation);
         Task<bool> DeleteReservation(int id);
     }
 }

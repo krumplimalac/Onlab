@@ -5,10 +5,11 @@ namespace OnlabAPI.DataTransferObjects
     public class ReservationDTO
     {
         public string ReserverId { get; set; }
+        public string Reserver { get; set; }
+        public string PhoneNumber { get; set; }
         public int TableId { get; set; }
         public int NumberOfPeople { get; set; }
-        public DateOnly Date { get; set; }
-        public TimeOnly StarTime { get; set; }
-        public TimeOnly EndTime { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
     }
 }

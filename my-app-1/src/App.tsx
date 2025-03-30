@@ -20,13 +20,20 @@ import PizzaForm from './components/Forms/PizzaForm'
 import Toppings from './components/Toppings'
 import Chat from './pages/Chat'
 import Foglalas from './pages/Foglalas'
+import Foglalasok from './pages/Foglalasok'
 
 
 type IAuthContext = {
   authenticated: boolean;
   setAuthenticated: Dispatch<SetStateAction<boolean>>
 }
+
 type IUserContext = {
+  user: IUser,
+  setUser: Dispatch<SetStateAction<IUser>>
+}
+
+type IUser = {
   email: string,
   role: string,
   id: string
@@ -38,9 +45,12 @@ const initialAuthValue = {
 }
 
 const initialUserValue = {
-  email: "",
-  role: "",
-  id: ""
+  user: {
+      email: "",
+      role: "",
+      id: ""
+    },
+    setUser: () => {}
 }
 
 const AuthContext = createContext<IAuthContext>(initialAuthValue);
@@ -48,38 +58,48 @@ const UserContext = createContext<IUserContext>(initialUserValue);
 
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
-  const user = initialUserValue;
+  const [authenticated, setAuthenticated] = useState(true);
+  const [user, setUser] = useState(initialUserValue.user);
 
-  useEffect(() => {
-    const auth = () => {
+  const auth = () => {
+    if ( document.cookie == '' ){
+      setAuthenticated(a => a = false);
+      localStorage.clear();
+    } else {
       const email = localStorage.getItem('email');
       const role = localStorage.getItem('role');
       const id = localStorage.getItem('id');
       if(localStorage.getItem('isAuth') != null){
-        setAuthenticated(true);
+        setAuthenticated(a => a = true);
+      } else {
+        setAuthenticated(a => a = false);
       }
-      if(email != null){
-       user.email = email;
-      }
-      if(role != null){
-        user.role = role;
-      }
-      if(id != null){
-        user.id = id;
+      if(email && role && id){
+        setUser({...user,
+                email:email,
+                role:role,
+                id:id
+              }); 
       }
     }
-    auth();
+    console.log(user);
+  }
+
+  useEffect(() => {
+      auth();
+    return () => {
+
+    }
   },[])
 
   return (
       <BrowserRouter>
         <AuthContext.Provider value={{authenticated,setAuthenticated}}>
-          <UserContext.Provider value={user}>
-            <ResponsiveAppBar /> 
+          <UserContext.Provider value={{user,setUser}}>
+            <ResponsiveAppBar />
             <Routes>
                 <Route path="Belepes" element={<SignIn />} />
-                <Route path="Kilepes" element={<LogOut/>} />
+                <Route path="Kilepes" element={<AuthProvider><LogOut/></AuthProvider>} />
                 <Route index element={<Home />} />
                 <Route path="Regisztracio" element={<SignUp />} />
                 <Route path="Home" element={<Home />} />
@@ -93,17 +113,18 @@ function App() {
                 <Route path="Italok" element={<Italok />} /> 
                 <Route path="Ujetel" element={<AuthProvider><MealForm /></AuthProvider>} /> 
                 <Route path="Etelek/:id/Edit" element={<AuthProvider><MealForm/></AuthProvider>} /> 
-                <Route path="Ujhir" element={<NewsForm />} /> 
-                <Route path="Hirek/:id/Edit" element={<NewsForm />} /> 
-                <Route path="Ujital" element={<DrinkForm />} />  
-                <Route path="Italok/:id/Edit" element={<DrinkForm />} />  
-                <Route path="Ujfeltet" element={<ToppingForm />} /> 
-                <Route path="Feltetek/:id/Edit" element={<ToppingForm />} /> 
-                <Route path="Ujpizza" element={<PizzaForm />}  />
-                <Route path="Pizzak/:id/Edit" element={<PizzaForm />}  />
-                <Route path="Feltetek" element={<Toppings/>} />
-                <Route path="Chat" element={<Chat/>} />
-                <Route path="Foglalas" element={<Foglalas/> } />
+                <Route path="Ujhir" element={<AuthProvider><NewsForm /></AuthProvider>} /> 
+                <Route path="Hirek/:id/Edit" element={<AuthProvider><NewsForm /></AuthProvider>} /> 
+                <Route path="Ujital" element={<AuthProvider><DrinkForm /></AuthProvider>} />  
+                <Route path="Italok/:id/Edit" element={<AuthProvider><DrinkForm /></AuthProvider>} />  
+                <Route path="Ujfeltet" element={<AuthProvider><ToppingForm /></AuthProvider>} /> 
+                <Route path="Feltetek/:id/Edit" element={<AuthProvider><ToppingForm /></AuthProvider>} /> 
+                <Route path="Ujpizza" element={<AuthProvider><PizzaForm /></AuthProvider>}  />
+                <Route path="Pizzak/:id/Edit" element={<AuthProvider><PizzaForm /></AuthProvider>}  />
+                <Route path="Feltetek" element={<AuthProvider><Toppings/></AuthProvider>} />
+                <Route path="Chat" element={<AuthProvider><Chat/></AuthProvider>} />
+                <Route path="Foglalas" element={<AuthProvider><Foglalas/></AuthProvider> } />
+                <Route path="Foglalasok" element={<AuthProvider><Foglalasok/></AuthProvider> } />
             </Routes>
           </UserContext.Provider>
         </AuthContext.Provider>
