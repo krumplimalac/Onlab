@@ -21,6 +21,7 @@ import Toppings from './components/Toppings'
 import Chat from './pages/Chat'
 import Foglalas from './pages/Foglalas'
 import Foglalasok from './pages/Foglalasok'
+import axios, { AxiosResponse } from 'axios'
 
 
 type IAuthContext = {
@@ -61,6 +62,23 @@ function App() {
   const [authenticated, setAuthenticated] = useState(true);
   const [user, setUser] = useState(initialUserValue.user);
 
+  const isAuth = async () => {
+    const response = await axios.get(`api/Auth`)
+    .catch((e) => {
+      console.log(e);
+      setAuthenticated(a => a = false);
+    })
+    .then((res) => {
+      if(res){
+        if(res.status == 200){
+          setAuthenticated(a => a = true);
+        } else {
+          setAuthenticated(a => a = false);
+        }
+      }
+    });
+  }
+
   const auth = () => {
     if ( document.cookie == '' ){
       setAuthenticated(a => a = false);
@@ -69,11 +87,11 @@ function App() {
       const email = localStorage.getItem('email');
       const role = localStorage.getItem('role');
       const id = localStorage.getItem('id');
-      if(localStorage.getItem('isAuth') != null){
+      /*if(localStorage.getItem('isAuth') != null){
         setAuthenticated(a => a = true);
       } else {
         setAuthenticated(a => a = false);
-      }
+      }*/
       if(email && role && id){
         setUser({...user,
                 email:email,
@@ -86,6 +104,7 @@ function App() {
   }
 
   useEffect(() => {
+      isAuth();
       auth();
     return () => {
 

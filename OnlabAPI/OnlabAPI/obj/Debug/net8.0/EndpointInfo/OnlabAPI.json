@@ -80,6 +80,18 @@
         }
       }
     },
+    "/api/Auth": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Drink": {
       "get": {
         "tags": [

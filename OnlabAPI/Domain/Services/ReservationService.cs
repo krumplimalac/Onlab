@@ -25,7 +25,8 @@ namespace Domain.Services
         public async Task<Table?> FreeTable(DateTime startTime, DateTime endTime, int numberOfPeople)
         {
             var allTables = await _tableRepository.GetTables();
-            allTables.OrderByDescending(t => t.Capacity).Reverse().Where(t => t.Capacity >= numberOfPeople);
+            if (allTables == null) return null;
+            allTables = [.. allTables.OrderByDescending(t => t.Capacity).Reverse().Where(t => t.Capacity >= numberOfPeople)];
             var reservedTables = await _tableRepository.GetReservedTablesByTimeFrame(startTime, endTime);
             if (reservedTables == null) return allTables.First();
             foreach (var t in allTables)
@@ -53,28 +54,9 @@ namespace Domain.Services
             for (int i = 0; i <= max; i++)
             {
                 var day = startOfTheWeek.AddDays(i); //FELESLEGES
-                var indexdate = new DateTime(day.Year, day.Month, day.Day, 8, 0, 0);
+                var indexdate = new DateTime(day.Year, day.Month, day.Day, 9, 0, 0);
                 for (int k = 0; k <= 16 - duration; k++)
                 {
-                    /*bool free = false;
-                    var reservedTables = await _context.Reservations.
-                        Select(r => r).
-                        Where(r => r.StartTime < indexdate.AddMinutes(duration*30) && r.EndTime > indexdate).
-                        Include(r => r.Table).
-                        Select(r => r.Table).
-                        Distinct().
-                        ToListAsync();
-                    var allTables = await _context.Tables.
-                        Select(t => t).
-                        ToListAsync();
-                    foreach(var t in allTables)
-                    {
-                        if(t.Capacity >= numberOfPeople && !reservedTables.Contains(t))
-                        {
-                            free = true;
-                        }
-                    }*/
-
                     if (await FreeTable(indexdate, indexdate.AddMinutes(duration * 30), numberOfPeople) != null)
                     {
                         freeTimes.Add(indexdate);

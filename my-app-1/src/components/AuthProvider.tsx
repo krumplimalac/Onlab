@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }:{ children? : ReactNode}) => {
 
     useEffect(() => {
       check();
-    },[]);
+    },[authenticated]);
 
   return(
     <>

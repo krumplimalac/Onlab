@@ -42,6 +42,7 @@ export default function Foglalasok(){
         '17:00'
     ];
     const [date,setDate] = useState<Dayjs | null>(dayjs('2025-03-20'));
+    const [utcDate, setUtcDate] = useState<Date>();
     const [tables, setTables] = useState<table[]>([]);
     const [reservations, setReservations] = useState<reservation[]>([]);
     const [loading, setLoading] = useState(false);
@@ -59,7 +60,7 @@ export default function Foglalasok(){
     const fetchReservations = async () => {
         setLoading(true);
         if(date){
-            const response = await axios.get(`api/Reservation?date=${date?.add(1,'hour').toJSON()}`)
+            const response = await axios.get(`api/Reservation?date=${utcDate?.toJSON()}`)
             .catch((e:AxiosError) => {
                 console.log(e);
                 setError(true);
@@ -110,19 +111,24 @@ export default function Foglalasok(){
     }
 
     const chosenDateToString = (time:string):string => {
-        let thisTime:Date = new Date();
+        if(utcDate){
+        let thisTime:Date = new Date(utcDate?.toJSON());
         let hour:number = +time.split(":")[0];
         let minutes:number = +time.split(":")[1];
-        if(date){
-           thisTime.setFullYear(date.get("year"));
-           thisTime.setMonth(date.get("month"));
-           thisTime.setDate(date.get("date")); 
-           thisTime.setHours(hour);
+        console.log(utcDate);
+        
+           thisTime.setFullYear(utcDate.getFullYear());
+           thisTime.setUTCMonth(utcDate.getUTCMonth());
+           thisTime.setDate(utcDate.getDate()); 
+           thisTime.setUTCHours(hour);
            thisTime.setMinutes(minutes);
            thisTime.setSeconds(0);
            thisTime.setMilliseconds(0);
-        }
+        
+        console.log(thisTime);
         return thisTime.toJSON().slice(0,thisTime.toJSON().length-5);
+        }
+        return ""
     }
 
     const getReservation = (time:string, table:table):reservation | undefined => {
@@ -133,21 +139,27 @@ export default function Foglalasok(){
     }
 
     const handleChange = (e:Dayjs | null) => {
-        setDate(e);
-        console.log(date);
-        setOpen(true);
+        if(e){
+            let offset = e.utcOffset()/-60;
+            let tmpDate = new Date(e.toJSON());
+            tmpDate.setHours(tmpDate.getHours()-offset);
+            setUtcDate(d => d = tmpDate);
+            setDate(x => e);
+            setOpen(true);
+        }
     }
 
-
     useEffect(() => {
-        fetchReservations();
+        if(date && utcDate){
+            fetchReservations();
+        }
     },[date]);
 
     const isReserved = (tableId: number, time:string):boolean => {
         let predicate = false;
         let textdate = chosenDateToString(time);
-        reservations.filter((r) => r.tableId == tableId).map((t)=>{
-            if(t.startTime <= textdate && t.endTime > textdate){
+        reservations.filter((r) => r.tableId == tableId).map((res)=>{
+            if(res.startTime <= textdate && res.endTime > textdate){
                 predicate = true;
             }
         });

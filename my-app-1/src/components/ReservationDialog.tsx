@@ -72,9 +72,11 @@ export default function ReservationDialog(
         setLoading(true);
         console.log(chosenDate);
         if(chosenDate){
+            let chosenDateHours = chosenDate.getHours();
             let endTime = new Date();
             endTime.setDate(chosenDate.getDate());
-            endTime.setHours(chosenDate.getHours());
+            endTime.setMonth(chosenDate.getMonth());
+            endTime.setHours(chosenDateHours);
             endTime.setMinutes(chosenDate.getMinutes());
             endTime.setMilliseconds(chosenDate.getMilliseconds());
             console.log(chosenDate);

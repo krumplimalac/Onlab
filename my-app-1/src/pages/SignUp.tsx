@@ -161,6 +161,7 @@ export default function SignUp() {
               checked={checked}
               onClick={handleCheck}
             />
+            <Typography>{chosenRole}</Typography>
             <Button
               type="submit"
               fullWidth

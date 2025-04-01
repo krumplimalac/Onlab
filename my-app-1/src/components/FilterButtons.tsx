@@ -34,7 +34,7 @@ export default function FilterButtons({setUrl,url,filter}: {setUrl:Dispatch<SetS
 
     useEffect(() => {
         fetch();
-    });
+    },[]);
 
     useEffect(() => {
         let params = new URLSearchParams("");

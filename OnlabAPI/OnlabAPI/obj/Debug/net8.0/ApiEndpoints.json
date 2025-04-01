@@ -1,6 +1,16 @@
 [
   {
     "ContainingType": "OnlabAPI.Controllers.AuthController",
+    "Method": "AmIAuthorized",
+    "RelativePath": "api/Auth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlabAPI.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/Login",
     "HttpMethod": "POST",

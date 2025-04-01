@@ -13,7 +13,7 @@ export default function PizzaFilterButtons({setUrl,url}: {setUrl:Dispatch<SetSta
     const [restrictionIds, setRestrictionIds] = useState<number[]>([]);
     const [toppingIds, setToppingIds] = useState<number[]>([]);
     const buttonSx : SxProps<Theme> = {
-        backgroundColor: "#343444",
+        backgroundColor: "#444454",
         color: "#FFFFFF",
         borderRadius: "25px", 
         margin: "1rem", 
@@ -81,15 +81,18 @@ export default function PizzaFilterButtons({setUrl,url}: {setUrl:Dispatch<SetSta
 
     return(
         <Container>
-            <Container sx={{display: "flex", justifyContent: "space-around"}}>
+            <Container sx={{display: "flex", justifyContent: "space-around", flexWrap: "wrap"}}>
             {restrictions.map((item:filterProp)=>(
                 <Button  
                 variant={restrictionIds.includes(item.id) ? "contained" : "text"}
                 key={item.id}  onClick={() => handleRestrictionFilterButtonClick(item.id)} 
-                sx={{backgroundColor: restrictionIds.includes(item.id) ? "#343474" : "#343444", 
-                borderRadius: "25px", 
-                margin: "1rem", 
-                padding: "10px 20px 10px 20px"}}>
+                sx={{backgroundColor: restrictionIds.includes(item.id) ? "#343474" : "#343444",
+                    color: "#FFFFFF", 
+                    borderRadius: "25px", 
+                    margin: "1rem", 
+                    padding: "10px 20px 10px 20px"
+                    }}
+                >
                     {item.name}
                 </Button>
             ))}
@@ -100,15 +103,18 @@ export default function PizzaFilterButtons({setUrl,url}: {setUrl:Dispatch<SetSta
                 Mindegyik
             </Button>
             </Container> 
-            <Container sx={{display: "flex", justifyContent: "space-around"}}>
+            <Container sx={{display: "flex", justifyContent: "space-around", flexWrap: "wrap"}}>
             {toppings.map((item:filterProp)=>(
                 <Button  
                 variant={toppingIds.includes(item.id) ? "contained" : "text"}
                 key={item.id}  onClick={() => handleToppingFilterButtonClick(item.id)} 
-                sx={{backgroundColor: toppingIds.includes(item.id) ? "#343474" : "#343444", 
-                borderRadius: "25px", 
-                margin: "1rem", 
-                padding: "10px 20px 10px 20px"}}>
+                sx={{backgroundColor: toppingIds.includes(item.id) ? "#343474" : "#343444",
+                    color: "#FFFFFF",
+                    borderRadius: "25px", 
+                    margin: "1rem", 
+                    padding: "10px 20px 10px 20px",
+                    }}
+                >
                     {item.name}
                 </Button>
             ))}

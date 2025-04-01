@@ -28,7 +28,7 @@ interface paginationHeader {
     HasPrevious: boolean
 }
 
-export default function Italok({urlProp,title,addUrl}:{urlProp:string, title:string, addUrl:string}){
+export default function ItemList({urlProp,title,addUrl}:{urlProp:string, title:string, addUrl:string}){
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [items, setItems] = useState<myProp[]>([]);

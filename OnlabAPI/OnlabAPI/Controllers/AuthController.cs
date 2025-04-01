@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -85,6 +86,16 @@ namespace OnlabAPI.Controllers
         {
              await HttpContext.SignOutAsync();
              return Ok();
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AmIAuthorized()
+        {
+            var token = await HttpContext.GetTokenAsync("MyCookie");
+            Console.WriteLine(token);
+            return Ok();
+
         }
 
     }

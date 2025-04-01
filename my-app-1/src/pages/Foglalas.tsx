@@ -75,7 +75,7 @@ export default function Foglalas() {
         let predicate = true;
         dates.map((date) => {
             let index = date.getDay() == 0 ? 6 : date.getDay()-1;
-            let hours = (date.getHours()+1).toString();
+            let hours = (date.getHours()).toString();
             let minutes = date.getMinutes() == 0 ? '00' : date.getMinutes().toString();
             if(  index == days.indexOf(day) && hours+':'+minutes == time){
                 predicate = false;
@@ -118,12 +118,12 @@ export default function Foglalas() {
             let i = 0;
             while(!exit && i < dates.length){
                 let index = dates[i].getDay() == 0 ? 6 : dates[i].getDay()-1;
-                let hours =  (dates[i].getHours()+1).toString();
+                let hours =  (dates[i].getHours()).toString();
                 let minutes = dates[i].getMinutes() == 0 ? '00' : dates[i].getMinutes().toString();
                 if(  index == days.indexOf(day) && hours+':'+minutes == time){
                     exit = true;
-                    setChosenDate(new Date(dates[i].getFullYear(),dates[i].getMonth(),dates[i].getDate(),dates[i].getHours()+1,dates[i].getMinutes(),0,0));
-                    console.log(new Date(dates[i].getFullYear(),dates[i].getMonth(),dates[i].getDate(),dates[i].getHours()+1,dates[i].getMinutes(),0,0));
+                    let newDate = new Date(Date.UTC(dates[i].getFullYear(),dates[i].getMonth(),dates[i].getDate(),dates[i].getHours(),dates[i].getMinutes(),0,0))
+                    setChosenDate( d => d = newDate );
                 }
                 i++;
             }
@@ -150,13 +150,14 @@ export default function Foglalas() {
         setLoading(true);
         try 
         {
-            const response = await axios.get(`api/Reservation/GetFreeTimes?numberOfPeople=${people}&duration=${timeItems.indexOf(duration)+1}`);
+            const response = await axios.get(`api/Reservation/GetFreeTimes?numberOfPeople=${+people}&duration=${timeItems.indexOf(duration)+1}`);
             const data:string[] = response.data;
             if (data.length == 0) {
                 setDates([]);
             } else {
                 data.map((i) => {
                     let date = new Date(i);
+                    console.log(date);
                     setDates(prevDates => [...prevDates,date]);
                 });
             }
@@ -169,14 +170,26 @@ export default function Foglalas() {
     }
 
     useEffect(() => {
+        if(duration != ""){
+            fetchFreeTimes();
+        }
+    },[people,duration])
+
+    useEffect(() => {
         if(finished){
             setChosenDate(undefined);
             setChosenDay('');
             setChosenTime('');
             setDuration('');
             setPeople("1");
+            fetchFreeTimes();
         }
     },[finished]);
+
+    //LOG
+    useEffect(() => {
+        console.log(chosenDate);
+    },[chosenDate]);
 
     return (
         <Container  sx={{marginTop: '1rem', backgroundColor: '#303030', minHeight: '780px'}}>
@@ -237,14 +250,16 @@ export default function Foglalas() {
                         </Select>
                         </Container>
                     </Container>
+                    {disabled ? null :
                     <Button
                     variant="contained"
                     onClick={fetchFreeTimes}
                     disabled={chosenTime != ''}
                     sx={{margin: 1.5, borderRadius: 4, backgroundColor: '#448844','&:hover':{backgroundColor: '#334433'}}}
                     >
-                        {disabled ? 'OK' : 'Frissít'}
+                        Frissít
                     </Button>
+                    }
                 </Container>
                 <Collapse in={!disabled}>
                 <Container disableGutters sx={{backgroundColor: '#444444', borderRadius: 4, paddingTop: 2}}>

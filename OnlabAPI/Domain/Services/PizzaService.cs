@@ -153,9 +153,9 @@ namespace Domain.Services
             return await _pizzaRepository.DeletePizza(id);
         }
 
-        public Task<List<Topping>?> GetAllToppings()
+        public async Task<List<Topping>?> GetAllToppings()
         {
-            throw new NotImplementedException();
+            return await _pizzaRepository.GetAllToppings();
         }
 
         public async Task AddTopping(Topping topping, string restrictionNames)
