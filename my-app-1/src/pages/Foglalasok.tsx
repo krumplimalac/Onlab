@@ -41,7 +41,7 @@ export default function Foglalasok(){
         '16:30',
         '17:00'
     ];
-    const [date,setDate] = useState<Dayjs | null>(dayjs('2025-03-20'));
+    const [date,setDate] = useState<Dayjs | null>(dayjs());
     const [utcDate, setUtcDate] = useState<Date>();
     const [tables, setTables] = useState<table[]>([]);
     const [reservations, setReservations] = useState<reservation[]>([]);

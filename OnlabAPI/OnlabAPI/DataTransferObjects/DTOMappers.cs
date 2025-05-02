@@ -128,6 +128,7 @@ namespace OnlabAPI.DataTransferObjects
         {
             ReservationDTO reservationDTO = new()
             {
+                Id = reservation.Id,
                 EndTime = reservation.EndTime,
                 StartTime = reservation.StartTime,
                 NumberOfPeople = reservation.NumberOfPeople,

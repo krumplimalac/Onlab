@@ -1,5 +1,5 @@
 ﻿using Domain.Models;
-using Domain.Parameters;
+using Domain.Services.Parameters;
 using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;

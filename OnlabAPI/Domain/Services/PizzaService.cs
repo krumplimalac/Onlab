@@ -1,7 +1,7 @@
 ﻿using Domain.Interfaces;
 using Domain.Models;
-using Domain.Parameters;
 using Domain.Repository;
+using Domain.Services.Parameters;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -43,23 +43,19 @@ namespace Domain.Services
             pizza.Restrictions = [];
             var restrictions = await _mealRepository.GetRestrictions();
             if (restrictions == null) return pizza;
-            bool put = true;
             foreach (var restriction in restrictions)
             {
+                bool put = false;
                 foreach (var topping in pizza.Toppings)
                 {
-                    if (!topping.Restrictions.Contains(restriction))
+                    if (topping.Restrictions.Contains(restriction))
                     {
-                        put = false;
+                        put = true;
                     }
                 }
                 if (put)
                 {
                     pizza.Restrictions.Add(restriction);
-                }
-                else
-                {
-                    put = true;
                 }
             }
             return pizza;

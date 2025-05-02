@@ -6,12 +6,13 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import LoginIcon from '@mui/icons-material/Login';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
 import { LocalPizza } from '@mui/icons-material';
 import { AuthContext, UserContext } from '../App';
@@ -25,13 +26,15 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const auth = useContext(AuthContext);
   const {user} = useContext(UserContext);
-  const settings = auth.authenticated ? [ ... ['Kilepes','Regisztracio','Chat'], ... user.role == "Admin" ?  ['Foglalasok'] : []  ]: ['Belepes','Regisztracio'];
+  const settings = auth.authenticated ? [ ... ['Kilepes','Regisztracio','Chat','Foglalasaim'], ... user.role == "Admin" ?  ['Foglalasok'] : []  ]: ['Belepes','Regisztracio'];
   const pages = [ ... ['Hirek', 'Etelek', 'Pizzak', 'Italok'], ... auth.authenticated ? ['Foglalas'] : [] ];
   const handleOpenNavMenu = (event:React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
+    if(auth.authenticated){
+      setAnchorElUser(event.currentTarget);
+    }
   };
 
   const handleCloseNavMenu = () => {
@@ -154,35 +157,47 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              { auth.authenticated ? 
+              <Avatar sx={{ m: 1, bgcolor: '#202020'}}>
+                <PersonIcon/>
+              </Avatar> 
+              : 
+              <Link to={"Belepes"} key={"Belepes"}>
                 <Avatar sx={{ m: 1, bgcolor: '#202020'}}>
-                  <LockOutlinedIcon />
+                  <LoginIcon/>
                 </Avatar>
+              </Link>
+              }
               </IconButton>
             </Tooltip>
+            { auth.authenticated ? 
             <Menu
-              sx={{display:'block', backdropFilter: "brightness(0.5)" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <Link to={setting} key={setting}>
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center" sx={{color: 'black'}}>{setting}</Typography>
-                  </MenuItem>
-                </Link>
-              ))}
-            </Menu>
+            sx={{display:'block', backdropFilter: "brightness(0.5)" }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            {settings.map((setting) => (
+              <Link to={setting} key={setting}>
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" sx={{color: 'black'}}>{setting}</Typography>
+                </MenuItem>
+              </Link>
+            ))}
+          </Menu> 
+          :
+          null
+          }
           </Box>
         </Toolbar>
       </Container>

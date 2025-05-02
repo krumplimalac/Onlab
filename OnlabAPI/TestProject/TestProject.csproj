@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -11,6 +11,11 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Fluent.Infrastructure" Version="2.0.0-beta-01" />
+    <PackageReference Include="JSNLog" Version="3.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.15" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.15" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="xunit" Version="2.5.3" />
@@ -19,10 +24,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-    <ProjectReference Include="..\OnlabAPI\OnlabAPI.csproj" />
+    <ProjectReference Include="..\OnlabAPI\WebAPI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+
+	<ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

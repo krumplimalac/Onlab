@@ -214,12 +214,12 @@
         }
       }
     },
-    "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj": {
+    "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj",
-        "projectName": "OnlabAPI",
-        "projectPath": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj",
+        "projectUniqueName": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\WebAPI.csproj",
+        "projectName": "WebAPI",
+        "projectPath": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\",
         "outputPath": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\obj\\",
         "projectStyle": "PackageReference",
@@ -360,8 +360,8 @@
               "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Domain.csproj": {
                 "projectPath": "D:\\BME\\Onlab\\OnlabAPI\\Domain\\Domain.csproj"
               },
-              "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj": {
-                "projectPath": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj"
+              "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\WebAPI.csproj": {
+                "projectPath": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\WebAPI.csproj"
               }
             }
           }
@@ -382,6 +382,26 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Fluent.Infrastructure": {
+              "target": "Package",
+              "version": "[2.0.0-beta-01, )"
+            },
+            "JSNLog": {
+              "target": "Package",
+              "version": "[3.0.3, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[8.0.15, )"
+            },
+            "Microsoft.Data.Sqlite.Core": {
+              "target": "Package",
+              "version": "[8.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.15, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.8.0, )"

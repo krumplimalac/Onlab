@@ -2,7 +2,7 @@ import { useContext, ReactNode, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext, UserContext } from "../App";
 
-export const AuthProvider = ({ children }:{ children? : ReactNode}) => {
+export default function AuthProvider({ children }:{ children? : ReactNode}){
   const authenticated = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();

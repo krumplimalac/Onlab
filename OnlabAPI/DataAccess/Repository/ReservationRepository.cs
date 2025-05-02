@@ -39,7 +39,7 @@ namespace DataAccess.Repository
 
         public async Task<List<Reservation>> GetReservationsByUser(IdentityUser user)
         {
-            return await _context.Reservations.Select(r => r).Where(r =>r.Reserver == user).Include(r => r.Reserver).ToListAsync();
+            return await _context.Reservations.Select(r => r).Where(r =>r.Reserver == user).Include(r => r.Reserver).Include(r => r.Table).ToListAsync();
         }
 
         public async Task CreateReservation(Reservation reservation)

@@ -1,0 +1,5 @@
+{
+  "DataAccess, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\BME\\Onlab\\OnlabAPI\\DataAccess",
+  "Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\BME\\Onlab\\OnlabAPI\\Domain",
+  "WebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI"
+}

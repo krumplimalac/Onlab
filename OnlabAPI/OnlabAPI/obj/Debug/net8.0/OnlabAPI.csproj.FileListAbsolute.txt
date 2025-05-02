@@ -173,3 +173,4 @@ D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abs
 D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\System.Net.ServerSentEvents.dll
 D:\BME\Onlab\OnlabAPI\OnlabAPI\bin\Debug\net8.0\System.Threading.Channels.dll
+D:\BME\Onlab\OnlabAPI\OnlabAPI\obj\Debug\net8.0\OnlabAPI.MvcApplicationPartsAssemblyInfo.cs

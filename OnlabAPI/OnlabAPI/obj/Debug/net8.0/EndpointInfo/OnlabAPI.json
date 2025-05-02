@@ -1551,6 +1551,10 @@
       "ReservationDTO": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "reserverId": {
             "type": "string",
             "nullable": true

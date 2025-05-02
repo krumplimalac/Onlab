@@ -1,7 +1,7 @@
 ﻿using Domain;
 using Domain.Models;
-using Domain.Parameters;
 using Domain.Repository;
+using Domain.Services.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repository

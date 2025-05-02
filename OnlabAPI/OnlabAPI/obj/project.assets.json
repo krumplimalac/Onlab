@@ -5323,9 +5323,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj",
-      "projectName": "OnlabAPI",
-      "projectPath": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\OnlabAPI.csproj",
+      "projectUniqueName": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\WebAPI.csproj",
+      "projectName": "WebAPI",
+      "projectPath": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\Hunyady Zsombor\\.nuget\\packages\\",
       "outputPath": "D:\\BME\\Onlab\\OnlabAPI\\OnlabAPI\\obj\\",
       "projectStyle": "PackageReference",

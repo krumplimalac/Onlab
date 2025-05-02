@@ -1,5 +1,4 @@
 ﻿using Domain.Models;
-using Domain.Parameters;
 using Domain.Repository;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using OnlabAPI.DataTransferObjects;
+using Domain.Services.Parameters;
 
 
 namespace OnlabAPI.Controllers

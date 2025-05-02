@@ -1,7 +1,7 @@
 ﻿using Domain.Interfaces;
 using Domain.Models;
-using Domain.Parameters;
 using Domain.Repository;
+using Domain.Services.Parameters;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

@@ -4,6 +4,7 @@ namespace OnlabAPI.DataTransferObjects
 {
     public class ReservationDTO
     {
+        public int Id { get; set; }
         public string ReserverId { get; set; }
         public string Reserver { get; set; }
         public string PhoneNumber { get; set; }

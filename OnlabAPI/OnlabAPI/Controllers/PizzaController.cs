@@ -1,8 +1,8 @@
 ﻿using DataAccess.Repository;
 using Domain.Interfaces;
 using Domain.Models;
-using Domain.Parameters;
 using Domain.Repository;
+using Domain.Services.Parameters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
