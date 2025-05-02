@@ -1,8 +1,8 @@
 import { Box, Button, Container, Typography } from "@mui/material"
 import axios from "axios";
 import { useContext, useEffect, useState } from "react"
-import { UserContext } from "../App";
-import Loading from "../components/Loading";
+import { UserContext } from "../../App";
+import Loading from "../other/Loading";
 
 interface reservation {
     reserver: string,

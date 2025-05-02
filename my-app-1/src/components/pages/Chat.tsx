@@ -4,8 +4,8 @@ import ChatRoom from "../components/Chat/ChatRoom";
 import { Button, Container, Typography } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { UserContext } from "../App";
-import Loading from "../components/Loading";
+import { UserContext } from "../../App";
+import Loading from "../other/Loading";
 import { Message } from "@mui/icons-material";
 
 interface Message {

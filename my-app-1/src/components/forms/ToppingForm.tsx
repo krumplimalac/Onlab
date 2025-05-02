@@ -1,8 +1,8 @@
 import { Button, Checkbox, Container, FormControlLabel, FormGroup, TextField, Typography } from "@mui/material";
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
-import Loading from "../Loading";
-import SnackBar from "../SnackBar";
+import Loading from "../other/Loading";
+import SnackBar from "../other/SnackBar";
 import { useParams } from "react-router-dom";
 
 interface item{

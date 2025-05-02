@@ -1,9 +1,9 @@
 import { Card, CardContent, Container, Grid, IconButton, Pagination, Typography, styled } from "@mui/material";
 import axios, { AxiosHeaders } from "axios";
 import { useContext, useEffect, useState } from "react";
-import Loading from "./Loading";
+import Loading from "../other/Loading";
 import AddIcon from '@mui/icons-material/Add';
-import { UserContext } from "../App";
+import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import '../index.css';
 

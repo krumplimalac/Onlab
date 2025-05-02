@@ -10,9 +10,9 @@ import Container from '@mui/material/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { AuthContext, UserContext } from '../App';
-import SnackBar from '../components/SnackBar';
-import Loading from '../components/Loading';
+import { AuthContext, UserContext } from '../../App';
+import SnackBar from '../other/SnackBar';
+import Loading from '../other/Loading';
 
 export default function SignIn() {
   const [errorEmail, setErrorEmail] = useState(false);

@@ -1,10 +1,10 @@
 import { Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, SxProps, TextField, Theme, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import { Dispatch, SetStateAction, useState } from "react";
-import { UserContext } from "../App";
+import { UserContext } from "../../App";
 import axios, { AxiosError } from "axios";
-import SnackBar from "./SnackBar";
-import Loading from "./Loading";
+import SnackBar from "../other/SnackBar";
+import Loading from "../other/Loading";
 
 interface reservation {
     reserverId: string,

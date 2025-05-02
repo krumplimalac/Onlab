@@ -4,8 +4,8 @@ import { Params, useParams, useNavigate } from "react-router-dom"
 import { Card, CardMedia, Container, IconButton, Typography } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { UserContext } from "../App";
-import Loading from "./Loading";
+import { UserContext } from "../../App";
+import Loading from "../other/Loading";
 
 interface myProp {
     name: string,

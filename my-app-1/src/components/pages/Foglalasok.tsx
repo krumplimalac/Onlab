@@ -5,8 +5,8 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from "dayjs";
 import axios, { AxiosError } from "axios";
-import SnackBar from "../components/SnackBar";
-import Loading from "../components/Loading";
+import SnackBar from "../other/SnackBar";
+import Loading from "../other/Loading";
 
 interface table {
     id:number,

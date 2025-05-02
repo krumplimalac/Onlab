@@ -1,6 +1,6 @@
 import { useContext, ReactNode, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext, UserContext } from "../App";
+import { AuthContext } from "../../App";
 
 export default function AuthProvider({ children }:{ children? : ReactNode}){
   const authenticated = useContext(AuthContext);

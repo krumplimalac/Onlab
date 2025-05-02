@@ -1,8 +1,8 @@
 import axios, { AxiosHeaders } from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Container, IconButton, Pagination, Typography, styled } from "@mui/material";
-import NewsCard from "../components/NewsCard";
-import { UserContext } from "../App";
+import NewsCard from "../news/NewsCard";
+import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
 

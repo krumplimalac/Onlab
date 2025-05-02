@@ -2,7 +2,7 @@ import { Box, Button, Collapse, Container, MenuItem, Select, SelectChangeEvent, 
 import { useEffect, useState } from "react";
 import ReservationDialog from "../components/ReservationDialog";
 import axios from "axios";
-import Loading from "../components/other/Loading";
+import Loading from "../other/Loading";
 
 export default function Foglalas() {
     const days = ['Hétfő','Kedd','Szerda','Csütörtök','Péntek','Szombat','Vasárnap'];

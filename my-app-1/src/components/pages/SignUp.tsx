@@ -11,8 +11,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
-import SnackBar from '../components/SnackBar';
-import Loading from '../components/Loading';
+import SnackBar from '../other/SnackBar';
+import Loading from '../other/Loading';
 
 export default function SignUp() {
   const [errorEmail, setErrorEmail] = useState(false);

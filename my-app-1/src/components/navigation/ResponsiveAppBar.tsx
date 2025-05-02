@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
 import { LocalPizza } from '@mui/icons-material';
-import { AuthContext, UserContext } from '../App';
+import { AuthContext, UserContext } from '../../App';
 import { useContext, useState } from 'react';
 
 const name = 'TemporaryCompanyName';

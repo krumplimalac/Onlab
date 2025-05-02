@@ -3,10 +3,10 @@ import axios, { AxiosError, AxiosHeaders } from "axios";
 import { useContext, useEffect, useState } from "react";
 import MyCard from "../components/MyCard";
 import FilterButtons from "./FilterButtons";
-import Loading from "./Loading";
+import Loading from "../other/Loading";
 import PizzaFilterButtons from "./PizzaFilterButtons";
 import AddIcon from '@mui/icons-material/Add';
-import { UserContext } from "../App";
+import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import '../index.css';
 

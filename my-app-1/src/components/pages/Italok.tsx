@@ -1,4 +1,4 @@
-import ItemsList from "../components/ItemsList";
+import ItemsList from "../menu/ItemsList";
 
 export default function Italok() {
     return(

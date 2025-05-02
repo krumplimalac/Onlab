@@ -1,8 +1,8 @@
 import axios, { AxiosError } from "axios"
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { AuthContext, UserContext } from "../App";
-import SnackBar from "./SnackBar";
+import { AuthContext, UserContext } from "../../App";
+import SnackBar from "../other/SnackBar";
 
 export default function LogOut(){
     const navigate = useNavigate();

@@ -2,10 +2,10 @@ import { Card, CardMedia, Container, IconButton, Typography } from "@mui/materia
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Params, useNavigate, useParams } from "react-router-dom";
-import { UserContext } from "../App";
+import { UserContext } from "../../App";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import Loading from "./Loading";
+import Loading from "../other/Loading";
 
 interface newsProp {
     title: string,

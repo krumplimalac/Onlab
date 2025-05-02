@@ -1,8 +1,8 @@
 import { Container, CardMedia } from "@mui/material"
 import '../CSS/main.css'
-import HomeNav from "../components/HomeNav"
+import HomeNav from "../other/HomeNav"
 import { useContext } from "react"
-import { UserContext } from "../App"
+import { UserContext } from "../../App"
 
 let etel = {
     img : '/src/img/foods.jpg',
